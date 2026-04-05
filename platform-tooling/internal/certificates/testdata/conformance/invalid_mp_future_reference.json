@@ -1,0 +1,25 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "conformance-invalid-mp-future-reference",
+  "goal": "B -> A",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "A -> (B -> A)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [
+        1,
+        3
+      ],
+      "formula": "B -> A"
+    }
+  ]
+}

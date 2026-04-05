@@ -1,0 +1,38 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "example-a-implies-a",
+  "goal": "A -> A",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "prototype-lowering"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "A -> ((B -> A) -> A)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(A -> ((B -> A) -> A)) -> ((A -> (B -> A)) -> (A -> A))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "(A -> (B -> A)) -> (A -> A)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "A -> (B -> A)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 3],
+      "formula": "A -> A"
+    }
+  ]
+}

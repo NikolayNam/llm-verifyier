@@ -1,0 +1,17 @@
+{
+  "certificate_version": "1.0.0",
+  "goal": "P",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P"
+    }
+  ],
+  "assumptions": ["P"]
+}

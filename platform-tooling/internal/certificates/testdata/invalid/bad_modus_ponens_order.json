@@ -1,0 +1,27 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "invalid-mp-order",
+  "goal": "(A -> (B -> A)) -> (A -> A)",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "A -> ((B -> A) -> A)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(A -> ((B -> A) -> A)) -> ((A -> (B -> A)) -> (A -> A))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "(A -> (B -> A)) -> (A -> A)"
+    }
+  ]
+}

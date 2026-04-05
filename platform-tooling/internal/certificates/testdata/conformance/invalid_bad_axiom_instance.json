@@ -1,0 +1,17 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "conformance-invalid-axiom-instance",
+  "goal": "A -> A",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "A -> A"
+    }
+  ]
+}

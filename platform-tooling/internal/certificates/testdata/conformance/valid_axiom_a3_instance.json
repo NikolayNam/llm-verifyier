@@ -1,0 +1,17 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "conformance-valid-axiom-a3-instance",
+  "goal": "(!Q -> !P) -> (P -> Q)",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!Q -> !P) -> (P -> Q)"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "conformance-valid-assumption-whitespace-equivalence",
+  "goal": "A -> B",
+  "context": {
+    "domain": "mevp-epcp",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1"
+  },
+  "assumptions": [
+    "A->B"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "A -> B"
+    }
+  ]
+}

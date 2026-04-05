@@ -1,0 +1,20 @@
+{
+  "proof_version": "1.0.0",
+  "proof_id": "bad-parse-negation",
+  "goal": "!P",
+  "context": {
+    "domain": "hilbert-benchmark-nd-v1",
+    "logic_fragment": "implicational-prop-v1",
+    "front_end": "natural-deduction-v1",
+    "lowering_target": "certificate-format-v1",
+    "generator": "llm-benchmark-nd-v1"
+  },
+  "steps": [
+    {
+      "id": 1,
+      "kind": "assume",
+      "formula": "P",
+      "scope": 1
+    }
+  ]
+}
