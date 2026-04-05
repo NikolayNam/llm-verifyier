@@ -78,5 +78,4 @@ deploy/.env.dev
 /.gomodcache-platform-tooling
 /.gomodcache-platform
 /.gotmp-platform/
-/research/result_research_report/
 /research/artifacts/
