@@ -65,10 +65,6 @@ deploy/.env.dev
 /.agents/*
 /.tmp
 
-/research/result_reseatch_report/*
-/research/result_reseatch_report/artifacts/*
-
-
 /.gotmp/
 /.agents/
 /.codex/
