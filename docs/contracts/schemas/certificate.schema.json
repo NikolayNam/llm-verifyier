@@ -1,0 +1,359 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabsphere.dev/schemas/certificate.schema.json",
+  "title": "MEVP/EPCP/CollabSphere Certificate",
+  "description": "Machine-checkable certificate format for the HILBERT-style orchestrator + certificate kernel architecture. This schema validates structure only; semantic proof checking is performed by the kernel checker.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "certificate_version",
+    "proof_id",
+    "goal",
+    "context",
+    "steps"
+  ],
+  "properties": {
+    "certificate_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Certificate format version."
+    },
+    "proof_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable identifier of the certificate, proof, or decision transcript."
+    },
+    "goal": {
+      "$ref": "#/$defs/formulaString"
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "Top-level assumptions available to the proof. Assumption references are 1-based indexes into this array.",
+      "items": {
+        "$ref": "#/$defs/formulaString"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "rule_pack"
+      ],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Domain identifier, for example mevp-epcp or collabsphere-policy."
+        },
+        "rule_pack": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identifier of the primitive rule pack used for semantic checking, for example classical-hilbert-v1."
+        },
+        "syntax": {
+          "type": "string",
+          "default": "hilbert-prop-ascii-v1",
+          "description": "Concrete formula syntax profile."
+        },
+        "generator": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional identifier of the upstream orchestrator or proof generator."
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      },
+      "default": []
+    },
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "hashes": {
+      "$ref": "#/$defs/hashes"
+    }
+  },
+  "$defs": {
+    "formulaString": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Formula in concrete syntax. The kernel defines exact parsing and semantic validation rules."
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional source kind such as doc, event, policy, theorem, or artifact."
+        },
+        "uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hash": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "commonStepFields": {
+      "type": "object",
+      "properties": {
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "default": []
+        },
+        "explain": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional human-readable explanation attached to the step."
+        }
+      }
+    },
+    "assumptionStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "assumption_ref",
+        "formula"
+      ],
+      "properties": {
+        "kind": {
+          "const": "assumption"
+        },
+        "assumption_ref": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "1-based index into the top-level assumptions array."
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "default": []
+        },
+        "explain": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "description": "Primitive step importing a top-level assumption into the proof transcript."
+    },
+    "axiomStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "axiom",
+        "formula"
+      ],
+      "properties": {
+        "kind": {
+          "const": "axiom"
+        },
+        "axiom": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Named axiom schema from the active rule pack, for example A1, A2, or A3."
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "default": []
+        },
+        "explain": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "description": "Primitive step asserting that a formula is an instance of a named axiom schema."
+    },
+    "modusPonensStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "premises",
+        "formula"
+      ],
+      "properties": {
+        "kind": {
+          "const": "modus_ponens"
+        },
+        "premises": {
+          "type": "array",
+          "description": "Ordered as [antecedent_line, implication_line]. Both references are 1-based proof line numbers and must target previous lines only. This schema validates shape only; the kernel validates semantic correctness.",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "default": []
+        },
+        "explain": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "description": "Primitive step deriving Q from P and P -> Q."
+    },
+    "step": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/assumptionStep"
+        },
+        {
+          "$ref": "#/$defs/axiomStep"
+        },
+        {
+          "$ref": "#/$defs/modusPonensStep"
+        }
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "generator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "explain_available": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "certificate_sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        },
+        "sources_sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        },
+        "report_sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "certificate_version": "1.0.0",
+      "proof_id": "example-a-implies-a",
+      "goal": "A -> A",
+      "context": {
+        "domain": "mevp-epcp",
+        "rule_pack": "classical-hilbert-v1",
+        "syntax": "hilbert-prop-ascii-v1",
+        "generator": "orchestrator-demo"
+      },
+      "steps": [
+        {
+          "kind": "axiom",
+          "axiom": "A1",
+          "formula": "A -> ((B -> A) -> A)"
+        },
+        {
+          "kind": "axiom",
+          "axiom": "A2",
+          "formula": "(A -> ((B -> A) -> A)) -> ((A -> (B -> A)) -> (A -> A))"
+        },
+        {
+          "kind": "modus_ponens",
+          "premises": [
+            1,
+            2
+          ],
+          "formula": "(A -> (B -> A)) -> (A -> A)"
+        },
+        {
+          "kind": "axiom",
+          "axiom": "A1",
+          "formula": "A -> (B -> A)"
+        },
+        {
+          "kind": "modus_ponens",
+          "premises": [
+            4,
+            3
+          ],
+          "formula": "A -> A"
+        }
+      ],
+      "sources": [],
+      "meta": {
+        "created_at": "2026-03-25T00:00:00Z",
+        "generator": "orchestrator-demo",
+        "explain_available": true
+      }
+    }
+  ]
+}

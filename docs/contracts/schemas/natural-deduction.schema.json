@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabsphere.dev/schemas/natural-deduction.schema.json",
+  "title": "Natural Deduction v1 Proof Object",
+  "description": "Operational authoring contract for the phase-1 ND -> Hilbert research pilot. This schema validates structure only and does not make any trust-bearing proof verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "proof_version",
+    "proof_id",
+    "goal",
+    "context",
+    "steps"
+  ],
+  "properties": {
+    "proof_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "proof_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "goal": {
+      "$ref": "#/$defs/formulaString"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/formulaString"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "logic_fragment",
+        "front_end",
+        "lowering_target",
+        "generator"
+      ],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logic_fragment": {
+          "type": "string",
+          "const": "implicational-prop-v1"
+        },
+        "front_end": {
+          "type": "string",
+          "const": "natural-deduction-v1"
+        },
+        "lowering_target": {
+          "type": "string",
+          "const": "certificate-format-v1"
+        },
+        "generator": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    }
+  },
+  "$defs": {
+    "formulaString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stepId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scopeId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "premiseStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "premise_ref",
+        "formula"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stepId"
+        },
+        "kind": {
+          "const": "premise"
+        },
+        "premise_ref": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        }
+      }
+    },
+    "assumeStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "formula",
+        "scope"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stepId"
+        },
+        "kind": {
+          "const": "assume"
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "scope": {
+          "$ref": "#/$defs/scopeId"
+        }
+      }
+    },
+    "reiterateStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "from",
+        "formula"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stepId"
+        },
+        "kind": {
+          "const": "reiterate"
+        },
+        "from": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/stepId"
+            }
+          ],
+          "items": false,
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "scope": {
+          "$ref": "#/$defs/scopeId"
+        }
+      }
+    },
+    "impElimStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "from",
+        "formula"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stepId"
+        },
+        "kind": {
+          "const": "imp_elim"
+        },
+        "from": {
+          "type": "array",
+          "description": "Ordered as [antecedent_step, implication_step].",
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/stepId"
+            },
+            {
+              "$ref": "#/$defs/stepId"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        },
+        "scope": {
+          "$ref": "#/$defs/scopeId"
+        }
+      }
+    },
+    "impIntroStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "from",
+        "discharge_scope",
+        "formula"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stepId"
+        },
+        "kind": {
+          "const": "imp_intro"
+        },
+        "from": {
+          "type": "array",
+          "description": "Ordered as [assume_step, last_step_in_scope].",
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/stepId"
+            },
+            {
+              "$ref": "#/$defs/stepId"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "discharge_scope": {
+          "$ref": "#/$defs/scopeId"
+        },
+        "formula": {
+          "$ref": "#/$defs/formulaString"
+        }
+      }
+    },
+    "step": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/premiseStep"
+        },
+        {
+          "$ref": "#/$defs/assumeStep"
+        },
+        {
+          "$ref": "#/$defs/reiterateStep"
+        },
+        {
+          "$ref": "#/$defs/impElimStep"
+        },
+        {
+          "$ref": "#/$defs/impIntroStep"
+        }
+      ]
+    }
+  }
+}

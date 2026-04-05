@@ -1,0 +1,675 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabsphere.local/schemas/rabbitmq_message_envelope_schema_v1.json",
+  "title": "CollabSphere RabbitMQ Message Envelope Schema v1",
+  "description": "Schema for the common RabbitMQ message envelope and the first bounded set of job/event payload contracts used in CollabSphere v1.",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/certificateVerifyRequested"
+    },
+    {
+      "$ref": "#/$defs/messageCertificateChecked"
+    },
+    {
+      "$ref": "#/$defs/messageCertificateFailed"
+    },
+    {
+      "$ref": "#/$defs/projectionSearchUpdateRequested"
+    },
+    {
+      "$ref": "#/$defs/projectionSearchUpdated"
+    },
+    {
+      "$ref": "#/$defs/projectionSearchFailed"
+    },
+    {
+      "$ref": "#/$defs/messageLifecycleReassessmentRequested"
+    },
+    {
+      "$ref": "#/$defs/messageLifecycleReassessed"
+    },
+    {
+      "$ref": "#/$defs/messageLifecycleReassessmentFailed"
+    },
+    {
+      "$ref": "#/$defs/auditEventRecordRequested"
+    },
+    {
+      "$ref": "#/$defs/telemetryEventObserved"
+    }
+  ],
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID string."
+    },
+    "rfc3339Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC3339 timestamp."
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "baseEnvelope": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "correlation_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "causation_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "occurred_at": {
+          "$ref": "#/$defs/rfc3339Timestamp"
+        },
+        "producer": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "schema_version": {
+          "type": "integer",
+          "const": 1,
+          "description": "Envelope schema version. Fixed to 1 for v1."
+        },
+        "tenant_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "organization_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "attempt_no": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deadline_at": {
+          "$ref": "#/$defs/rfc3339Timestamp"
+        },
+        "payload": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "message_id",
+        "correlation_id",
+        "causation_id",
+        "event_type",
+        "occurred_at",
+        "producer",
+        "schema_version",
+        "payload"
+      ]
+    },
+    "certificateVerifyRequestedPayload": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "claim_package_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "certificate_request_id": {
+          "$ref": "#/$defs/uuid"
+        }
+      },
+      "required": [
+        "message_id",
+        "claim_package_id",
+        "certificate_request_id"
+      ],
+      "additionalProperties": false
+    },
+    "messageCertificateCheckedPayload": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "certificate_request_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "verification_report_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "status": {
+          "type": "string",
+          "const": "checked"
+        }
+      },
+      "required": [
+        "message_id",
+        "certificate_request_id",
+        "verification_report_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "messageCertificateFailedPayload": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "certificate_request_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "verification_report_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "status": {
+          "type": "string",
+          "const": "failed"
+        },
+        "failure_code": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "required": [
+        "message_id",
+        "certificate_request_id",
+        "verification_report_id",
+        "status",
+        "failure_code"
+      ],
+      "additionalProperties": false
+    },
+    "projectionSearchUpdateRequestedPayload": {
+      "type": "object",
+      "properties": {
+        "aggregate_type": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "aggregate_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "projection_version": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "aggregate_type",
+        "aggregate_id",
+        "projection_version"
+      ],
+      "additionalProperties": false
+    },
+    "projectionSearchUpdatedPayload": {
+      "type": "object",
+      "properties": {
+        "aggregate_type": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "aggregate_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "projection_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "type": "string",
+          "const": "updated"
+        }
+      },
+      "required": [
+        "aggregate_type",
+        "aggregate_id",
+        "projection_version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "projectionSearchFailedPayload": {
+      "type": "object",
+      "properties": {
+        "aggregate_type": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "aggregate_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "projection_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "type": "string",
+          "const": "failed"
+        },
+        "failure_code": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "required": [
+        "aggregate_type",
+        "aggregate_id",
+        "projection_version",
+        "status",
+        "failure_code"
+      ],
+      "additionalProperties": false
+    },
+    "messageLifecycleReassessmentRequestedPayload": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "reassessment_request_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "trigger_reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_version": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "message_id",
+        "reassessment_request_id",
+        "trigger_reason",
+        "source_version"
+      ],
+      "additionalProperties": false
+    },
+    "messageLifecycleReassessedPayload": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "reassessment_request_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "verification_report_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "status": {
+          "type": "string",
+          "const": "reassessed"
+        }
+      },
+      "required": [
+        "message_id",
+        "reassessment_request_id",
+        "verification_report_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "messageLifecycleReassessmentFailedPayload": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "reassessment_request_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "verification_report_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "status": {
+          "type": "string",
+          "const": "failed"
+        },
+        "failure_code": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "required": [
+        "message_id",
+        "reassessment_request_id",
+        "verification_report_id",
+        "status",
+        "failure_code"
+      ],
+      "additionalProperties": false
+    },
+    "auditEventRecordRequestedPayload": {
+      "type": "object",
+      "properties": {
+        "source_event_type": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "object_type": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "object_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "record_kind": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "required": [
+        "source_event_type",
+        "source_message_id",
+        "object_type",
+        "object_id",
+        "record_kind"
+      ],
+      "additionalProperties": false
+    },
+    "telemetryEventObservedPayload": {
+      "type": "object",
+      "properties": {
+        "source_event_type": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_message_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "debug",
+            "info",
+            "warning",
+            "error",
+            "critical"
+          ]
+        },
+        "observed_at": {
+          "$ref": "#/$defs/rfc3339Timestamp"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "source_event_type",
+        "source_message_id",
+        "severity",
+        "observed_at",
+        "labels"
+      ],
+      "additionalProperties": false
+    },
+    "certificateVerifyRequested": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "certificate.verify.requested"
+            },
+            "payload": {
+              "$ref": "#/$defs/certificateVerifyRequestedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "messageCertificateChecked": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "message.certificate.checked"
+            },
+            "payload": {
+              "$ref": "#/$defs/messageCertificateCheckedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "messageCertificateFailed": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "message.certificate.failed"
+            },
+            "payload": {
+              "$ref": "#/$defs/messageCertificateFailedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "projectionSearchUpdateRequested": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "projection.search.update_requested"
+            },
+            "payload": {
+              "$ref": "#/$defs/projectionSearchUpdateRequestedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "projectionSearchUpdated": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "projection.search.updated"
+            },
+            "payload": {
+              "$ref": "#/$defs/projectionSearchUpdatedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "projectionSearchFailed": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "projection.search.failed"
+            },
+            "payload": {
+              "$ref": "#/$defs/projectionSearchFailedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "messageLifecycleReassessmentRequested": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "message.lifecycle.reassessment_requested"
+            },
+            "payload": {
+              "$ref": "#/$defs/messageLifecycleReassessmentRequestedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "messageLifecycleReassessed": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "message.lifecycle.reassessed"
+            },
+            "payload": {
+              "$ref": "#/$defs/messageLifecycleReassessedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "messageLifecycleReassessmentFailed": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "message.lifecycle.reassessment_failed"
+            },
+            "payload": {
+              "$ref": "#/$defs/messageLifecycleReassessmentFailedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "auditEventRecordRequested": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "audit.event.record_requested"
+            },
+            "payload": {
+              "$ref": "#/$defs/auditEventRecordRequestedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "telemetryEventObserved": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseEnvelope"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "telemetry.event.observed"
+            },
+            "payload": {
+              "$ref": "#/$defs/telemetryEventObservedPayload"
+            }
+          },
+          "required": [
+            "event_type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
