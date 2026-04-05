@@ -1,0 +1,11 @@
+generate:
+  lean4:
+    project_folder: hilbert-ai-verification-lean4-worker-v1
+    benchmark_project_folder: hilbert-ai-verification-benchmark-nd-v1
+    workspace_root: .tmp/research/lean4
+    lake_binary: lake
+    timeout: 60s
+    export_output_file: theorems/lean4-generated.csv
+    job_name: identity_proved
+    job_statement: P -> P
+    job_payload_file: research/artifacts/hilbert-ai-verification-lean4-worker-v1/theorems/payloads/identity-proof.json

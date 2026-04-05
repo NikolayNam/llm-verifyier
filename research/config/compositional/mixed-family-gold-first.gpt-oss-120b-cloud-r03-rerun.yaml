@@ -1,0 +1,26 @@
+transports:
+  local-compatible:
+    provider: compatible
+    base_url: http://localhost:11434
+
+families:
+  compositional-mixed-family-gold-first-gpt-oss-120b-cloud-rerun:
+    transport: local-compatible
+    experiment_name: compositional-mixed-family-gold-first-gpt-oss-120b-cloud-r03-rerun-v1
+    models:
+      - gpt-oss:120b-cloud
+    sampling:
+      temperature: 0
+      seed: 42
+      top_p: 1
+
+benchmarks:
+  compositional_mixed_family_gold_first:
+    input_file: cases/compositional-mixed-family-gold-first-phase1.csv
+    families:
+      - compositional-mixed-family-gold-first-gpt-oss-120b-cloud-rerun
+    repeats: 1
+    request_timeout_abort_threshold: 5
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-gold-first-reruns
+    report_dir: research/result_research_report_v1/compositional-mixed-family-gold-first-reruns

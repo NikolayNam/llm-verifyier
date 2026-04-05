@@ -1,0 +1,26 @@
+transports:
+  local-compatible:
+    provider: compatible
+    base_url: http://localhost:11434
+
+families:
+  local-compatible:
+    transport: local-compatible
+    experiment_name: formal-mode
+    models:
+      - gpt-oss:20b
+    sampling:
+      temperature: 0
+      seed: 42
+      top_p: 1
+
+benchmarks:
+  phase1:
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 2
+    interrupt_policy: drop_if_no_results
+  nd:
+    request_timeout_abort_threshold: 2
+    interrupt_policy: drop_if_no_results

@@ -1,0 +1,238 @@
+schema_version: researchctl.config/v1
+
+paths:
+  artifact_root: research/artifacts
+  report_root: research/result_research_report_v1
+  temp_root: .tmp/research
+  manifest_root: research/artifacts/result_research/manifests
+
+state:
+  db_path: research/artifacts/result_research/research_db/research_db.sqlite
+
+transports:
+  local-compatible:
+    provider: compatible
+    base_url: http://localhost:11434
+    timeout: 60s
+
+  openai-public:
+    provider: openai
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY
+    timeout: 60s
+
+families:
+  local-compatible:
+    transport: local-compatible
+    experiment_name: formal-mode
+    models:
+      - gpt-oss:20b
+    sampling:
+      temperature: 0
+      seed: 42
+      top_p: 1
+
+benchmarks:
+  phase1:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/waves
+    report_dir: research/result_research_report_v1/direct
+
+  nd:
+    project_folder: hilbert-ai-verification-benchmark-nd-v1
+    input_kind: theorems
+    input_file: theorems/pilot_shared_20260327.csv
+    prompt_version: hilbert-ai-verification-benchmark-nd-v1.1
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/nd
+    report_dir: research/result_research_report_v1/nd
+
+  compositional_assumption_import:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-assumption-import-phase1.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional
+    report_dir: research/result_research_report_v1/compositional
+
+  bridge_import_final_research:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/bridge-import-final-research-phase1.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/bridge-import-final-research
+    report_dir: research/result_research_report_v1/bridge-import-final-research
+
+  bridge_only_authoring:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/bridge-only-authoring-phase1.csv
+    prompt_version: hilbert-ai-verification-bridge-only-v1.0
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/bridge-only-authoring
+    report_dir: research/result_research_report_v1/bridge-only-authoring
+
+  gold_final_composition_only:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/gold-final-composition-only-phase1.csv
+    prompt_version: hilbert-ai-verification-gold-final-only-v1.0
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/gold-final-composition-only
+    report_dir: research/result_research_report_v1/gold-final-composition-only
+
+  compositional_depth_ladder:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-depth-ladder-phase1.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-depth-ladder
+    report_dir: research/result_research_report_v1/compositional-depth-ladder
+
+  compositional_branching:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-branching-phase1.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-branching
+    report_dir: research/result_research_report_v1/compositional-branching
+
+  compositional_mixed_family_reuse:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-mixed-family-reuse-phase1.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-reuse
+    report_dir: research/result_research_report_v1/compositional-mixed-family-reuse
+
+  compositional_mixed_family_gold_first:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-mixed-family-gold-first-phase1.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-gold-first
+    report_dir: research/result_research_report_v1/compositional-mixed-family-gold-first
+
+  compositional_mixed_family_gold_first_phase2:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-mixed-family-gold-first-phase2.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-gold-first-phase2
+    report_dir: research/result_research_report_v1/compositional-mixed-family-gold-first-phase2
+
+  compositional_mixed_family_gold_first_hard:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-mixed-family-gold-first-hard.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-gold-first-hard
+    report_dir: research/result_research_report_v1/compositional-mixed-family-gold-first-hard
+
+  compositional_mixed_family_semi_gold_stable:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-mixed-family-semi-gold-stable.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-semi-gold-stable
+    report_dir: research/result_research_report_v1/compositional-mixed-family-semi-gold-stable
+
+  compositional_mixed_family_semi_gold_frontier:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases/compositional-mixed-family-semi-gold-frontier.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families:
+      - local-compatible
+    repeats: 1
+    request_timeout_abort_threshold: 20
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-semi-gold-frontier
+    report_dir: research/result_research_report_v1/compositional-mixed-family-semi-gold-frontier
+
+generate:
+  lean4:
+    project_folder: hilbert-ai-verification-lean4-worker-v1
+    benchmark_project_folder: hilbert-ai-verification-benchmark-nd-v1
+    workspace_root: .tmp/research/lean4
+    lake_binary: lake
+    timeout: 60s
+    export_output_file: theorems/lean4-generated.csv
+    job_name: identity_proved
+    job_statement: P -> P
+    job_payload_file: research/artifacts/hilbert-ai-verification-lean4-worker-v1/theorems/payloads/identity-proof.json
+
+reports:
+  benchmark_dir: research/result_research_report_v1/direct
+  nd_dir: research/result_research_report_v1/nd
+  research_dir: research/result_research_report_v1/pair
+  meta_dir: research/result_research_report_v1/summary/meta
+  cases_dir: research/result_research_report_v1/summary/cases
+
+db:
+  project_folder: hilbert-ai-verification-benchmark-nd-v1

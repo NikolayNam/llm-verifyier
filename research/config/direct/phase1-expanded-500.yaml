@@ -1,0 +1,27 @@
+transports:
+    local-compatible:
+        provider: compatible
+        base_url: http://localhost:11434
+families:
+    phase1-expanded-500-main:
+        transport: local-compatible
+        experiment_name: formal-mode
+        models:
+            - gpt-oss:20b
+            - gpt-oss:120b-cloud
+            - glm-5:cloud
+            - deepseek-v3.1:671b-cloud
+        sampling:
+            seed: 42
+            top_p: 1
+benchmarks:
+    phase1:
+        input_file: cases/phase1-expanded-500.csv
+        prompt_version: hilbert-ai-verification-benchmark-v1.3
+        families:
+            - phase1-expanded-500-main
+        repeats: 10
+        request_timeout_abort_threshold: 10
+        interrupt_policy: drop_if_no_results
+        summary_dir: research/artifacts/result_research/waves
+        report_dir: research/result_research_report_v1/direct

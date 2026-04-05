@@ -1,0 +1,29 @@
+transports:
+  local-compatible:
+    provider: compatible
+    base_url: http://localhost:11434
+
+families:
+  mixed-family-semi-gold-stable-main:
+    transport: local-compatible
+    experiment_name: compositional-mixed-family-semi-gold-stable-v1
+    models:
+      - deepseek-v3.1:671b-cloud
+      - gpt-oss:120b-cloud
+      - glm-5:cloud
+      - gpt-oss:20b-cloud
+    sampling:
+      temperature: 0
+      seed: 42
+      top_p: 1
+
+benchmarks:
+  compositional_mixed_family_semi_gold_stable:
+    input_file: cases/compositional-mixed-family-semi-gold-stable.csv
+    families:
+      - mixed-family-semi-gold-stable-main
+    repeats: 7
+    request_timeout_abort_threshold: 5
+    interrupt_policy: drop_if_no_results
+    summary_dir: research/artifacts/result_research/compositional-mixed-family-semi-gold-stable
+    report_dir: research/result_research_report_v1/compositional-mixed-family-semi-gold-stable
