@@ -1,0 +1,12 @@
+{
+  "runs_per_pair": 10,
+  "models": [
+    { "provider": "google", "model": "gemini-3.1-pro-preview", "tier": "strong" },
+    { "provider": "google", "model": "gemini-2.5-flash", "tier": "fast" },
+    { "provider": "mistral", "model": "labs-leanstral-2603", "tier": "specialized" },
+    { "provider": "mistral", "model": "mistral-large-2512", "tier": "strong" },
+    { "provider": "mistral", "model": "ministral-14b-2512", "tier": "fast" }
+
+  ],
+  "surfaces": ["direct", "nd"]
+}

@@ -65,6 +65,10 @@ deploy/.env.dev
 /.agents/*
 /.tmp
 
+/research/result_reseatch_report/*
+/research/result_reseatch_report/artifacts/*
+
+
 /.gotmp/
 /.agents/
 /.codex/
@@ -78,3 +82,5 @@ deploy/.env.dev
 /.gomodcache-platform-tooling
 /.gomodcache-platform
 /.gotmp-platform/
+/research/result_research_report/
+/research/artifacts/

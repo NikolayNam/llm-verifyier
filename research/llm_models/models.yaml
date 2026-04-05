@@ -1,0 +1,16 @@
+models:
+  - provider: google
+    model: gemini-5.1-pro-preview
+    tier: strong
+
+  - provider: google
+    model: gemini-2.5-flash
+    tier: fast
+
+  - provider: mistral
+    model: labs-leanstral-2603
+    tier: specialized
+
+  - provider: mistral
+    model: mistral-large-2512
+    tier: strong

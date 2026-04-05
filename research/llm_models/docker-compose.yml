@@ -1,0 +1,9 @@
+services:
+  phase2-bench:
+    build: .
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY}
+    volumes:
+      - ./out:/app/out
+    command: ["python", "benchmark_runner.py"]
