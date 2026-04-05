@@ -1,0 +1,80 @@
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+
+# Secrets files
+deploy/secrets/*
+secrets/*
+secrets/
+
+
+# logs
+logs/
+output/
+deploy/nginx/acme/*
+!deploy/nginx/acme/.gitkeep
+deploy/nginx/certs/*
+!deploy/nginx/certs/.gitkeep
+deploy/nginx/logs/*
+!deploy/nginx/logs/.gitkeep
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+/.next/
+
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Code coverage profiles and other test artifacts
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+.gocache/
+# Go workspace file
+go.work
+go.work.sum
+
+# env file
+.env
+
+# Editor/IDE
+.idea/
+.vscode/
+
+llm/*
+platform/cmd/knowgen
+platform/.gocache
+/platform/.gocache/
+platform/internal/runtime/infrastructure/db/migrations-src/history_migration_lock/
+deploy/.env.dev
+/refactoring/
+/.agents/*
+/.tmp
+
+/.gotmp/
+/.agents/
+/.codex/
+/.cursor/
+/.github/
+/.gomodcache
+/platform/.tmp
+/.gocache-test
+/.gocache-platform-tooling
+/.gocache-platform
+/.gomodcache-platform-tooling
+/.gomodcache-platform
+/.gotmp-platform/
