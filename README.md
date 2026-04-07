@@ -164,18 +164,18 @@ go -C platform-tooling run ./cmd/researchctl report meta \
 - `research/result_research_report_v1/summary/cases/...`
 
 Пояснение к столбцам таблицы:
-Pack — идентификатор набора кейсов. Обычно это key пака, практически чаще всего путь/имя входного cases-файла.
-Cases — число различных кейсов в этом паке (DistinctCases), а не число запусков.
-Observations — число всех наблюдений по этому паку, то есть всех result-rows по всем выбранным run/model/repeat. Это главный знаменатель для rate-метрик.
-Pass — сколько наблюдений попало в bucket pass.
-Pass Rate — доля Pass / Observations, см. hilbert_benchmark_case_report.go:109.
-False Refusal — модель отказалась (not_derivable) там, где кейс на самом деле entailed, см. hilbert_benchmark_run.go:161 и ND-вариант nd_hilbert_benchmark.go:394.
-False Accept — модель выдала сертификат, verifier его принял, но сам кейс был not_entailed, см. hilbert_benchmark_run.go:1122.
-Schema — число наблюдений с schema_failure: JSON/структура proof/certificate не проходит schema-level проверку, см. hilbert_benchmark_run.go:1131 и nd_hilbert_benchmark.go:639.
-Parse — число наблюдений с parse_failure: структура в целом допустима, но формулы/шаги не распарсились, см. hilbert_benchmark_run.go:1137 и nd_hilbert_benchmark.go:634.
-Kernel — число наблюдений с kernel_failure: объект дошёл до верификации, но ядро его отвергло; в ND сюда также попадает lowering validation failure, см. hilbert_benchmark_run.go:1144 и nd_hilbert_benchmark.go:659.
-Contract — число наблюдений с contract_failure: сертификат может быть формально принят, но нарушает benchmark contract по метаданным (certificate_version, context.domain, context.generator, rule_pack, syntax), см. hilbert_benchmark_run.go:1081.
-Format — число наблюдений с format_failure: модель вернула мусор/обёртку/не тот тип output, например invalid_json или other, см. hilbert_benchmark_run.go:167 и nd_hilbert_benchmark.go:399.
+- Pack — идентификатор набора кейсов. Обычно это key пака, практически чаще всего путь/имя входного cases-файла.
+- Cases — число различных кейсов в этом паке (DistinctCases), а не число запусков.
+- Observations — число всех наблюдений по этому паку, то есть всех result-rows по всем выбранным run/model/repeat. Это главный знаменатель для rate-метрик.
+- Pass — сколько наблюдений попало в bucket pass.
+- Pass Rate — доля Pass / Observations, см. hilbert_benchmark_case_report.go:109.
+- False Refusal — модель отказалась (not_derivable) там, где кейс на самом деле entailed, см. hilbert_benchmark_run.go:161 и ND-вариант nd_hilbert_benchmark.go:394.
+- False Accept — модель выдала сертификат, verifier его принял, но сам кейс был not_entailed, см. hilbert_benchmark_run.go:1122.
+- Schema — число наблюдений с schema_failure: JSON/структура proof/certificate не проходит schema-level проверку, см. hilbert_benchmark_run.go:1131 и nd_hilbert_benchmark.go:639.
+- Parse — число наблюдений с parse_failure: структура в целом допустима, но формулы/шаги не распарсились, см. hilbert_benchmark_run.go:1137 и nd_hilbert_benchmark.go:634.
+- Kernel — число наблюдений с kernel_failure: объект дошёл до верификации, но ядро его отвергло; в ND сюда также попадает lowering validation failure, см. hilbert_benchmark_run.go:1144 и nd_hilbert_benchmark.go:659.
+- Contract — число наблюдений с contract_failure: сертификат может быть формально принят, но нарушает benchmark contract по метаданным (certificate_version, context.domain, context.generator, rule_pack, syntax), см. hilbert_benchmark_run.go:1081.
+- Format — число наблюдений с format_failure: модель вернула мусор/обёртку/не тот тип output, например invalid_json или other, см. hilbert_benchmark_run.go:167 и nd_hilbert_benchmark.go:399.
 
 
 ## Как читать вывод `plan`
