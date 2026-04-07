@@ -1,0 +1,122 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260403T133842+0300_compositional-branching-main-glm-5-cloud-r03",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-branching-v1",
+  "experiment_id": "compositional-branching-v1-temp0-seed42-topp1-r03-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "CBR01-BG",
+  "theorem_id": "CBR01-BG",
+  "chain_id": "CBR01",
+  "stage_id": "bg",
+  "category": "compositional_branching",
+  "case_family": "fan_in_merge",
+  "chain_depth": 2,
+  "atom_renaming_id": "r0",
+  "goal": "A -\u003e D",
+  "imported_lemmas": [
+    "A -\u003e B",
+    "A -\u003e C",
+    "B -\u003e (C -\u003e D)"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260403T133842+0300_compositional-branching-main-glm-5-cloud-r03/CBR01-BG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "CBR01-BG",
+    "goal": "A -\u003e D",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "A -\u003e B",
+      "A -\u003e C",
+      "B -\u003e (C -\u003e D)"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "B -\u003e (C -\u003e D)",
+        "assumption_ref": 3
+      },
+      {
+        "kind": "axiom",
+        "formula": "(B -\u003e (C -\u003e D)) -\u003e (A -\u003e (B -\u003e (C -\u003e D)))",
+        "axiom": "A1"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "A -\u003e (B -\u003e (C -\u003e D))",
+        "premises": [
+          1,
+          2
+        ]
+      },
+      {
+        "kind": "axiom",
+        "formula": "(A -\u003e (B -\u003e (C -\u003e D))) -\u003e ((A -\u003e B) -\u003e (A -\u003e (C -\u003e D)))",
+        "axiom": "A2"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(A -\u003e B) -\u003e (A -\u003e (C -\u003e D))",
+        "premises": [
+          3,
+          4
+        ]
+      },
+      {
+        "kind": "assumption",
+        "formula": "A -\u003e B",
+        "assumption_ref": 1
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "A -\u003e (C -\u003e D)",
+        "premises": [
+          6,
+          5
+        ]
+      },
+      {
+        "kind": "axiom",
+        "formula": "(A -\u003e (C -\u003e D)) -\u003e ((A -\u003e C) -\u003e (A -\u003e D))",
+        "axiom": "A2"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(A -\u003e C) -\u003e (A -\u003e D)",
+        "premises": [
+          7,
+          8
+        ]
+      },
+      {
+        "kind": "assumption",
+        "formula": "A -\u003e C",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "A -\u003e D",
+        "premises": [
+          10,
+          9
+        ]
+      }
+    ]
+  }
+}

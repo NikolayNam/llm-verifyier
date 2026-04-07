@@ -1,0 +1,37 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "BOA03-B1",
+  "goal": "M -> N",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "N",
+    "P -> Q"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "N",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P -> Q",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "formula": "N -> (M -> N)",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "M -> N",
+      "premises": [1, 3]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+run_id,timestamp_utc,model,prompt_version,case_id,category,expected_label,raw_output_kind,schema_status,parse_status,kernel_status,cli_exit_code,score_bucket,latency_ms,notes

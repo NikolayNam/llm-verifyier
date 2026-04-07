@@ -1,0 +1,57 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN008",
+  "goal": "R008",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P008 -> (Q008 -> R008)",
+    "P008"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P008 -> (Q008 -> R008)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "P008"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "Q008 -> R008"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(Q008 -> R008) -> ((R008 -> R008) -> (Q008 -> R008))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 4],
+      "formula": "(R008 -> R008) -> (Q008 -> R008)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "R008 -> R008"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [6, 5],
+      "formula": "Q008 -> R008"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 7],
+      "formula": "R008"
+    }
+  ]
+}

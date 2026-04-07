@@ -1,0 +1,9 @@
+theorem_pack_id,theorem_id,case_id,category,label,difficulty,assumptions_json,goal,logic_fragment,comment
+pilot_shared_20260327,NDI01,NDI01,assumption_import,entailed,easy,"[""P""]",P,implicational-prop-v1,Direct premise import
+pilot_shared_20260327,NDI02,NDI02,single_mp,entailed,easy,"[""P"",""P -> Q""]",Q,implicational-prop-v1,Single implication elimination
+pilot_shared_20260327,NDI03,NDI03,mp_chain,entailed,medium,"[""P"",""P -> Q"",""Q -> R""]",R,implicational-prop-v1,Two-step implication chain
+pilot_shared_20260327,NDI04,NDI04,nested_imp_intro,entailed,medium,"[""P""]","Q -> P",implicational-prop-v1,Introduce implication under nested assumption
+pilot_shared_20260327,NDI05,NDI05,theorem_synthesis,entailed,medium,[],"P -> P",implicational-prop-v1,Identity theorem without premises
+pilot_shared_20260327,NDI06,NDI06,theorem_synthesis,entailed,hard,[],"(P -> (Q -> R)) -> ((P -> Q) -> (P -> R))",implicational-prop-v1,Composition theorem in implicational fragment
+pilot_shared_20260327,NDI07,NDI07,negative_refusal,not_entailed,easy,"[""P -> Q""]",P,implicational-prop-v1,Consequent does not imply antecedent
+pilot_shared_20260327,NDI08,NDI08,negative_refusal,not_entailed,easy,"[""P""]",Q,implicational-prop-v1,Irrelevant atomic goal should be refused

@@ -1,0 +1,11 @@
+case_id,category,label,difficulty,assumptions_json,goal,comment
+TSDS01,theorem_synthesis,entailed,medium,[],"R -> R",Identity theorem without premises
+TSDS02,theorem_synthesis,entailed,medium,[],"(R -> S) -> (R -> S)",Identity lifted over an implication formula
+TSDS03,theorem_synthesis,entailed,medium,[],"R -> (S -> R)",Premise-free K-style theorem
+TSDS04,theorem_synthesis,entailed,medium,[],"(R -> S) -> (T -> (R -> S))",A1-lifted implication theorem
+TSDS05,theorem_synthesis,entailed,hard,[],"(R -> (S -> T)) -> ((R -> S) -> (R -> T))",Composition theorem without premises
+TSDS06,theorem_synthesis,entailed,hard,[],"(R -> S) -> ((T -> R) -> (T -> S))",Transitivity lifted under a shared antecedent
+TSDS07,theorem_synthesis,entailed,hard,[],"(R -> (S -> T)) -> (S -> (R -> T))",Permutation of antecedent order inside a theorem proof
+TSDS08,theorem_synthesis,entailed,hard,[],"(!S -> !R) -> ((T -> R) -> (T -> S))",Contrapositive theorem lifted under an outer antecedent
+TSDS09,theorem_synthesis,entailed,hard,[],"U -> ((R -> S) -> ((T -> R) -> (T -> S)))",A1-lifted transitivity theorem for front-end stress
+TSDS10,theorem_synthesis,entailed,hard,[],"U -> ((R -> (S -> T)) -> (S -> (R -> T)))",A1-lifted permutation theorem for no-premise synthesis stress

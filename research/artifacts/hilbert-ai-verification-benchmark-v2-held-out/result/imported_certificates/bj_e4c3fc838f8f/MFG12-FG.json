@@ -1,0 +1,122 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260403T160643+0300_compositional-mixed-family-gold-first-main-gpt-oss-120b-cloud-r02",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-gold-first-v1",
+  "experiment_id": "compositional-mixed-family-gold-first-v1-temp0-seed42-topp1-r02-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "MFG12-FG",
+  "theorem_id": "MFG12-FG",
+  "chain_id": "MFG12",
+  "stage_id": "fg",
+  "category": "compositional_mixed_family_gold_first",
+  "case_family": "assumption_import_x_direct_axiom_instance_three_lemma_gold_first",
+  "chain_depth": 1,
+  "atom_renaming_id": "r10",
+  "goal": "R -\u003e U",
+  "imported_lemmas": [
+    "R -\u003e S",
+    "S -\u003e (T -\u003e U)",
+    "R -\u003e T"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260403T160643+0300_compositional-mixed-family-gold-first-main-gpt-oss-120b-cloud-r02/MFG12-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "MFG12-FG",
+    "goal": "R -\u003e U",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "R -\u003e S",
+      "S -\u003e (T -\u003e U)",
+      "R -\u003e T"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "S -\u003e (T -\u003e U)"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(S -\u003e (T -\u003e U)) -\u003e (R -\u003e (S -\u003e (T -\u003e U)))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          2
+        ],
+        "formula": "R -\u003e (S -\u003e (T -\u003e U))"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(R -\u003e (S -\u003e (T -\u003e U))) -\u003e ((R -\u003e S) -\u003e (R -\u003e (T -\u003e U)))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          3,
+          4
+        ],
+        "formula": "(R -\u003e S) -\u003e (R -\u003e (T -\u003e U))"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "R -\u003e S"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          6,
+          5
+        ],
+        "formula": "R -\u003e (T -\u003e U)"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 3,
+        "formula": "R -\u003e T"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(R -\u003e (T -\u003e U)) -\u003e ((R -\u003e T) -\u003e (R -\u003e U))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          7,
+          9
+        ],
+        "formula": "(R -\u003e T) -\u003e (R -\u003e U)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          8,
+          10
+        ],
+        "formula": "R -\u003e U"
+      }
+    ]
+  }
+}

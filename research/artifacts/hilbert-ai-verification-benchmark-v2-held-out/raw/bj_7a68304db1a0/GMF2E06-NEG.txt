@@ -1,0 +1,1 @@
+LLM_REQUEST_ERROR: llm compatible: status=429 body={"error":"you (namsnuk95) have reached your weekly usage limit, upgrade for higher limits: https://ollama.com/upgrade"}

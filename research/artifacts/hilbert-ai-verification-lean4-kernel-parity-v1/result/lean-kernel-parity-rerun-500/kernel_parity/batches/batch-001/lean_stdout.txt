@@ -1,0 +1,100 @@
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E03.json	false	kernel_validation_error	mp_future_reference	line 2: MP premises must reference previous lines only
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E04.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E07.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(!S -> !R) -> (R -> S)" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E08.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r01/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r02/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r02/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r02/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r02/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r02/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r03/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r03/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r03/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r03/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r03/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r04/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r04/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r04/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r04/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r04/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r05/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r05/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r05/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r05/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r05/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r06/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r06/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r06/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r06/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r06/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r07/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r07/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r07/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r07/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r07/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r08/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r08/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r08/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r08/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r08/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r09/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r09/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r09/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r09/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r09/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r10/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r10/V2E02.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r10/V2E05.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r10/V2E07.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-r1-14b-r10/V2E12.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2E12.json	false	kernel_validation_error	mp_antecedent_mismatch	line 3: MP mismatch, line 2 is "R -> (R -> R)" but implication antecedent is "R"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r01/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 2: formula "((R -> (S -> T)) -> ((R -> S) -> (R -> (S -> T)))) -> (((R -> (S -> T)) -> (((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T)))) -> ((R -> (S -> T)) -> ((R -> S) -> (R -> T))))" does not match axiom A2
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r02/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2E12.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r03/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r04/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E04.json	true	accepted	accepted	

@@ -1,0 +1,94 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "gold-final-composition-only-phase1-20260404_gold-final-composition-only-main-gpt-oss-20b-r05",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "gold-final-composition-only-v1",
+  "experiment_id": "gold-final-composition-only-v1-temp0-seed42-topp1-r05-20260404",
+  "prompt_version": "hilbert-ai-verification-gold-final-only-v1.0",
+  "certificate_version": "1.0.0",
+  "case_id": "GFC04-FG",
+  "theorem_id": "GFC04-FG",
+  "chain_id": "GFC04",
+  "stage_id": "fg",
+  "category": "gold_final_composition_only",
+  "case_family": "layered_negated_bridge",
+  "chain_depth": 1,
+  "atom_renaming_id": "neg1",
+  "goal": "!X -\u003e Z",
+  "imported_lemmas": [
+    "!X -\u003e Y",
+    "Y -\u003e Z"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/gold-final-composition-only-phase1-20260404_gold-final-composition-only-main-gpt-oss-20b-r05/GFC04-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "GFC04-FG",
+    "goal": "!X -\u003e Z",
+    "assumptions": [
+      "!X -\u003e Y",
+      "Y -\u003e Z"
+    ],
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "!X -\u003e Y"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "Y -\u003e Z"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(Y -\u003e Z) -\u003e (!X -\u003e (Y -\u003e Z))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          2,
+          3
+        ],
+        "formula": "!X -\u003e (Y -\u003e Z)"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(!X -\u003e (Y -\u003e Z)) -\u003e ((!X -\u003e Y) -\u003e (!X -\u003e Z))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          4,
+          5
+        ],
+        "formula": "(!X -\u003e Y) -\u003e (!X -\u003e Z)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          6
+        ],
+        "formula": "!X -\u003e Z"
+      }
+    ]
+  }
+}

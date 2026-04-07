@@ -1,0 +1,32 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CDL03-D3G",
+  "goal": "M -> P",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "M -> O",
+    "O -> P"
+  ],
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(O -> P) -> ((M -> O) -> (M -> P))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "(M -> O) -> (M -> P)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "M -> P"
+    }
+  ]
+}

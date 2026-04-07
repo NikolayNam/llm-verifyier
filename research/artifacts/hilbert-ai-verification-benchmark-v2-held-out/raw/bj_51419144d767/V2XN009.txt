@@ -1,0 +1,45 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN009",
+  "assumptions": [
+    "P009 -> (Q009 -> R009)",
+    "P009 -> Q009"
+  ],
+  "goal": "R009",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P009 -> (Q009 -> R009)",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P009 -> Q009",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "formula": "(P009 -> (Q009 -> R009)) -> ((P009 -> Q009) -> (P009 -> R009))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(P009 -> Q009) -> (P009 -> R009)",
+      "premises": [1, 3]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P009 -> R009",
+      "premises": [2, 4]
+    }
+  ],
+  "meta": {
+    "note": "Proof requires an additional assumption P009 to derive R009"
+  }
+}

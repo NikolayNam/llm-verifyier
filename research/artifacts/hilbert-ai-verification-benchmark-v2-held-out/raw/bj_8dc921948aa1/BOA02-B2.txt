@@ -1,0 +1,31 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "bridge_only_authoring_phase1_BOA02-B2",
+  "goal": "Q -> R",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "R"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "R",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "R -> (Q -> R)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q -> R",
+      "premises": [1, 2]
+    }
+  ]
+}

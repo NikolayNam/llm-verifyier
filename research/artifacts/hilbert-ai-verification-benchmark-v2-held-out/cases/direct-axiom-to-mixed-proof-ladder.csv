@@ -1,0 +1,11 @@
+case_id,category,label,difficulty,assumptions_json,goal,comment
+V2E05,direct_axiom_instance,entailed,easy,[],"R -> ((S -> T) -> R)",Direct A1 instance on held-out atoms
+V2E06,direct_axiom_instance,entailed,medium,[],"(R -> (S -> T)) -> ((R -> S) -> (R -> T))",Direct A2 instance on held-out atoms
+V2E07,direct_axiom_instance,entailed,medium,[],"(!S -> !R) -> (R -> S)",Direct A3 instance on held-out atoms
+V2E02,mixed_proof,entailed,easy,"[""R"",""R -> S""]",S,Single modus ponens derivation
+V2E03,mixed_proof,entailed,medium,"[""R"",""R -> S"",""S -> T""]",T,Two-step modus ponens chain
+V2E09,mixed_proof,entailed,medium,"[""R""]","S -> R",Assumption plus A1 plus modus ponens
+V2E10,mixed_proof,entailed,medium,"[""R -> (S -> T)"",""R"",""S""]",T,Implication chain with explicit antecedents
+V2E04,mixed_proof,entailed,hard,"[""R"",""R -> S"",""S -> T"",""T -> U""]",U,Three-step modus ponens chain
+V2E08,mixed_proof,entailed,hard,"[""!S -> !R"",""R""]",S,Mixed A3 plus assumption derivation
+V2E11,mixed_proof,entailed,hard,"[""R -> (S -> T)"",""R -> S"",""R""]",T,Mixed proof requiring chained modus ponens

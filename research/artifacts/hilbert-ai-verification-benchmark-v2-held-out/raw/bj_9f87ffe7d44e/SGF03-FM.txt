@@ -1,0 +1,43 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "SGF03-FM-proof",
+  "goal": "P",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "N->O",
+    "O->P",
+    "N"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "N->O"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "O->P"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "N"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 1],
+      "formula": "O"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 2],
+      "formula": "P"
+    }
+  ]
+}

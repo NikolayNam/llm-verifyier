@@ -1,0 +1,5 @@
+case_id,category,difficulty,assumptions_json,goal,comment
+LEANP01,,,"[""P"",""Q -> R""]",P -> R,Seed placeholder for future model-proposed normalization; currently not derivable
+LEANP02,,,"[""P -> Q"",""Q -> R""]",P -> R,Seed placeholder for future model-proposed theorem candidate
+LEANP03,,,[],P -> (Q -> P),Seed placeholder for future model-proposed tautology candidate
+LEANP04,,,"[""P -> Q""]",Q -> P,Seed placeholder for future model-proposed non-derivable candidate

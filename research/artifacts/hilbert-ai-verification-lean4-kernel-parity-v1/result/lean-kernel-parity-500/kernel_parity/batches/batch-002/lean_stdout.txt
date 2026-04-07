@@ -1,0 +1,100 @@
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (R -> R)) -> (R -> R)" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r05/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (R -> R)) -> (R -> R)" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r06/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r07/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E01.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r08/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2E12.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r09/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E06.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> (S -> T)) -> ((R -> S) -> (R -> T))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E10.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2E12.json	false	kernel_validation_error	axiom_instance_mismatch	line 1: formula "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))" does not match axiom A1
+20260402T093635+0300_phase1-matrix-deepseek-v3-1-671b-cloud-r10/V2N07.json	false	kernel_validation_error	final_goal_mismatch	final goal mismatch, expected "T" but got "S -> T"
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r01/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r01/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r01/V2E10.json	false	kernel_validation_error	mp_future_reference	line 1: MP premises must reference previous lines only
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r01/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r01/V2N03.json	false	kernel_validation_error	mp_non_implication_premise	line 3: line 2 is not an implication, cannot use MP
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r02/V2E01.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r02/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r02/V2E03.json	false	schema_error	json_decode_error	decode certificate json: json: unknown field "conclusion"
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r02/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r02/V2E10.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r02/V2N03.json	false	kernel_validation_error	mp_non_implication_premise	line 3: line 2 is not an implication, cannot use MP
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r03/V2E01.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r03/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r03/V2E03.json	false	schema_error	json_decode_error	decode certificate json: json: unknown field "conclusion"
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r03/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r03/V2E10.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r03/V2N03.json	false	kernel_validation_error	mp_non_implication_premise	line 3: line 2 is not an implication, cannot use MP
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r04/V2E01.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r04/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r04/V2E03.json	false	schema_error	json_decode_error	decode certificate json: json: unknown field "conclusion"
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r04/V2E04.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r04/V2E10.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r04/V2N03.json	false	kernel_validation_error	mp_non_implication_premise	line 3: line 2 is not an implication, cannot use MP
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r07/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r07/V2E10.json	false	kernel_validation_error	mp_future_reference	line 1: MP premises must reference previous lines only
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r08/V2E01.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r08/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-4-7-flash-latest-r08/V2E06.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E01.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E02.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E03.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E04.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E05.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E06.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E07.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E08.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E09.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E10.json	false	schema_error	missing_step_formula	validate certificate json: line 1: formula is required
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E11.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r01/V2E12.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r02/V2E01.json	true	accepted	accepted	
+20260402T093635+0300_phase1-matrix-glm-5-cloud-r02/V2E02.json	true	accepted	accepted	

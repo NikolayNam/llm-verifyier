@@ -1,0 +1,1 @@
+LLM_REQUEST_ERROR: benchmark short-circuited remaining cases after 10 consecutive request timeouts; last observed error: llm compatible: request: Post "http://localhost:11434/v1/chat/completions": context deadline exceeded (Client.Timeout exceeded while awaiting headers)

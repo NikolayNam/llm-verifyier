@@ -1,0 +1,32 @@
+{
+  "proof_type": "direct",
+  "conclusion": "R -> R",
+  "assumptions": [],
+  "steps": [
+    {
+      "formula": "R -> (R -> R)",
+      "type": "axiom",
+      "axiom": "A3"
+    },
+    {
+      "formula": "R -> ((R -> R) -> R)",
+      "type": "axiom",
+      "axiom": "A3"
+    },
+    {
+      "formula": "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))",
+      "type": "axiom",
+      "axiom": "A1"
+    },
+    {
+      "formula": "(R -> (R -> R)) -> (R -> R)",
+      "type": "modus_ponens",
+      "premise_indices": [2, 3]
+    },
+    {
+      "formula": "R -> R",
+      "type": "modus_ponens",
+      "premise_indices": [1, 4]
+    }
+  ]
+}

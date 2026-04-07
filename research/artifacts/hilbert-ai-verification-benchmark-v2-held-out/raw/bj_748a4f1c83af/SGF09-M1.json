@@ -1,0 +1,39 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "SGF09-M1",
+  "goal": "Z -> W",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": ["X", "X -> Y", "Y -> (Z -> W)"],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "X",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "X -> Y",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Y",
+      "premises": [1, 2]
+    },
+    {
+      "kind": "assumption",
+      "formula": "Y -> (Z -> W)",
+      "assumption_ref": 3
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Z -> W",
+      "premises": [3, 4]
+    }
+  ]
+}

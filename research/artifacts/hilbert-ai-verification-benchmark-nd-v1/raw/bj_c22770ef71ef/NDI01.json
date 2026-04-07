@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"NDI01-proof","goal":"P","assumptions":["P"],"context":{"domain":"hilbert-benchmark-nd-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-nd-v1+nd-to-hilbert-v1"},"steps":[{"kind":"assumption","assumption_ref":1,"formula":"P"}]}

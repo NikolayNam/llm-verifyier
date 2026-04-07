@@ -1,0 +1,9 @@
+llm_model,display_name,size_bucket,size_label,tier,comparison_status,notes
+deepseek-r1:14b,DeepSeek R1 14B,<=20b,14b,free-current,primary,Primary small-model slice for clean v2/v1.3 comparison.
+gpt-oss:20b,GPT OSS 20B,<=20b,20b,free-current,primary,Boundary small-model slice; treated as <=20b for this research round.
+qwen3:12b,Qwen3 12B,<=20b,12b,free-current,insufficient-evidence,Keep in catalog but exclude from main quantitative conclusion until a valid v2/v1.3 run exists.
+gpt-oss:120b-cloud,GPT OSS 120B Cloud,>20b,120b,free-current,primary,Primary large-model slice for clean v2/v1.3 comparison.
+deepseek-v3.1:671b-cloud,DeepSeek V3.1 671B Cloud,>20b,671b,free-current,primary,Primary large-model slice for theorem-synthesis-heavy comparison.
+gemini-2.5-flash,Gemini 2.5 Flash,unknown,unknown,api-current,primary,Primary fast cloud slice; Google does not publish a comparable parameter-count bucket in the public Gemini model card.
+mistral-large-2512,Mistral Large 3,unknown,unknown,api-current,primary,Primary Mistral cloud challenger; public model card exposes 41B active / 675B total parameters rather than the repo's older <=20b/>20b bucket scheme.
+glm-5:cloud,GLM-5 Cloud,unknown,unknown,free-current,appendix,Keep in appendix until model size is independently confirmed and a valid v2/v1.3 run exists.

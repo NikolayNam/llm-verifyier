@@ -1,0 +1,66 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "bridge-only-authoring-phase1-20260404_bridge-only-authoring-main-glm-5-cloud-r04",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "bridge-only-authoring-v1",
+  "experiment_id": "bridge-only-authoring-v1-temp0-seed42-topp1-r04-20260404",
+  "prompt_version": "hilbert-ai-verification-bridge-only-v1.0",
+  "certificate_version": "1.0.0",
+  "case_id": "BOA04-B2",
+  "theorem_id": "BOA04-B2",
+  "chain_id": "BOA04",
+  "stage_id": "b2",
+  "category": "bridge_only_authoring",
+  "case_family": "layered_negated_bridge",
+  "chain_depth": 1,
+  "atom_renaming_id": "neg1",
+  "goal": "Y -\u003e Z",
+  "assumptions": [
+    "Z"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": true,
+  "trusted_reuse_reason": "verifier-confirmed reusable local lemma artifact",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/bridge-only-authoring-phase1-20260404_bridge-only-authoring-main-glm-5-cloud-r04/BOA04-B2.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "BOA04-B2",
+    "goal": "Y -\u003e Z",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "Z"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "Z"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "Z -\u003e (Y -\u003e Z)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          2
+        ],
+        "formula": "Y -\u003e Z"
+      }
+    ]
+  }
+}

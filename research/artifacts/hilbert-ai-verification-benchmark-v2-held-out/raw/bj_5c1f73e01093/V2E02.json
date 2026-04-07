@@ -1,0 +1,32 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "direct_axiom_to_mixed_proof_ladder_V2E02",
+  "goal": "S",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "R",
+    "R -> S"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "R"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "R -> S"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "S"
+    }
+  ]
+}

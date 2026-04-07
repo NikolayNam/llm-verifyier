@@ -1,0 +1,42 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CDL02-D3G",
+  "goal": "P -> S",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P -> R",
+    "R -> S"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P -> R",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "R -> S",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(R -> S) -> ((P -> R) -> (P -> S))"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(P -> R) -> (P -> S)",
+      "premises": [2, 3]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P -> S",
+      "premises": [1, 4]
+    }
+  ]
+}

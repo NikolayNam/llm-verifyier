@@ -1,0 +1,33 @@
+```json
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "cases-V2E09",
+  "goal": "S -> R",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "R"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [
+        1,
+        2
+      ]
+    }
+  ]
+}
+```

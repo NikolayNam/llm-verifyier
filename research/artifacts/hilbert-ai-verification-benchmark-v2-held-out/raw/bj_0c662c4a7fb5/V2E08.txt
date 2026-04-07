@@ -1,0 +1,24 @@
+```json
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2E08",
+  "goal": "S",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "!S -> !R",
+    "R"
+  ],
+  "steps": [
+    {
+      "kind": "modus_ponens",
+      "premise_line": 1,
+      "antecedent_line": 2
+    }
+  ]
+}
+```

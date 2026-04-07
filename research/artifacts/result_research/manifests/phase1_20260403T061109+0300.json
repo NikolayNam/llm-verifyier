@@ -1,0 +1,62 @@
+{
+  "command": "phase1 run",
+  "config_fingerprint": "3785b37bdb841921783fbfb4aa12e9f33fffefb12dbb1935687945a3bd790569",
+  "created_at_utc": "2026-04-03T03:11:09Z",
+  "input_file": "cases.csv",
+  "input_kind": "cases",
+  "input_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases.csv",
+  "interrupt_policy": "drop_if_no_results",
+  "jobs": [
+    {
+      "artifact_key": "bj_599df74adcc9",
+      "base_url": "./http:/localhost:11434",
+      "command": "phase1 run",
+      "effective_sampling_by_surface": {
+        "seed": 42,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "effective_sampling_profile": "temp0_seed42_topp1",
+      "experiment_id": "formal-mode-temp0-seed42-topp1-r01-20260403",
+      "experiment_name": "formal-mode",
+      "family": "local-compatible",
+      "input_file": "cases.csv",
+      "input_kind": "cases",
+      "input_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases.csv",
+      "interrupt_policy": "drop_if_no_results",
+      "key": "local-compatible-gpt-oss-20b-r01",
+      "model": "gpt-oss:20b",
+      "phase": "phase1",
+      "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+      "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+      "provider": "compatible",
+      "raw_dir": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/raw/bj_599df74adcc9",
+      "repeat": 1,
+      "request_timeout_abort_threshold": 20,
+      "requested_sampling_family": {
+        "seed": 42,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "requested_sampling_profile": "temp0_seed42_topp1",
+      "results_path": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/result_bj_599df74adcc9.csv",
+      "run_id": "20260403T061109+0300_local-compatible-gpt-oss-20b-r01",
+      "sampling_surface": "compatible_openai_chat_completions",
+      "selector": "cases.csv",
+      "spec_hash": "0b268fb7676dee06f9edcdd92111084320dac73ed84f23a16aef8abaebd2cad4",
+      "summary_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/waves/phase1_20260403T061109+0300.csv",
+      "timeout": "1m0s"
+    }
+  ],
+  "manifest_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase1_20260403T061109+0300.json",
+  "model_catalog_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase1_20260403T061109+0300_model_catalog.csv",
+  "phase": "phase1",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "repeat_count": 1,
+  "report_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/result_research_report/direct/phase1_20260403T061109+0300.md",
+  "request_timeout_abort_threshold": 20,
+  "run_id": "20260403T061109+0300",
+  "schema_version": "researchctl.manifest/v1",
+  "summary_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/waves/phase1_20260403T061109+0300.csv"
+}

@@ -1,0 +1,27 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN015",
+  "goal": "R015",
+  "assumptions": [
+    "P015 -> (Q015 -> R015)",
+    "P015 -> Q015"
+  ],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P015 -> (Q015 -> R015)",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P015 -> Q015",
+      "assumption_ref": 2
+    },
+    {
+     

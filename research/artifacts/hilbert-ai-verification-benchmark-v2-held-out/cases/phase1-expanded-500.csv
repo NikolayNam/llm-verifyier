@@ -1,0 +1,501 @@
+case_id,category,label,difficulty,assumptions_json,goal,comment
+V2XE001,assumption_import,entailed,easy,"[""P001 -> Q001""]",P001 -> Q001,Expanded from V2E01 with canonical atom renaming #001. Import a single assumption directly
+V2XN001,negative_refusal,not_entailed,easy,"[""P001""]",Q001,Expanded from V2N01 with canonical atom renaming #001. Irrelevant atomic goal
+V2XE002,mixed_proof,entailed,medium,"[""P002"",""P002 -> Q002"",""Q002 -> R002""]",R002,Expanded from V2E03 with canonical atom renaming #002. Two-step modus ponens chain
+V2XN002,negative_refusal,not_entailed,medium,"[""P002 -> Q002"",""Q002""]",P002,Expanded from V2N03 with canonical atom renaming #002. Consequent does not imply antecedent
+V2XE003,mixed_proof,entailed,hard,"[""P003"",""P003 -> Q003"",""Q003 -> R003"",""R003 -> S003""]",S003,Expanded from V2E04 with canonical atom renaming #003. Three-step modus ponens chain
+V2XN003,negative_refusal,not_entailed,hard,"[""P003 -> (Q003 -> R003)"",""P003 -> Q003""]",R003,Expanded from V2N09 with canonical atom renaming #003. Bridge implication lacks the triggering antecedent
+V2XE004,mixed_proof,entailed,easy,"[""P004"",""P004 -> Q004""]",Q004,Expanded from V2E02 with canonical atom renaming #004. Single modus ponens derivation
+V2XN004,negative_refusal,not_entailed,easy,"[""P004 -> Q004""]",Q004,Expanded from V2N02 with canonical atom renaming #004. Missing antecedent for modus ponens
+V2XE005,direct_axiom_instance,entailed,medium,[],(P005 -> (Q005 -> R005)) -> ((P005 -> Q005) -> (P005 -> R005)),Expanded from V2E06 with canonical atom renaming #005. Direct A2 instance
+V2XN005,negative_refusal,not_entailed,medium,"[""P005 -> Q005"",""R005 -> S005"",""P005""]",S005,Expanded from V2N05 with canonical atom renaming #005. Two chains with a missing bridge
+V2XE006,mixed_proof,entailed,hard,"[""!P006 -> !Q006"",""Q006""]",P006,Expanded from V2E08 with canonical atom renaming #006. A3 premise plus premise import
+V2XN006,negative_refusal,not_entailed,hard,"[""P006 -> (Q006 -> R006)"",""P006 -> Q006""]",R006,Expanded from V2N09 with canonical atom renaming #006. Bridge implication lacks the triggering antecedent
+V2XE007,direct_axiom_instance,entailed,easy,[],P007 -> ((Q007 -> R007) -> P007),Expanded from V2E05 with canonical atom renaming #007. Direct A1 instance
+V2XN007,negative_refusal,not_entailed,easy,"[""P007"",""Q007 -> R007""]",R007,Expanded from V2N04 with canonical atom renaming #007. Disconnected implication
+V2XE008,direct_axiom_instance,entailed,medium,[],(!P008 -> !Q008) -> (Q008 -> P008),Expanded from V2E07 with canonical atom renaming #008. Direct A3 instance
+V2XN008,negative_refusal,not_entailed,medium,"[""P008 -> (Q008 -> R008)"",""P008""]",R008,Expanded from V2N07 with canonical atom renaming #008. Nested implication missing inner premise
+V2XE009,mixed_proof,entailed,hard,"[""P009 -> (Q009 -> R009)"",""P009 -> Q009"",""P009""]",R009,Expanded from V2E11 with canonical atom renaming #009. Derived bridge premise then final modus ponens
+V2XN009,negative_refusal,not_entailed,hard,"[""P009 -> (Q009 -> R009)"",""P009 -> Q009""]",R009,Expanded from V2N09 with canonical atom renaming #009. Bridge implication lacks the triggering antecedent
+V2XE010,assumption_import,entailed,easy,"[""P010 -> Q010""]",P010 -> Q010,Expanded from V2E01 with canonical atom renaming #010. Import a single assumption directly
+V2XN010,negative_refusal,not_entailed,easy,"[""P010""]",!P010,Expanded from V2N06 with canonical atom renaming #010. Negation not derivable from a single atom
+V2XE011,mixed_proof,entailed,medium,"[""P011""]",Q011 -> P011,Expanded from V2E09 with canonical atom renaming #011. Implication introduction via A1
+V2XN011,negative_refusal,not_entailed,medium,"[""P011 -> Q011"",""P011 -> R011""]",Q011,Expanded from V2N08 with canonical atom renaming #011. Parallel consequents without antecedent
+V2XE012,theorem_synthesis,entailed,hard,[],P012 -> P012,Expanded from V2E12 with canonical atom renaming #012. Identity theorem without assumptions
+V2XN012,negative_refusal,not_entailed,hard,"[""P012 -> (Q012 -> R012)"",""P012 -> Q012""]",R012,Expanded from V2N09 with canonical atom renaming #012. Bridge implication lacks the triggering antecedent
+V2XE013,mixed_proof,entailed,easy,"[""P013"",""P013 -> Q013""]",Q013,Expanded from V2E02 with canonical atom renaming #013. Single modus ponens derivation
+V2XN013,negative_refusal,not_entailed,easy,[],P013,Expanded from V2N11 with canonical atom renaming #013. No assumptions for atomic goal
+V2XE014,mixed_proof,entailed,medium,"[""P014 -> (Q014 -> R014)"",""P014"",""Q014""]",R014,Expanded from V2E10 with canonical atom renaming #014. Nested implication elimination
+V2XN014,negative_refusal,not_entailed,medium,"[""!P014 -> !Q014""]",P014,Expanded from V2N10 with canonical atom renaming #014. Converse of A3 is not available
+V2XE015,mixed_proof,entailed,hard,"[""P015"",""P015 -> Q015"",""Q015 -> R015"",""R015 -> S015""]",S015,Expanded from V2E04 with canonical atom renaming #015. Three-step modus ponens chain
+V2XN015,negative_refusal,not_entailed,hard,"[""P015 -> (Q015 -> R015)"",""P015 -> Q015""]",R015,Expanded from V2N09 with canonical atom renaming #015. Bridge implication lacks the triggering antecedent
+V2XE016,direct_axiom_instance,entailed,easy,[],P016 -> ((Q016 -> R016) -> P016),Expanded from V2E05 with canonical atom renaming #016. Direct A1 instance
+V2XN016,negative_refusal,not_entailed,easy,"[""P016 -> Q016"",""Q016 -> R016""]",S016,Expanded from V2N12 with canonical atom renaming #016. Conclusion outside the implication chain
+V2XE017,mixed_proof,entailed,medium,"[""P017"",""P017 -> Q017"",""Q017 -> R017""]",R017,Expanded from V2E03 with canonical atom renaming #017. Two-step modus ponens chain
+V2XN017,negative_refusal,not_entailed,medium,"[""P017 -> Q017"",""Q017""]",P017,Expanded from V2N03 with canonical atom renaming #017. Consequent does not imply antecedent
+V2XE018,mixed_proof,entailed,hard,"[""!P018 -> !Q018"",""Q018""]",P018,Expanded from V2E08 with canonical atom renaming #018. A3 premise plus premise import
+V2XN018,negative_refusal,not_entailed,hard,"[""P018 -> (Q018 -> R018)"",""P018 -> Q018""]",R018,Expanded from V2N09 with canonical atom renaming #018. Bridge implication lacks the triggering antecedent
+V2XE019,assumption_import,entailed,easy,"[""P019 -> Q019""]",P019 -> Q019,Expanded from V2E01 with canonical atom renaming #019. Import a single assumption directly
+V2XN019,negative_refusal,not_entailed,easy,"[""P019""]",Q019,Expanded from V2N01 with canonical atom renaming #019. Irrelevant atomic goal
+V2XE020,direct_axiom_instance,entailed,medium,[],(P020 -> (Q020 -> R020)) -> ((P020 -> Q020) -> (P020 -> R020)),Expanded from V2E06 with canonical atom renaming #020. Direct A2 instance
+V2XN020,negative_refusal,not_entailed,medium,"[""P020 -> Q020"",""R020 -> S020"",""P020""]",S020,Expanded from V2N05 with canonical atom renaming #020. Two chains with a missing bridge
+V2XE021,mixed_proof,entailed,hard,"[""P021 -> (Q021 -> R021)"",""P021 -> Q021"",""P021""]",R021,Expanded from V2E11 with canonical atom renaming #021. Derived bridge premise then final modus ponens
+V2XN021,negative_refusal,not_entailed,hard,"[""P021 -> (Q021 -> R021)"",""P021 -> Q021""]",R021,Expanded from V2N09 with canonical atom renaming #021. Bridge implication lacks the triggering antecedent
+V2XE022,mixed_proof,entailed,easy,"[""P022"",""P022 -> Q022""]",Q022,Expanded from V2E02 with canonical atom renaming #022. Single modus ponens derivation
+V2XN022,negative_refusal,not_entailed,easy,"[""P022 -> Q022""]",Q022,Expanded from V2N02 with canonical atom renaming #022. Missing antecedent for modus ponens
+V2XE023,direct_axiom_instance,entailed,medium,[],(!P023 -> !Q023) -> (Q023 -> P023),Expanded from V2E07 with canonical atom renaming #023. Direct A3 instance
+V2XN023,negative_refusal,not_entailed,medium,"[""P023 -> (Q023 -> R023)"",""P023""]",R023,Expanded from V2N07 with canonical atom renaming #023. Nested implication missing inner premise
+V2XE024,theorem_synthesis,entailed,hard,[],P024 -> P024,Expanded from V2E12 with canonical atom renaming #024. Identity theorem without assumptions
+V2XN024,negative_refusal,not_entailed,hard,"[""P024 -> (Q024 -> R024)"",""P024 -> Q024""]",R024,Expanded from V2N09 with canonical atom renaming #024. Bridge implication lacks the triggering antecedent
+V2XE025,direct_axiom_instance,entailed,easy,[],P025 -> ((Q025 -> R025) -> P025),Expanded from V2E05 with canonical atom renaming #025. Direct A1 instance
+V2XN025,negative_refusal,not_entailed,easy,"[""P025"",""Q025 -> R025""]",R025,Expanded from V2N04 with canonical atom renaming #025. Disconnected implication
+V2XE026,mixed_proof,entailed,medium,"[""P026""]",Q026 -> P026,Expanded from V2E09 with canonical atom renaming #026. Implication introduction via A1
+V2XN026,negative_refusal,not_entailed,medium,"[""P026 -> Q026"",""P026 -> R026""]",Q026,Expanded from V2N08 with canonical atom renaming #026. Parallel consequents without antecedent
+V2XE027,mixed_proof,entailed,hard,"[""P027"",""P027 -> Q027"",""Q027 -> R027"",""R027 -> S027""]",S027,Expanded from V2E04 with canonical atom renaming #027. Three-step modus ponens chain
+V2XN027,negative_refusal,not_entailed,hard,"[""P027 -> (Q027 -> R027)"",""P027 -> Q027""]",R027,Expanded from V2N09 with canonical atom renaming #027. Bridge implication lacks the triggering antecedent
+V2XE028,assumption_import,entailed,easy,"[""P028 -> Q028""]",P028 -> Q028,Expanded from V2E01 with canonical atom renaming #028. Import a single assumption directly
+V2XN028,negative_refusal,not_entailed,easy,"[""P028""]",!P028,Expanded from V2N06 with canonical atom renaming #028. Negation not derivable from a single atom
+V2XE029,mixed_proof,entailed,medium,"[""P029 -> (Q029 -> R029)"",""P029"",""Q029""]",R029,Expanded from V2E10 with canonical atom renaming #029. Nested implication elimination
+V2XN029,negative_refusal,not_entailed,medium,"[""!P029 -> !Q029""]",P029,Expanded from V2N10 with canonical atom renaming #029. Converse of A3 is not available
+V2XE030,mixed_proof,entailed,hard,"[""!P030 -> !Q030"",""Q030""]",P030,Expanded from V2E08 with canonical atom renaming #030. A3 premise plus premise import
+V2XN030,negative_refusal,not_entailed,hard,"[""P030 -> (Q030 -> R030)"",""P030 -> Q030""]",R030,Expanded from V2N09 with canonical atom renaming #030. Bridge implication lacks the triggering antecedent
+V2XE031,mixed_proof,entailed,easy,"[""P031"",""P031 -> Q031""]",Q031,Expanded from V2E02 with canonical atom renaming #031. Single modus ponens derivation
+V2XN031,negative_refusal,not_entailed,easy,[],P031,Expanded from V2N11 with canonical atom renaming #031. No assumptions for atomic goal
+V2XE032,mixed_proof,entailed,medium,"[""P032"",""P032 -> Q032"",""Q032 -> R032""]",R032,Expanded from V2E03 with canonical atom renaming #032. Two-step modus ponens chain
+V2XN032,negative_refusal,not_entailed,medium,"[""P032 -> Q032"",""Q032""]",P032,Expanded from V2N03 with canonical atom renaming #032. Consequent does not imply antecedent
+V2XE033,mixed_proof,entailed,hard,"[""P033 -> (Q033 -> R033)"",""P033 -> Q033"",""P033""]",R033,Expanded from V2E11 with canonical atom renaming #033. Derived bridge premise then final modus ponens
+V2XN033,negative_refusal,not_entailed,hard,"[""P033 -> (Q033 -> R033)"",""P033 -> Q033""]",R033,Expanded from V2N09 with canonical atom renaming #033. Bridge implication lacks the triggering antecedent
+V2XE034,direct_axiom_instance,entailed,easy,[],P034 -> ((Q034 -> R034) -> P034),Expanded from V2E05 with canonical atom renaming #034. Direct A1 instance
+V2XN034,negative_refusal,not_entailed,easy,"[""P034 -> Q034"",""Q034 -> R034""]",S034,Expanded from V2N12 with canonical atom renaming #034. Conclusion outside the implication chain
+V2XE035,direct_axiom_instance,entailed,medium,[],(P035 -> (Q035 -> R035)) -> ((P035 -> Q035) -> (P035 -> R035)),Expanded from V2E06 with canonical atom renaming #035. Direct A2 instance
+V2XN035,negative_refusal,not_entailed,medium,"[""P035 -> Q035"",""R035 -> S035"",""P035""]",S035,Expanded from V2N05 with canonical atom renaming #035. Two chains with a missing bridge
+V2XE036,theorem_synthesis,entailed,hard,[],P036 -> P036,Expanded from V2E12 with canonical atom renaming #036. Identity theorem without assumptions
+V2XN036,negative_refusal,not_entailed,hard,"[""P036 -> (Q036 -> R036)"",""P036 -> Q036""]",R036,Expanded from V2N09 with canonical atom renaming #036. Bridge implication lacks the triggering antecedent
+V2XE037,assumption_import,entailed,easy,"[""P037 -> Q037""]",P037 -> Q037,Expanded from V2E01 with canonical atom renaming #037. Import a single assumption directly
+V2XN037,negative_refusal,not_entailed,easy,"[""P037""]",Q037,Expanded from V2N01 with canonical atom renaming #037. Irrelevant atomic goal
+V2XE038,direct_axiom_instance,entailed,medium,[],(!P038 -> !Q038) -> (Q038 -> P038),Expanded from V2E07 with canonical atom renaming #038. Direct A3 instance
+V2XN038,negative_refusal,not_entailed,medium,"[""P038 -> (Q038 -> R038)"",""P038""]",R038,Expanded from V2N07 with canonical atom renaming #038. Nested implication missing inner premise
+V2XE039,mixed_proof,entailed,hard,"[""P039"",""P039 -> Q039"",""Q039 -> R039"",""R039 -> S039""]",S039,Expanded from V2E04 with canonical atom renaming #039. Three-step modus ponens chain
+V2XN039,negative_refusal,not_entailed,hard,"[""P039 -> (Q039 -> R039)"",""P039 -> Q039""]",R039,Expanded from V2N09 with canonical atom renaming #039. Bridge implication lacks the triggering antecedent
+V2XE040,mixed_proof,entailed,easy,"[""P040"",""P040 -> Q040""]",Q040,Expanded from V2E02 with canonical atom renaming #040. Single modus ponens derivation
+V2XN040,negative_refusal,not_entailed,easy,"[""P040 -> Q040""]",Q040,Expanded from V2N02 with canonical atom renaming #040. Missing antecedent for modus ponens
+V2XE041,mixed_proof,entailed,medium,"[""P041""]",Q041 -> P041,Expanded from V2E09 with canonical atom renaming #041. Implication introduction via A1
+V2XN041,negative_refusal,not_entailed,medium,"[""P041 -> Q041"",""P041 -> R041""]",Q041,Expanded from V2N08 with canonical atom renaming #041. Parallel consequents without antecedent
+V2XE042,mixed_proof,entailed,hard,"[""!P042 -> !Q042"",""Q042""]",P042,Expanded from V2E08 with canonical atom renaming #042. A3 premise plus premise import
+V2XN042,negative_refusal,not_entailed,hard,"[""P042 -> (Q042 -> R042)"",""P042 -> Q042""]",R042,Expanded from V2N09 with canonical atom renaming #042. Bridge implication lacks the triggering antecedent
+V2XE043,direct_axiom_instance,entailed,easy,[],P043 -> ((Q043 -> R043) -> P043),Expanded from V2E05 with canonical atom renaming #043. Direct A1 instance
+V2XN043,negative_refusal,not_entailed,easy,"[""P043"",""Q043 -> R043""]",R043,Expanded from V2N04 with canonical atom renaming #043. Disconnected implication
+V2XE044,mixed_proof,entailed,medium,"[""P044 -> (Q044 -> R044)"",""P044"",""Q044""]",R044,Expanded from V2E10 with canonical atom renaming #044. Nested implication elimination
+V2XN044,negative_refusal,not_entailed,medium,"[""!P044 -> !Q044""]",P044,Expanded from V2N10 with canonical atom renaming #044. Converse of A3 is not available
+V2XE045,mixed_proof,entailed,hard,"[""P045 -> (Q045 -> R045)"",""P045 -> Q045"",""P045""]",R045,Expanded from V2E11 with canonical atom renaming #045. Derived bridge premise then final modus ponens
+V2XN045,negative_refusal,not_entailed,hard,"[""P045 -> (Q045 -> R045)"",""P045 -> Q045""]",R045,Expanded from V2N09 with canonical atom renaming #045. Bridge implication lacks the triggering antecedent
+V2XE046,assumption_import,entailed,easy,"[""P046 -> Q046""]",P046 -> Q046,Expanded from V2E01 with canonical atom renaming #046. Import a single assumption directly
+V2XN046,negative_refusal,not_entailed,easy,"[""P046""]",!P046,Expanded from V2N06 with canonical atom renaming #046. Negation not derivable from a single atom
+V2XE047,mixed_proof,entailed,medium,"[""P047"",""P047 -> Q047"",""Q047 -> R047""]",R047,Expanded from V2E03 with canonical atom renaming #047. Two-step modus ponens chain
+V2XN047,negative_refusal,not_entailed,medium,"[""P047 -> Q047"",""Q047""]",P047,Expanded from V2N03 with canonical atom renaming #047. Consequent does not imply antecedent
+V2XE048,theorem_synthesis,entailed,hard,[],P048 -> P048,Expanded from V2E12 with canonical atom renaming #048. Identity theorem without assumptions
+V2XN048,negative_refusal,not_entailed,hard,"[""P048 -> (Q048 -> R048)"",""P048 -> Q048""]",R048,Expanded from V2N09 with canonical atom renaming #048. Bridge implication lacks the triggering antecedent
+V2XE049,mixed_proof,entailed,easy,"[""P049"",""P049 -> Q049""]",Q049,Expanded from V2E02 with canonical atom renaming #049. Single modus ponens derivation
+V2XN049,negative_refusal,not_entailed,easy,[],P049,Expanded from V2N11 with canonical atom renaming #049. No assumptions for atomic goal
+V2XE050,direct_axiom_instance,entailed,medium,[],(P050 -> (Q050 -> R050)) -> ((P050 -> Q050) -> (P050 -> R050)),Expanded from V2E06 with canonical atom renaming #050. Direct A2 instance
+V2XN050,negative_refusal,not_entailed,medium,"[""P050 -> Q050"",""R050 -> S050"",""P050""]",S050,Expanded from V2N05 with canonical atom renaming #050. Two chains with a missing bridge
+V2XE051,mixed_proof,entailed,hard,"[""P051"",""P051 -> Q051"",""Q051 -> R051"",""R051 -> S051""]",S051,Expanded from V2E04 with canonical atom renaming #051. Three-step modus ponens chain
+V2XN051,negative_refusal,not_entailed,hard,"[""P051 -> (Q051 -> R051)"",""P051 -> Q051""]",R051,Expanded from V2N09 with canonical atom renaming #051. Bridge implication lacks the triggering antecedent
+V2XE052,direct_axiom_instance,entailed,easy,[],P052 -> ((Q052 -> R052) -> P052),Expanded from V2E05 with canonical atom renaming #052. Direct A1 instance
+V2XN052,negative_refusal,not_entailed,easy,"[""P052 -> Q052"",""Q052 -> R052""]",S052,Expanded from V2N12 with canonical atom renaming #052. Conclusion outside the implication chain
+V2XE053,direct_axiom_instance,entailed,medium,[],(!P053 -> !Q053) -> (Q053 -> P053),Expanded from V2E07 with canonical atom renaming #053. Direct A3 instance
+V2XN053,negative_refusal,not_entailed,medium,"[""P053 -> (Q053 -> R053)"",""P053""]",R053,Expanded from V2N07 with canonical atom renaming #053. Nested implication missing inner premise
+V2XE054,mixed_proof,entailed,hard,"[""!P054 -> !Q054"",""Q054""]",P054,Expanded from V2E08 with canonical atom renaming #054. A3 premise plus premise import
+V2XN054,negative_refusal,not_entailed,hard,"[""P054 -> (Q054 -> R054)"",""P054 -> Q054""]",R054,Expanded from V2N09 with canonical atom renaming #054. Bridge implication lacks the triggering antecedent
+V2XE055,assumption_import,entailed,easy,"[""P055 -> Q055""]",P055 -> Q055,Expanded from V2E01 with canonical atom renaming #055. Import a single assumption directly
+V2XN055,negative_refusal,not_entailed,easy,"[""P055""]",Q055,Expanded from V2N01 with canonical atom renaming #055. Irrelevant atomic goal
+V2XE056,mixed_proof,entailed,medium,"[""P056""]",Q056 -> P056,Expanded from V2E09 with canonical atom renaming #056. Implication introduction via A1
+V2XN056,negative_refusal,not_entailed,medium,"[""P056 -> Q056"",""P056 -> R056""]",Q056,Expanded from V2N08 with canonical atom renaming #056. Parallel consequents without antecedent
+V2XE057,mixed_proof,entailed,hard,"[""P057 -> (Q057 -> R057)"",""P057 -> Q057"",""P057""]",R057,Expanded from V2E11 with canonical atom renaming #057. Derived bridge premise then final modus ponens
+V2XN057,negative_refusal,not_entailed,hard,"[""P057 -> (Q057 -> R057)"",""P057 -> Q057""]",R057,Expanded from V2N09 with canonical atom renaming #057. Bridge implication lacks the triggering antecedent
+V2XE058,mixed_proof,entailed,easy,"[""P058"",""P058 -> Q058""]",Q058,Expanded from V2E02 with canonical atom renaming #058. Single modus ponens derivation
+V2XN058,negative_refusal,not_entailed,easy,"[""P058 -> Q058""]",Q058,Expanded from V2N02 with canonical atom renaming #058. Missing antecedent for modus ponens
+V2XE059,mixed_proof,entailed,medium,"[""P059 -> (Q059 -> R059)"",""P059"",""Q059""]",R059,Expanded from V2E10 with canonical atom renaming #059. Nested implication elimination
+V2XN059,negative_refusal,not_entailed,medium,"[""!P059 -> !Q059""]",P059,Expanded from V2N10 with canonical atom renaming #059. Converse of A3 is not available
+V2XE060,theorem_synthesis,entailed,hard,[],P060 -> P060,Expanded from V2E12 with canonical atom renaming #060. Identity theorem without assumptions
+V2XN060,negative_refusal,not_entailed,hard,"[""P060 -> (Q060 -> R060)"",""P060 -> Q060""]",R060,Expanded from V2N09 with canonical atom renaming #060. Bridge implication lacks the triggering antecedent
+V2XE061,direct_axiom_instance,entailed,easy,[],P061 -> ((Q061 -> R061) -> P061),Expanded from V2E05 with canonical atom renaming #061. Direct A1 instance
+V2XN061,negative_refusal,not_entailed,easy,"[""P061"",""Q061 -> R061""]",R061,Expanded from V2N04 with canonical atom renaming #061. Disconnected implication
+V2XE062,mixed_proof,entailed,medium,"[""P062"",""P062 -> Q062"",""Q062 -> R062""]",R062,Expanded from V2E03 with canonical atom renaming #062. Two-step modus ponens chain
+V2XN062,negative_refusal,not_entailed,medium,"[""P062 -> Q062"",""Q062""]",P062,Expanded from V2N03 with canonical atom renaming #062. Consequent does not imply antecedent
+V2XE063,mixed_proof,entailed,hard,"[""P063"",""P063 -> Q063"",""Q063 -> R063"",""R063 -> S063""]",S063,Expanded from V2E04 with canonical atom renaming #063. Three-step modus ponens chain
+V2XN063,negative_refusal,not_entailed,hard,"[""P063 -> (Q063 -> R063)"",""P063 -> Q063""]",R063,Expanded from V2N09 with canonical atom renaming #063. Bridge implication lacks the triggering antecedent
+V2XE064,assumption_import,entailed,easy,"[""P064 -> Q064""]",P064 -> Q064,Expanded from V2E01 with canonical atom renaming #064. Import a single assumption directly
+V2XN064,negative_refusal,not_entailed,easy,"[""P064""]",!P064,Expanded from V2N06 with canonical atom renaming #064. Negation not derivable from a single atom
+V2XE065,direct_axiom_instance,entailed,medium,[],(P065 -> (Q065 -> R065)) -> ((P065 -> Q065) -> (P065 -> R065)),Expanded from V2E06 with canonical atom renaming #065. Direct A2 instance
+V2XN065,negative_refusal,not_entailed,medium,"[""P065 -> Q065"",""R065 -> S065"",""P065""]",S065,Expanded from V2N05 with canonical atom renaming #065. Two chains with a missing bridge
+V2XE066,mixed_proof,entailed,hard,"[""!P066 -> !Q066"",""Q066""]",P066,Expanded from V2E08 with canonical atom renaming #066. A3 premise plus premise import
+V2XN066,negative_refusal,not_entailed,hard,"[""P066 -> (Q066 -> R066)"",""P066 -> Q066""]",R066,Expanded from V2N09 with canonical atom renaming #066. Bridge implication lacks the triggering antecedent
+V2XE067,mixed_proof,entailed,easy,"[""P067"",""P067 -> Q067""]",Q067,Expanded from V2E02 with canonical atom renaming #067. Single modus ponens derivation
+V2XN067,negative_refusal,not_entailed,easy,[],P067,Expanded from V2N11 with canonical atom renaming #067. No assumptions for atomic goal
+V2XE068,direct_axiom_instance,entailed,medium,[],(!P068 -> !Q068) -> (Q068 -> P068),Expanded from V2E07 with canonical atom renaming #068. Direct A3 instance
+V2XN068,negative_refusal,not_entailed,medium,"[""P068 -> (Q068 -> R068)"",""P068""]",R068,Expanded from V2N07 with canonical atom renaming #068. Nested implication missing inner premise
+V2XE069,mixed_proof,entailed,hard,"[""P069 -> (Q069 -> R069)"",""P069 -> Q069"",""P069""]",R069,Expanded from V2E11 with canonical atom renaming #069. Derived bridge premise then final modus ponens
+V2XN069,negative_refusal,not_entailed,hard,"[""P069 -> (Q069 -> R069)"",""P069 -> Q069""]",R069,Expanded from V2N09 with canonical atom renaming #069. Bridge implication lacks the triggering antecedent
+V2XE070,direct_axiom_instance,entailed,easy,[],P070 -> ((Q070 -> R070) -> P070),Expanded from V2E05 with canonical atom renaming #070. Direct A1 instance
+V2XN070,negative_refusal,not_entailed,easy,"[""P070 -> Q070"",""Q070 -> R070""]",S070,Expanded from V2N12 with canonical atom renaming #070. Conclusion outside the implication chain
+V2XE071,mixed_proof,entailed,medium,"[""P071""]",Q071 -> P071,Expanded from V2E09 with canonical atom renaming #071. Implication introduction via A1
+V2XN071,negative_refusal,not_entailed,medium,"[""P071 -> Q071"",""P071 -> R071""]",Q071,Expanded from V2N08 with canonical atom renaming #071. Parallel consequents without antecedent
+V2XE072,theorem_synthesis,entailed,hard,[],P072 -> P072,Expanded from V2E12 with canonical atom renaming #072. Identity theorem without assumptions
+V2XN072,negative_refusal,not_entailed,hard,"[""P072 -> (Q072 -> R072)"",""P072 -> Q072""]",R072,Expanded from V2N09 with canonical atom renaming #072. Bridge implication lacks the triggering antecedent
+V2XE073,assumption_import,entailed,easy,"[""P073 -> Q073""]",P073 -> Q073,Expanded from V2E01 with canonical atom renaming #073. Import a single assumption directly
+V2XN073,negative_refusal,not_entailed,easy,"[""P073""]",Q073,Expanded from V2N01 with canonical atom renaming #073. Irrelevant atomic goal
+V2XE074,mixed_proof,entailed,medium,"[""P074 -> (Q074 -> R074)"",""P074"",""Q074""]",R074,Expanded from V2E10 with canonical atom renaming #074. Nested implication elimination
+V2XN074,negative_refusal,not_entailed,medium,"[""!P074 -> !Q074""]",P074,Expanded from V2N10 with canonical atom renaming #074. Converse of A3 is not available
+V2XE075,mixed_proof,entailed,hard,"[""P075"",""P075 -> Q075"",""Q075 -> R075"",""R075 -> S075""]",S075,Expanded from V2E04 with canonical atom renaming #075. Three-step modus ponens chain
+V2XN075,negative_refusal,not_entailed,hard,"[""P075 -> (Q075 -> R075)"",""P075 -> Q075""]",R075,Expanded from V2N09 with canonical atom renaming #075. Bridge implication lacks the triggering antecedent
+V2XE076,mixed_proof,entailed,easy,"[""P076"",""P076 -> Q076""]",Q076,Expanded from V2E02 with canonical atom renaming #076. Single modus ponens derivation
+V2XN076,negative_refusal,not_entailed,easy,"[""P076 -> Q076""]",Q076,Expanded from V2N02 with canonical atom renaming #076. Missing antecedent for modus ponens
+V2XE077,mixed_proof,entailed,medium,"[""P077"",""P077 -> Q077"",""Q077 -> R077""]",R077,Expanded from V2E03 with canonical atom renaming #077. Two-step modus ponens chain
+V2XN077,negative_refusal,not_entailed,medium,"[""P077 -> Q077"",""Q077""]",P077,Expanded from V2N03 with canonical atom renaming #077. Consequent does not imply antecedent
+V2XE078,mixed_proof,entailed,hard,"[""!P078 -> !Q078"",""Q078""]",P078,Expanded from V2E08 with canonical atom renaming #078. A3 premise plus premise import
+V2XN078,negative_refusal,not_entailed,hard,"[""P078 -> (Q078 -> R078)"",""P078 -> Q078""]",R078,Expanded from V2N09 with canonical atom renaming #078. Bridge implication lacks the triggering antecedent
+V2XE079,direct_axiom_instance,entailed,easy,[],P079 -> ((Q079 -> R079) -> P079),Expanded from V2E05 with canonical atom renaming #079. Direct A1 instance
+V2XN079,negative_refusal,not_entailed,easy,"[""P079"",""Q079 -> R079""]",R079,Expanded from V2N04 with canonical atom renaming #079. Disconnected implication
+V2XE080,direct_axiom_instance,entailed,medium,[],(P080 -> (Q080 -> R080)) -> ((P080 -> Q080) -> (P080 -> R080)),Expanded from V2E06 with canonical atom renaming #080. Direct A2 instance
+V2XN080,negative_refusal,not_entailed,medium,"[""P080 -> Q080"",""R080 -> S080"",""P080""]",S080,Expanded from V2N05 with canonical atom renaming #080. Two chains with a missing bridge
+V2XE081,mixed_proof,entailed,hard,"[""P081 -> (Q081 -> R081)"",""P081 -> Q081"",""P081""]",R081,Expanded from V2E11 with canonical atom renaming #081. Derived bridge premise then final modus ponens
+V2XN081,negative_refusal,not_entailed,hard,"[""P081 -> (Q081 -> R081)"",""P081 -> Q081""]",R081,Expanded from V2N09 with canonical atom renaming #081. Bridge implication lacks the triggering antecedent
+V2XE082,assumption_import,entailed,easy,"[""P082 -> Q082""]",P082 -> Q082,Expanded from V2E01 with canonical atom renaming #082. Import a single assumption directly
+V2XN082,negative_refusal,not_entailed,easy,"[""P082""]",!P082,Expanded from V2N06 with canonical atom renaming #082. Negation not derivable from a single atom
+V2XE083,direct_axiom_instance,entailed,medium,[],(!P083 -> !Q083) -> (Q083 -> P083),Expanded from V2E07 with canonical atom renaming #083. Direct A3 instance
+V2XN083,negative_refusal,not_entailed,medium,"[""P083 -> (Q083 -> R083)"",""P083""]",R083,Expanded from V2N07 with canonical atom renaming #083. Nested implication missing inner premise
+V2XE084,theorem_synthesis,entailed,hard,[],P084 -> P084,Expanded from V2E12 with canonical atom renaming #084. Identity theorem without assumptions
+V2XN084,negative_refusal,not_entailed,hard,"[""P084 -> (Q084 -> R084)"",""P084 -> Q084""]",R084,Expanded from V2N09 with canonical atom renaming #084. Bridge implication lacks the triggering antecedent
+V2XE085,mixed_proof,entailed,easy,"[""P085"",""P085 -> Q085""]",Q085,Expanded from V2E02 with canonical atom renaming #085. Single modus ponens derivation
+V2XN085,negative_refusal,not_entailed,easy,[],P085,Expanded from V2N11 with canonical atom renaming #085. No assumptions for atomic goal
+V2XE086,mixed_proof,entailed,medium,"[""P086""]",Q086 -> P086,Expanded from V2E09 with canonical atom renaming #086. Implication introduction via A1
+V2XN086,negative_refusal,not_entailed,medium,"[""P086 -> Q086"",""P086 -> R086""]",Q086,Expanded from V2N08 with canonical atom renaming #086. Parallel consequents without antecedent
+V2XE087,mixed_proof,entailed,hard,"[""P087"",""P087 -> Q087"",""Q087 -> R087"",""R087 -> S087""]",S087,Expanded from V2E04 with canonical atom renaming #087. Three-step modus ponens chain
+V2XN087,negative_refusal,not_entailed,hard,"[""P087 -> (Q087 -> R087)"",""P087 -> Q087""]",R087,Expanded from V2N09 with canonical atom renaming #087. Bridge implication lacks the triggering antecedent
+V2XE088,direct_axiom_instance,entailed,easy,[],P088 -> ((Q088 -> R088) -> P088),Expanded from V2E05 with canonical atom renaming #088. Direct A1 instance
+V2XN088,negative_refusal,not_entailed,easy,"[""P088 -> Q088"",""Q088 -> R088""]",S088,Expanded from V2N12 with canonical atom renaming #088. Conclusion outside the implication chain
+V2XE089,mixed_proof,entailed,medium,"[""P089 -> (Q089 -> R089)"",""P089"",""Q089""]",R089,Expanded from V2E10 with canonical atom renaming #089. Nested implication elimination
+V2XN089,negative_refusal,not_entailed,medium,"[""!P089 -> !Q089""]",P089,Expanded from V2N10 with canonical atom renaming #089. Converse of A3 is not available
+V2XE090,mixed_proof,entailed,hard,"[""!P090 -> !Q090"",""Q090""]",P090,Expanded from V2E08 with canonical atom renaming #090. A3 premise plus premise import
+V2XN090,negative_refusal,not_entailed,hard,"[""P090 -> (Q090 -> R090)"",""P090 -> Q090""]",R090,Expanded from V2N09 with canonical atom renaming #090. Bridge implication lacks the triggering antecedent
+V2XE091,assumption_import,entailed,easy,"[""P091 -> Q091""]",P091 -> Q091,Expanded from V2E01 with canonical atom renaming #091. Import a single assumption directly
+V2XN091,negative_refusal,not_entailed,easy,"[""P091""]",Q091,Expanded from V2N01 with canonical atom renaming #091. Irrelevant atomic goal
+V2XE092,mixed_proof,entailed,medium,"[""P092"",""P092 -> Q092"",""Q092 -> R092""]",R092,Expanded from V2E03 with canonical atom renaming #092. Two-step modus ponens chain
+V2XN092,negative_refusal,not_entailed,medium,"[""P092 -> Q092"",""Q092""]",P092,Expanded from V2N03 with canonical atom renaming #092. Consequent does not imply antecedent
+V2XE093,mixed_proof,entailed,hard,"[""P093 -> (Q093 -> R093)"",""P093 -> Q093"",""P093""]",R093,Expanded from V2E11 with canonical atom renaming #093. Derived bridge premise then final modus ponens
+V2XN093,negative_refusal,not_entailed,hard,"[""P093 -> (Q093 -> R093)"",""P093 -> Q093""]",R093,Expanded from V2N09 with canonical atom renaming #093. Bridge implication lacks the triggering antecedent
+V2XE094,mixed_proof,entailed,easy,"[""P094"",""P094 -> Q094""]",Q094,Expanded from V2E02 with canonical atom renaming #094. Single modus ponens derivation
+V2XN094,negative_refusal,not_entailed,easy,"[""P094 -> Q094""]",Q094,Expanded from V2N02 with canonical atom renaming #094. Missing antecedent for modus ponens
+V2XE095,direct_axiom_instance,entailed,medium,[],(P095 -> (Q095 -> R095)) -> ((P095 -> Q095) -> (P095 -> R095)),Expanded from V2E06 with canonical atom renaming #095. Direct A2 instance
+V2XN095,negative_refusal,not_entailed,medium,"[""P095 -> Q095"",""R095 -> S095"",""P095""]",S095,Expanded from V2N05 with canonical atom renaming #095. Two chains with a missing bridge
+V2XE096,theorem_synthesis,entailed,hard,[],P096 -> P096,Expanded from V2E12 with canonical atom renaming #096. Identity theorem without assumptions
+V2XN096,negative_refusal,not_entailed,hard,"[""P096 -> (Q096 -> R096)"",""P096 -> Q096""]",R096,Expanded from V2N09 with canonical atom renaming #096. Bridge implication lacks the triggering antecedent
+V2XE097,direct_axiom_instance,entailed,easy,[],P097 -> ((Q097 -> R097) -> P097),Expanded from V2E05 with canonical atom renaming #097. Direct A1 instance
+V2XN097,negative_refusal,not_entailed,easy,"[""P097"",""Q097 -> R097""]",R097,Expanded from V2N04 with canonical atom renaming #097. Disconnected implication
+V2XE098,direct_axiom_instance,entailed,medium,[],(!P098 -> !Q098) -> (Q098 -> P098),Expanded from V2E07 with canonical atom renaming #098. Direct A3 instance
+V2XN098,negative_refusal,not_entailed,medium,"[""P098 -> (Q098 -> R098)"",""P098""]",R098,Expanded from V2N07 with canonical atom renaming #098. Nested implication missing inner premise
+V2XE099,mixed_proof,entailed,hard,"[""P099"",""P099 -> Q099"",""Q099 -> R099"",""R099 -> S099""]",S099,Expanded from V2E04 with canonical atom renaming #099. Three-step modus ponens chain
+V2XN099,negative_refusal,not_entailed,hard,"[""P099 -> (Q099 -> R099)"",""P099 -> Q099""]",R099,Expanded from V2N09 with canonical atom renaming #099. Bridge implication lacks the triggering antecedent
+V2XE100,assumption_import,entailed,easy,"[""P100 -> Q100""]",P100 -> Q100,Expanded from V2E01 with canonical atom renaming #100. Import a single assumption directly
+V2XN100,negative_refusal,not_entailed,easy,"[""P100""]",!P100,Expanded from V2N06 with canonical atom renaming #100. Negation not derivable from a single atom
+V2XE101,mixed_proof,entailed,medium,"[""P101""]",Q101 -> P101,Expanded from V2E09 with canonical atom renaming #101. Implication introduction via A1
+V2XN101,negative_refusal,not_entailed,medium,"[""P101 -> Q101"",""P101 -> R101""]",Q101,Expanded from V2N08 with canonical atom renaming #101. Parallel consequents without antecedent
+V2XE102,mixed_proof,entailed,hard,"[""!P102 -> !Q102"",""Q102""]",P102,Expanded from V2E08 with canonical atom renaming #102. A3 premise plus premise import
+V2XN102,negative_refusal,not_entailed,hard,"[""P102 -> (Q102 -> R102)"",""P102 -> Q102""]",R102,Expanded from V2N09 with canonical atom renaming #102. Bridge implication lacks the triggering antecedent
+V2XE103,mixed_proof,entailed,easy,"[""P103"",""P103 -> Q103""]",Q103,Expanded from V2E02 with canonical atom renaming #103. Single modus ponens derivation
+V2XN103,negative_refusal,not_entailed,easy,[],P103,Expanded from V2N11 with canonical atom renaming #103. No assumptions for atomic goal
+V2XE104,mixed_proof,entailed,medium,"[""P104 -> (Q104 -> R104)"",""P104"",""Q104""]",R104,Expanded from V2E10 with canonical atom renaming #104. Nested implication elimination
+V2XN104,negative_refusal,not_entailed,medium,"[""!P104 -> !Q104""]",P104,Expanded from V2N10 with canonical atom renaming #104. Converse of A3 is not available
+V2XE105,mixed_proof,entailed,hard,"[""P105 -> (Q105 -> R105)"",""P105 -> Q105"",""P105""]",R105,Expanded from V2E11 with canonical atom renaming #105. Derived bridge premise then final modus ponens
+V2XN105,negative_refusal,not_entailed,hard,"[""P105 -> (Q105 -> R105)"",""P105 -> Q105""]",R105,Expanded from V2N09 with canonical atom renaming #105. Bridge implication lacks the triggering antecedent
+V2XE106,direct_axiom_instance,entailed,easy,[],P106 -> ((Q106 -> R106) -> P106),Expanded from V2E05 with canonical atom renaming #106. Direct A1 instance
+V2XN106,negative_refusal,not_entailed,easy,"[""P106 -> Q106"",""Q106 -> R106""]",S106,Expanded from V2N12 with canonical atom renaming #106. Conclusion outside the implication chain
+V2XE107,mixed_proof,entailed,medium,"[""P107"",""P107 -> Q107"",""Q107 -> R107""]",R107,Expanded from V2E03 with canonical atom renaming #107. Two-step modus ponens chain
+V2XN107,negative_refusal,not_entailed,medium,"[""P107 -> Q107"",""Q107""]",P107,Expanded from V2N03 with canonical atom renaming #107. Consequent does not imply antecedent
+V2XE108,theorem_synthesis,entailed,hard,[],P108 -> P108,Expanded from V2E12 with canonical atom renaming #108. Identity theorem without assumptions
+V2XN108,negative_refusal,not_entailed,hard,"[""P108 -> (Q108 -> R108)"",""P108 -> Q108""]",R108,Expanded from V2N09 with canonical atom renaming #108. Bridge implication lacks the triggering antecedent
+V2XE109,assumption_import,entailed,easy,"[""P109 -> Q109""]",P109 -> Q109,Expanded from V2E01 with canonical atom renaming #109. Import a single assumption directly
+V2XN109,negative_refusal,not_entailed,easy,"[""P109""]",Q109,Expanded from V2N01 with canonical atom renaming #109. Irrelevant atomic goal
+V2XE110,direct_axiom_instance,entailed,medium,[],(P110 -> (Q110 -> R110)) -> ((P110 -> Q110) -> (P110 -> R110)),Expanded from V2E06 with canonical atom renaming #110. Direct A2 instance
+V2XN110,negative_refusal,not_entailed,medium,"[""P110 -> Q110"",""R110 -> S110"",""P110""]",S110,Expanded from V2N05 with canonical atom renaming #110. Two chains with a missing bridge
+V2XE111,mixed_proof,entailed,hard,"[""P111"",""P111 -> Q111"",""Q111 -> R111"",""R111 -> S111""]",S111,Expanded from V2E04 with canonical atom renaming #111. Three-step modus ponens chain
+V2XN111,negative_refusal,not_entailed,hard,"[""P111 -> (Q111 -> R111)"",""P111 -> Q111""]",R111,Expanded from V2N09 with canonical atom renaming #111. Bridge implication lacks the triggering antecedent
+V2XE112,mixed_proof,entailed,easy,"[""P112"",""P112 -> Q112""]",Q112,Expanded from V2E02 with canonical atom renaming #112. Single modus ponens derivation
+V2XN112,negative_refusal,not_entailed,easy,"[""P112 -> Q112""]",Q112,Expanded from V2N02 with canonical atom renaming #112. Missing antecedent for modus ponens
+V2XE113,direct_axiom_instance,entailed,medium,[],(!P113 -> !Q113) -> (Q113 -> P113),Expanded from V2E07 with canonical atom renaming #113. Direct A3 instance
+V2XN113,negative_refusal,not_entailed,medium,"[""P113 -> (Q113 -> R113)"",""P113""]",R113,Expanded from V2N07 with canonical atom renaming #113. Nested implication missing inner premise
+V2XE114,mixed_proof,entailed,hard,"[""!P114 -> !Q114"",""Q114""]",P114,Expanded from V2E08 with canonical atom renaming #114. A3 premise plus premise import
+V2XN114,negative_refusal,not_entailed,hard,"[""P114 -> (Q114 -> R114)"",""P114 -> Q114""]",R114,Expanded from V2N09 with canonical atom renaming #114. Bridge implication lacks the triggering antecedent
+V2XE115,direct_axiom_instance,entailed,easy,[],P115 -> ((Q115 -> R115) -> P115),Expanded from V2E05 with canonical atom renaming #115. Direct A1 instance
+V2XN115,negative_refusal,not_entailed,easy,"[""P115"",""Q115 -> R115""]",R115,Expanded from V2N04 with canonical atom renaming #115. Disconnected implication
+V2XE116,mixed_proof,entailed,medium,"[""P116""]",Q116 -> P116,Expanded from V2E09 with canonical atom renaming #116. Implication introduction via A1
+V2XN116,negative_refusal,not_entailed,medium,"[""P116 -> Q116"",""P116 -> R116""]",Q116,Expanded from V2N08 with canonical atom renaming #116. Parallel consequents without antecedent
+V2XE117,mixed_proof,entailed,hard,"[""P117 -> (Q117 -> R117)"",""P117 -> Q117"",""P117""]",R117,Expanded from V2E11 with canonical atom renaming #117. Derived bridge premise then final modus ponens
+V2XN117,negative_refusal,not_entailed,hard,"[""P117 -> (Q117 -> R117)"",""P117 -> Q117""]",R117,Expanded from V2N09 with canonical atom renaming #117. Bridge implication lacks the triggering antecedent
+V2XE118,assumption_import,entailed,easy,"[""P118 -> Q118""]",P118 -> Q118,Expanded from V2E01 with canonical atom renaming #118. Import a single assumption directly
+V2XN118,negative_refusal,not_entailed,easy,"[""P118""]",!P118,Expanded from V2N06 with canonical atom renaming #118. Negation not derivable from a single atom
+V2XE119,mixed_proof,entailed,medium,"[""P119 -> (Q119 -> R119)"",""P119"",""Q119""]",R119,Expanded from V2E10 with canonical atom renaming #119. Nested implication elimination
+V2XN119,negative_refusal,not_entailed,medium,"[""!P119 -> !Q119""]",P119,Expanded from V2N10 with canonical atom renaming #119. Converse of A3 is not available
+V2XE120,theorem_synthesis,entailed,hard,[],P120 -> P120,Expanded from V2E12 with canonical atom renaming #120. Identity theorem without assumptions
+V2XN120,negative_refusal,not_entailed,hard,"[""P120 -> (Q120 -> R120)"",""P120 -> Q120""]",R120,Expanded from V2N09 with canonical atom renaming #120. Bridge implication lacks the triggering antecedent
+V2XE121,mixed_proof,entailed,easy,"[""P121"",""P121 -> Q121""]",Q121,Expanded from V2E02 with canonical atom renaming #121. Single modus ponens derivation
+V2XN121,negative_refusal,not_entailed,easy,[],P121,Expanded from V2N11 with canonical atom renaming #121. No assumptions for atomic goal
+V2XE122,mixed_proof,entailed,medium,"[""P122"",""P122 -> Q122"",""Q122 -> R122""]",R122,Expanded from V2E03 with canonical atom renaming #122. Two-step modus ponens chain
+V2XN122,negative_refusal,not_entailed,medium,"[""P122 -> Q122"",""Q122""]",P122,Expanded from V2N03 with canonical atom renaming #122. Consequent does not imply antecedent
+V2XE123,mixed_proof,entailed,hard,"[""P123"",""P123 -> Q123"",""Q123 -> R123"",""R123 -> S123""]",S123,Expanded from V2E04 with canonical atom renaming #123. Three-step modus ponens chain
+V2XN123,negative_refusal,not_entailed,hard,"[""P123 -> (Q123 -> R123)"",""P123 -> Q123""]",R123,Expanded from V2N09 with canonical atom renaming #123. Bridge implication lacks the triggering antecedent
+V2XE124,direct_axiom_instance,entailed,easy,[],P124 -> ((Q124 -> R124) -> P124),Expanded from V2E05 with canonical atom renaming #124. Direct A1 instance
+V2XN124,negative_refusal,not_entailed,easy,"[""P124 -> Q124"",""Q124 -> R124""]",S124,Expanded from V2N12 with canonical atom renaming #124. Conclusion outside the implication chain
+V2XE125,direct_axiom_instance,entailed,medium,[],(P125 -> (Q125 -> R125)) -> ((P125 -> Q125) -> (P125 -> R125)),Expanded from V2E06 with canonical atom renaming #125. Direct A2 instance
+V2XN125,negative_refusal,not_entailed,medium,"[""P125 -> Q125"",""R125 -> S125"",""P125""]",S125,Expanded from V2N05 with canonical atom renaming #125. Two chains with a missing bridge
+V2XE126,mixed_proof,entailed,hard,"[""!P126 -> !Q126"",""Q126""]",P126,Expanded from V2E08 with canonical atom renaming #126. A3 premise plus premise import
+V2XN126,negative_refusal,not_entailed,hard,"[""P126 -> (Q126 -> R126)"",""P126 -> Q126""]",R126,Expanded from V2N09 with canonical atom renaming #126. Bridge implication lacks the triggering antecedent
+V2XE127,assumption_import,entailed,easy,"[""P127 -> Q127""]",P127 -> Q127,Expanded from V2E01 with canonical atom renaming #127. Import a single assumption directly
+V2XN127,negative_refusal,not_entailed,easy,"[""P127""]",Q127,Expanded from V2N01 with canonical atom renaming #127. Irrelevant atomic goal
+V2XE128,direct_axiom_instance,entailed,medium,[],(!P128 -> !Q128) -> (Q128 -> P128),Expanded from V2E07 with canonical atom renaming #128. Direct A3 instance
+V2XN128,negative_refusal,not_entailed,medium,"[""P128 -> (Q128 -> R128)"",""P128""]",R128,Expanded from V2N07 with canonical atom renaming #128. Nested implication missing inner premise
+V2XE129,mixed_proof,entailed,hard,"[""P129 -> (Q129 -> R129)"",""P129 -> Q129"",""P129""]",R129,Expanded from V2E11 with canonical atom renaming #129. Derived bridge premise then final modus ponens
+V2XN129,negative_refusal,not_entailed,hard,"[""P129 -> (Q129 -> R129)"",""P129 -> Q129""]",R129,Expanded from V2N09 with canonical atom renaming #129. Bridge implication lacks the triggering antecedent
+V2XE130,mixed_proof,entailed,easy,"[""P130"",""P130 -> Q130""]",Q130,Expanded from V2E02 with canonical atom renaming #130. Single modus ponens derivation
+V2XN130,negative_refusal,not_entailed,easy,"[""P130 -> Q130""]",Q130,Expanded from V2N02 with canonical atom renaming #130. Missing antecedent for modus ponens
+V2XE131,mixed_proof,entailed,medium,"[""P131""]",Q131 -> P131,Expanded from V2E09 with canonical atom renaming #131. Implication introduction via A1
+V2XN131,negative_refusal,not_entailed,medium,"[""P131 -> Q131"",""P131 -> R131""]",Q131,Expanded from V2N08 with canonical atom renaming #131. Parallel consequents without antecedent
+V2XE132,theorem_synthesis,entailed,hard,[],P132 -> P132,Expanded from V2E12 with canonical atom renaming #132. Identity theorem without assumptions
+V2XN132,negative_refusal,not_entailed,hard,"[""P132 -> (Q132 -> R132)"",""P132 -> Q132""]",R132,Expanded from V2N09 with canonical atom renaming #132. Bridge implication lacks the triggering antecedent
+V2XE133,direct_axiom_instance,entailed,easy,[],P133 -> ((Q133 -> R133) -> P133),Expanded from V2E05 with canonical atom renaming #133. Direct A1 instance
+V2XN133,negative_refusal,not_entailed,easy,"[""P133"",""Q133 -> R133""]",R133,Expanded from V2N04 with canonical atom renaming #133. Disconnected implication
+V2XE134,mixed_proof,entailed,medium,"[""P134 -> (Q134 -> R134)"",""P134"",""Q134""]",R134,Expanded from V2E10 with canonical atom renaming #134. Nested implication elimination
+V2XN134,negative_refusal,not_entailed,medium,"[""!P134 -> !Q134""]",P134,Expanded from V2N10 with canonical atom renaming #134. Converse of A3 is not available
+V2XE135,mixed_proof,entailed,hard,"[""P135"",""P135 -> Q135"",""Q135 -> R135"",""R135 -> S135""]",S135,Expanded from V2E04 with canonical atom renaming #135. Three-step modus ponens chain
+V2XN135,negative_refusal,not_entailed,hard,"[""P135 -> (Q135 -> R135)"",""P135 -> Q135""]",R135,Expanded from V2N09 with canonical atom renaming #135. Bridge implication lacks the triggering antecedent
+V2XE136,assumption_import,entailed,easy,"[""P136 -> Q136""]",P136 -> Q136,Expanded from V2E01 with canonical atom renaming #136. Import a single assumption directly
+V2XN136,negative_refusal,not_entailed,easy,"[""P136""]",!P136,Expanded from V2N06 with canonical atom renaming #136. Negation not derivable from a single atom
+V2XE137,mixed_proof,entailed,medium,"[""P137"",""P137 -> Q137"",""Q137 -> R137""]",R137,Expanded from V2E03 with canonical atom renaming #137. Two-step modus ponens chain
+V2XN137,negative_refusal,not_entailed,medium,"[""P137 -> Q137"",""Q137""]",P137,Expanded from V2N03 with canonical atom renaming #137. Consequent does not imply antecedent
+V2XE138,mixed_proof,entailed,hard,"[""!P138 -> !Q138"",""Q138""]",P138,Expanded from V2E08 with canonical atom renaming #138. A3 premise plus premise import
+V2XN138,negative_refusal,not_entailed,hard,"[""P138 -> (Q138 -> R138)"",""P138 -> Q138""]",R138,Expanded from V2N09 with canonical atom renaming #138. Bridge implication lacks the triggering antecedent
+V2XE139,mixed_proof,entailed,easy,"[""P139"",""P139 -> Q139""]",Q139,Expanded from V2E02 with canonical atom renaming #139. Single modus ponens derivation
+V2XN139,negative_refusal,not_entailed,easy,[],P139,Expanded from V2N11 with canonical atom renaming #139. No assumptions for atomic goal
+V2XE140,direct_axiom_instance,entailed,medium,[],(P140 -> (Q140 -> R140)) -> ((P140 -> Q140) -> (P140 -> R140)),Expanded from V2E06 with canonical atom renaming #140. Direct A2 instance
+V2XN140,negative_refusal,not_entailed,medium,"[""P140 -> Q140"",""R140 -> S140"",""P140""]",S140,Expanded from V2N05 with canonical atom renaming #140. Two chains with a missing bridge
+V2XE141,mixed_proof,entailed,hard,"[""P141 -> (Q141 -> R141)"",""P141 -> Q141"",""P141""]",R141,Expanded from V2E11 with canonical atom renaming #141. Derived bridge premise then final modus ponens
+V2XN141,negative_refusal,not_entailed,hard,"[""P141 -> (Q141 -> R141)"",""P141 -> Q141""]",R141,Expanded from V2N09 with canonical atom renaming #141. Bridge implication lacks the triggering antecedent
+V2XE142,direct_axiom_instance,entailed,easy,[],P142 -> ((Q142 -> R142) -> P142),Expanded from V2E05 with canonical atom renaming #142. Direct A1 instance
+V2XN142,negative_refusal,not_entailed,easy,"[""P142 -> Q142"",""Q142 -> R142""]",S142,Expanded from V2N12 with canonical atom renaming #142. Conclusion outside the implication chain
+V2XE143,direct_axiom_instance,entailed,medium,[],(!P143 -> !Q143) -> (Q143 -> P143),Expanded from V2E07 with canonical atom renaming #143. Direct A3 instance
+V2XN143,negative_refusal,not_entailed,medium,"[""P143 -> (Q143 -> R143)"",""P143""]",R143,Expanded from V2N07 with canonical atom renaming #143. Nested implication missing inner premise
+V2XE144,theorem_synthesis,entailed,hard,[],P144 -> P144,Expanded from V2E12 with canonical atom renaming #144. Identity theorem without assumptions
+V2XN144,negative_refusal,not_entailed,hard,"[""P144 -> (Q144 -> R144)"",""P144 -> Q144""]",R144,Expanded from V2N09 with canonical atom renaming #144. Bridge implication lacks the triggering antecedent
+V2XE145,assumption_import,entailed,easy,"[""P145 -> Q145""]",P145 -> Q145,Expanded from V2E01 with canonical atom renaming #145. Import a single assumption directly
+V2XN145,negative_refusal,not_entailed,easy,"[""P145""]",Q145,Expanded from V2N01 with canonical atom renaming #145. Irrelevant atomic goal
+V2XE146,mixed_proof,entailed,medium,"[""P146""]",Q146 -> P146,Expanded from V2E09 with canonical atom renaming #146. Implication introduction via A1
+V2XN146,negative_refusal,not_entailed,medium,"[""P146 -> Q146"",""P146 -> R146""]",Q146,Expanded from V2N08 with canonical atom renaming #146. Parallel consequents without antecedent
+V2XE147,mixed_proof,entailed,hard,"[""P147"",""P147 -> Q147"",""Q147 -> R147"",""R147 -> S147""]",S147,Expanded from V2E04 with canonical atom renaming #147. Three-step modus ponens chain
+V2XN147,negative_refusal,not_entailed,hard,"[""P147 -> (Q147 -> R147)"",""P147 -> Q147""]",R147,Expanded from V2N09 with canonical atom renaming #147. Bridge implication lacks the triggering antecedent
+V2XE148,mixed_proof,entailed,easy,"[""P148"",""P148 -> Q148""]",Q148,Expanded from V2E02 with canonical atom renaming #148. Single modus ponens derivation
+V2XN148,negative_refusal,not_entailed,easy,"[""P148 -> Q148""]",Q148,Expanded from V2N02 with canonical atom renaming #148. Missing antecedent for modus ponens
+V2XE149,mixed_proof,entailed,medium,"[""P149 -> (Q149 -> R149)"",""P149"",""Q149""]",R149,Expanded from V2E10 with canonical atom renaming #149. Nested implication elimination
+V2XN149,negative_refusal,not_entailed,medium,"[""!P149 -> !Q149""]",P149,Expanded from V2N10 with canonical atom renaming #149. Converse of A3 is not available
+V2XE150,mixed_proof,entailed,hard,"[""!P150 -> !Q150"",""Q150""]",P150,Expanded from V2E08 with canonical atom renaming #150. A3 premise plus premise import
+V2XN150,negative_refusal,not_entailed,hard,"[""P150 -> (Q150 -> R150)"",""P150 -> Q150""]",R150,Expanded from V2N09 with canonical atom renaming #150. Bridge implication lacks the triggering antecedent
+V2XE151,direct_axiom_instance,entailed,easy,[],P151 -> ((Q151 -> R151) -> P151),Expanded from V2E05 with canonical atom renaming #151. Direct A1 instance
+V2XN151,negative_refusal,not_entailed,easy,"[""P151"",""Q151 -> R151""]",R151,Expanded from V2N04 with canonical atom renaming #151. Disconnected implication
+V2XE152,mixed_proof,entailed,medium,"[""P152"",""P152 -> Q152"",""Q152 -> R152""]",R152,Expanded from V2E03 with canonical atom renaming #152. Two-step modus ponens chain
+V2XN152,negative_refusal,not_entailed,medium,"[""P152 -> Q152"",""Q152""]",P152,Expanded from V2N03 with canonical atom renaming #152. Consequent does not imply antecedent
+V2XE153,mixed_proof,entailed,hard,"[""P153 -> (Q153 -> R153)"",""P153 -> Q153"",""P153""]",R153,Expanded from V2E11 with canonical atom renaming #153. Derived bridge premise then final modus ponens
+V2XN153,negative_refusal,not_entailed,hard,"[""P153 -> (Q153 -> R153)"",""P153 -> Q153""]",R153,Expanded from V2N09 with canonical atom renaming #153. Bridge implication lacks the triggering antecedent
+V2XE154,assumption_import,entailed,easy,"[""P154 -> Q154""]",P154 -> Q154,Expanded from V2E01 with canonical atom renaming #154. Import a single assumption directly
+V2XN154,negative_refusal,not_entailed,easy,"[""P154""]",!P154,Expanded from V2N06 with canonical atom renaming #154. Negation not derivable from a single atom
+V2XE155,direct_axiom_instance,entailed,medium,[],(P155 -> (Q155 -> R155)) -> ((P155 -> Q155) -> (P155 -> R155)),Expanded from V2E06 with canonical atom renaming #155. Direct A2 instance
+V2XN155,negative_refusal,not_entailed,medium,"[""P155 -> Q155"",""R155 -> S155"",""P155""]",S155,Expanded from V2N05 with canonical atom renaming #155. Two chains with a missing bridge
+V2XE156,theorem_synthesis,entailed,hard,[],P156 -> P156,Expanded from V2E12 with canonical atom renaming #156. Identity theorem without assumptions
+V2XN156,negative_refusal,not_entailed,hard,"[""P156 -> (Q156 -> R156)"",""P156 -> Q156""]",R156,Expanded from V2N09 with canonical atom renaming #156. Bridge implication lacks the triggering antecedent
+V2XE157,mixed_proof,entailed,easy,"[""P157"",""P157 -> Q157""]",Q157,Expanded from V2E02 with canonical atom renaming #157. Single modus ponens derivation
+V2XN157,negative_refusal,not_entailed,easy,[],P157,Expanded from V2N11 with canonical atom renaming #157. No assumptions for atomic goal
+V2XE158,direct_axiom_instance,entailed,medium,[],(!P158 -> !Q158) -> (Q158 -> P158),Expanded from V2E07 with canonical atom renaming #158. Direct A3 instance
+V2XN158,negative_refusal,not_entailed,medium,"[""P158 -> (Q158 -> R158)"",""P158""]",R158,Expanded from V2N07 with canonical atom renaming #158. Nested implication missing inner premise
+V2XE159,mixed_proof,entailed,hard,"[""P159"",""P159 -> Q159"",""Q159 -> R159"",""R159 -> S159""]",S159,Expanded from V2E04 with canonical atom renaming #159. Three-step modus ponens chain
+V2XN159,negative_refusal,not_entailed,hard,"[""P159 -> (Q159 -> R159)"",""P159 -> Q159""]",R159,Expanded from V2N09 with canonical atom renaming #159. Bridge implication lacks the triggering antecedent
+V2XE160,direct_axiom_instance,entailed,easy,[],P160 -> ((Q160 -> R160) -> P160),Expanded from V2E05 with canonical atom renaming #160. Direct A1 instance
+V2XN160,negative_refusal,not_entailed,easy,"[""P160 -> Q160"",""Q160 -> R160""]",S160,Expanded from V2N12 with canonical atom renaming #160. Conclusion outside the implication chain
+V2XE161,mixed_proof,entailed,medium,"[""P161""]",Q161 -> P161,Expanded from V2E09 with canonical atom renaming #161. Implication introduction via A1
+V2XN161,negative_refusal,not_entailed,medium,"[""P161 -> Q161"",""P161 -> R161""]",Q161,Expanded from V2N08 with canonical atom renaming #161. Parallel consequents without antecedent
+V2XE162,mixed_proof,entailed,hard,"[""!P162 -> !Q162"",""Q162""]",P162,Expanded from V2E08 with canonical atom renaming #162. A3 premise plus premise import
+V2XN162,negative_refusal,not_entailed,hard,"[""P162 -> (Q162 -> R162)"",""P162 -> Q162""]",R162,Expanded from V2N09 with canonical atom renaming #162. Bridge implication lacks the triggering antecedent
+V2XE163,assumption_import,entailed,easy,"[""P163 -> Q163""]",P163 -> Q163,Expanded from V2E01 with canonical atom renaming #163. Import a single assumption directly
+V2XN163,negative_refusal,not_entailed,easy,"[""P163""]",Q163,Expanded from V2N01 with canonical atom renaming #163. Irrelevant atomic goal
+V2XE164,mixed_proof,entailed,medium,"[""P164 -> (Q164 -> R164)"",""P164"",""Q164""]",R164,Expanded from V2E10 with canonical atom renaming #164. Nested implication elimination
+V2XN164,negative_refusal,not_entailed,medium,"[""!P164 -> !Q164""]",P164,Expanded from V2N10 with canonical atom renaming #164. Converse of A3 is not available
+V2XE165,mixed_proof,entailed,hard,"[""P165 -> (Q165 -> R165)"",""P165 -> Q165"",""P165""]",R165,Expanded from V2E11 with canonical atom renaming #165. Derived bridge premise then final modus ponens
+V2XN165,negative_refusal,not_entailed,hard,"[""P165 -> (Q165 -> R165)"",""P165 -> Q165""]",R165,Expanded from V2N09 with canonical atom renaming #165. Bridge implication lacks the triggering antecedent
+V2XE166,mixed_proof,entailed,easy,"[""P166"",""P166 -> Q166""]",Q166,Expanded from V2E02 with canonical atom renaming #166. Single modus ponens derivation
+V2XN166,negative_refusal,not_entailed,easy,"[""P166 -> Q166""]",Q166,Expanded from V2N02 with canonical atom renaming #166. Missing antecedent for modus ponens
+V2XE167,mixed_proof,entailed,medium,"[""P167"",""P167 -> Q167"",""Q167 -> R167""]",R167,Expanded from V2E03 with canonical atom renaming #167. Two-step modus ponens chain
+V2XN167,negative_refusal,not_entailed,medium,"[""P167 -> Q167"",""Q167""]",P167,Expanded from V2N03 with canonical atom renaming #167. Consequent does not imply antecedent
+V2XE168,theorem_synthesis,entailed,hard,[],P168 -> P168,Expanded from V2E12 with canonical atom renaming #168. Identity theorem without assumptions
+V2XN168,negative_refusal,not_entailed,hard,"[""P168 -> (Q168 -> R168)"",""P168 -> Q168""]",R168,Expanded from V2N09 with canonical atom renaming #168. Bridge implication lacks the triggering antecedent
+V2XE169,direct_axiom_instance,entailed,easy,[],P169 -> ((Q169 -> R169) -> P169),Expanded from V2E05 with canonical atom renaming #169. Direct A1 instance
+V2XN169,negative_refusal,not_entailed,easy,"[""P169"",""Q169 -> R169""]",R169,Expanded from V2N04 with canonical atom renaming #169. Disconnected implication
+V2XE170,direct_axiom_instance,entailed,medium,[],(P170 -> (Q170 -> R170)) -> ((P170 -> Q170) -> (P170 -> R170)),Expanded from V2E06 with canonical atom renaming #170. Direct A2 instance
+V2XN170,negative_refusal,not_entailed,medium,"[""P170 -> Q170"",""R170 -> S170"",""P170""]",S170,Expanded from V2N05 with canonical atom renaming #170. Two chains with a missing bridge
+V2XE171,mixed_proof,entailed,hard,"[""P171"",""P171 -> Q171"",""Q171 -> R171"",""R171 -> S171""]",S171,Expanded from V2E04 with canonical atom renaming #171. Three-step modus ponens chain
+V2XN171,negative_refusal,not_entailed,hard,"[""P171 -> (Q171 -> R171)"",""P171 -> Q171""]",R171,Expanded from V2N09 with canonical atom renaming #171. Bridge implication lacks the triggering antecedent
+V2XE172,assumption_import,entailed,easy,"[""P172 -> Q172""]",P172 -> Q172,Expanded from V2E01 with canonical atom renaming #172. Import a single assumption directly
+V2XN172,negative_refusal,not_entailed,easy,"[""P172""]",!P172,Expanded from V2N06 with canonical atom renaming #172. Negation not derivable from a single atom
+V2XE173,direct_axiom_instance,entailed,medium,[],(!P173 -> !Q173) -> (Q173 -> P173),Expanded from V2E07 with canonical atom renaming #173. Direct A3 instance
+V2XN173,negative_refusal,not_entailed,medium,"[""P173 -> (Q173 -> R173)"",""P173""]",R173,Expanded from V2N07 with canonical atom renaming #173. Nested implication missing inner premise
+V2XE174,mixed_proof,entailed,hard,"[""!P174 -> !Q174"",""Q174""]",P174,Expanded from V2E08 with canonical atom renaming #174. A3 premise plus premise import
+V2XN174,negative_refusal,not_entailed,hard,"[""P174 -> (Q174 -> R174)"",""P174 -> Q174""]",R174,Expanded from V2N09 with canonical atom renaming #174. Bridge implication lacks the triggering antecedent
+V2XE175,mixed_proof,entailed,easy,"[""P175"",""P175 -> Q175""]",Q175,Expanded from V2E02 with canonical atom renaming #175. Single modus ponens derivation
+V2XN175,negative_refusal,not_entailed,easy,[],P175,Expanded from V2N11 with canonical atom renaming #175. No assumptions for atomic goal
+V2XE176,mixed_proof,entailed,medium,"[""P176""]",Q176 -> P176,Expanded from V2E09 with canonical atom renaming #176. Implication introduction via A1
+V2XN176,negative_refusal,not_entailed,medium,"[""P176 -> Q176"",""P176 -> R176""]",Q176,Expanded from V2N08 with canonical atom renaming #176. Parallel consequents without antecedent
+V2XE177,mixed_proof,entailed,hard,"[""P177 -> (Q177 -> R177)"",""P177 -> Q177"",""P177""]",R177,Expanded from V2E11 with canonical atom renaming #177. Derived bridge premise then final modus ponens
+V2XN177,negative_refusal,not_entailed,hard,"[""P177 -> (Q177 -> R177)"",""P177 -> Q177""]",R177,Expanded from V2N09 with canonical atom renaming #177. Bridge implication lacks the triggering antecedent
+V2XE178,direct_axiom_instance,entailed,easy,[],P178 -> ((Q178 -> R178) -> P178),Expanded from V2E05 with canonical atom renaming #178. Direct A1 instance
+V2XN178,negative_refusal,not_entailed,easy,"[""P178 -> Q178"",""Q178 -> R178""]",S178,Expanded from V2N12 with canonical atom renaming #178. Conclusion outside the implication chain
+V2XE179,mixed_proof,entailed,medium,"[""P179 -> (Q179 -> R179)"",""P179"",""Q179""]",R179,Expanded from V2E10 with canonical atom renaming #179. Nested implication elimination
+V2XN179,negative_refusal,not_entailed,medium,"[""!P179 -> !Q179""]",P179,Expanded from V2N10 with canonical atom renaming #179. Converse of A3 is not available
+V2XE180,theorem_synthesis,entailed,hard,[],P180 -> P180,Expanded from V2E12 with canonical atom renaming #180. Identity theorem without assumptions
+V2XN180,negative_refusal,not_entailed,hard,"[""P180 -> (Q180 -> R180)"",""P180 -> Q180""]",R180,Expanded from V2N09 with canonical atom renaming #180. Bridge implication lacks the triggering antecedent
+V2XE181,assumption_import,entailed,easy,"[""P181 -> Q181""]",P181 -> Q181,Expanded from V2E01 with canonical atom renaming #181. Import a single assumption directly
+V2XN181,negative_refusal,not_entailed,easy,"[""P181""]",Q181,Expanded from V2N01 with canonical atom renaming #181. Irrelevant atomic goal
+V2XE182,mixed_proof,entailed,medium,"[""P182"",""P182 -> Q182"",""Q182 -> R182""]",R182,Expanded from V2E03 with canonical atom renaming #182. Two-step modus ponens chain
+V2XN182,negative_refusal,not_entailed,medium,"[""P182 -> Q182"",""Q182""]",P182,Expanded from V2N03 with canonical atom renaming #182. Consequent does not imply antecedent
+V2XE183,mixed_proof,entailed,hard,"[""P183"",""P183 -> Q183"",""Q183 -> R183"",""R183 -> S183""]",S183,Expanded from V2E04 with canonical atom renaming #183. Three-step modus ponens chain
+V2XN183,negative_refusal,not_entailed,hard,"[""P183 -> (Q183 -> R183)"",""P183 -> Q183""]",R183,Expanded from V2N09 with canonical atom renaming #183. Bridge implication lacks the triggering antecedent
+V2XE184,mixed_proof,entailed,easy,"[""P184"",""P184 -> Q184""]",Q184,Expanded from V2E02 with canonical atom renaming #184. Single modus ponens derivation
+V2XN184,negative_refusal,not_entailed,easy,"[""P184 -> Q184""]",Q184,Expanded from V2N02 with canonical atom renaming #184. Missing antecedent for modus ponens
+V2XE185,direct_axiom_instance,entailed,medium,[],(P185 -> (Q185 -> R185)) -> ((P185 -> Q185) -> (P185 -> R185)),Expanded from V2E06 with canonical atom renaming #185. Direct A2 instance
+V2XN185,negative_refusal,not_entailed,medium,"[""P185 -> Q185"",""R185 -> S185"",""P185""]",S185,Expanded from V2N05 with canonical atom renaming #185. Two chains with a missing bridge
+V2XE186,mixed_proof,entailed,hard,"[""!P186 -> !Q186"",""Q186""]",P186,Expanded from V2E08 with canonical atom renaming #186. A3 premise plus premise import
+V2XN186,negative_refusal,not_entailed,hard,"[""P186 -> (Q186 -> R186)"",""P186 -> Q186""]",R186,Expanded from V2N09 with canonical atom renaming #186. Bridge implication lacks the triggering antecedent
+V2XE187,direct_axiom_instance,entailed,easy,[],P187 -> ((Q187 -> R187) -> P187),Expanded from V2E05 with canonical atom renaming #187. Direct A1 instance
+V2XN187,negative_refusal,not_entailed,easy,"[""P187"",""Q187 -> R187""]",R187,Expanded from V2N04 with canonical atom renaming #187. Disconnected implication
+V2XE188,direct_axiom_instance,entailed,medium,[],(!P188 -> !Q188) -> (Q188 -> P188),Expanded from V2E07 with canonical atom renaming #188. Direct A3 instance
+V2XN188,negative_refusal,not_entailed,medium,"[""P188 -> (Q188 -> R188)"",""P188""]",R188,Expanded from V2N07 with canonical atom renaming #188. Nested implication missing inner premise
+V2XE189,mixed_proof,entailed,hard,"[""P189 -> (Q189 -> R189)"",""P189 -> Q189"",""P189""]",R189,Expanded from V2E11 with canonical atom renaming #189. Derived bridge premise then final modus ponens
+V2XN189,negative_refusal,not_entailed,hard,"[""P189 -> (Q189 -> R189)"",""P189 -> Q189""]",R189,Expanded from V2N09 with canonical atom renaming #189. Bridge implication lacks the triggering antecedent
+V2XE190,assumption_import,entailed,easy,"[""P190 -> Q190""]",P190 -> Q190,Expanded from V2E01 with canonical atom renaming #190. Import a single assumption directly
+V2XN190,negative_refusal,not_entailed,easy,"[""P190""]",!P190,Expanded from V2N06 with canonical atom renaming #190. Negation not derivable from a single atom
+V2XE191,mixed_proof,entailed,medium,"[""P191""]",Q191 -> P191,Expanded from V2E09 with canonical atom renaming #191. Implication introduction via A1
+V2XN191,negative_refusal,not_entailed,medium,"[""P191 -> Q191"",""P191 -> R191""]",Q191,Expanded from V2N08 with canonical atom renaming #191. Parallel consequents without antecedent
+V2XE192,theorem_synthesis,entailed,hard,[],P192 -> P192,Expanded from V2E12 with canonical atom renaming #192. Identity theorem without assumptions
+V2XN192,negative_refusal,not_entailed,hard,"[""P192 -> (Q192 -> R192)"",""P192 -> Q192""]",R192,Expanded from V2N09 with canonical atom renaming #192. Bridge implication lacks the triggering antecedent
+V2XE193,mixed_proof,entailed,easy,"[""P193"",""P193 -> Q193""]",Q193,Expanded from V2E02 with canonical atom renaming #193. Single modus ponens derivation
+V2XN193,negative_refusal,not_entailed,easy,[],P193,Expanded from V2N11 with canonical atom renaming #193. No assumptions for atomic goal
+V2XE194,mixed_proof,entailed,medium,"[""P194 -> (Q194 -> R194)"",""P194"",""Q194""]",R194,Expanded from V2E10 with canonical atom renaming #194. Nested implication elimination
+V2XN194,negative_refusal,not_entailed,medium,"[""!P194 -> !Q194""]",P194,Expanded from V2N10 with canonical atom renaming #194. Converse of A3 is not available
+V2XE195,mixed_proof,entailed,hard,"[""P195"",""P195 -> Q195"",""Q195 -> R195"",""R195 -> S195""]",S195,Expanded from V2E04 with canonical atom renaming #195. Three-step modus ponens chain
+V2XN195,negative_refusal,not_entailed,hard,"[""P195 -> (Q195 -> R195)"",""P195 -> Q195""]",R195,Expanded from V2N09 with canonical atom renaming #195. Bridge implication lacks the triggering antecedent
+V2XE196,direct_axiom_instance,entailed,easy,[],P196 -> ((Q196 -> R196) -> P196),Expanded from V2E05 with canonical atom renaming #196. Direct A1 instance
+V2XN196,negative_refusal,not_entailed,easy,"[""P196 -> Q196"",""Q196 -> R196""]",S196,Expanded from V2N12 with canonical atom renaming #196. Conclusion outside the implication chain
+V2XE197,mixed_proof,entailed,medium,"[""P197"",""P197 -> Q197"",""Q197 -> R197""]",R197,Expanded from V2E03 with canonical atom renaming #197. Two-step modus ponens chain
+V2XN197,negative_refusal,not_entailed,medium,"[""P197 -> Q197"",""Q197""]",P197,Expanded from V2N03 with canonical atom renaming #197. Consequent does not imply antecedent
+V2XE198,mixed_proof,entailed,hard,"[""!P198 -> !Q198"",""Q198""]",P198,Expanded from V2E08 with canonical atom renaming #198. A3 premise plus premise import
+V2XN198,negative_refusal,not_entailed,hard,"[""P198 -> (Q198 -> R198)"",""P198 -> Q198""]",R198,Expanded from V2N09 with canonical atom renaming #198. Bridge implication lacks the triggering antecedent
+V2XE199,assumption_import,entailed,easy,"[""P199 -> Q199""]",P199 -> Q199,Expanded from V2E01 with canonical atom renaming #199. Import a single assumption directly
+V2XN199,negative_refusal,not_entailed,easy,"[""P199""]",Q199,Expanded from V2N01 with canonical atom renaming #199. Irrelevant atomic goal
+V2XE200,direct_axiom_instance,entailed,medium,[],(P200 -> (Q200 -> R200)) -> ((P200 -> Q200) -> (P200 -> R200)),Expanded from V2E06 with canonical atom renaming #200. Direct A2 instance
+V2XN200,negative_refusal,not_entailed,medium,"[""P200 -> Q200"",""R200 -> S200"",""P200""]",S200,Expanded from V2N05 with canonical atom renaming #200. Two chains with a missing bridge
+V2XE201,mixed_proof,entailed,hard,"[""P201 -> (Q201 -> R201)"",""P201 -> Q201"",""P201""]",R201,Expanded from V2E11 with canonical atom renaming #201. Derived bridge premise then final modus ponens
+V2XN201,negative_refusal,not_entailed,hard,"[""P201 -> (Q201 -> R201)"",""P201 -> Q201""]",R201,Expanded from V2N09 with canonical atom renaming #201. Bridge implication lacks the triggering antecedent
+V2XE202,mixed_proof,entailed,easy,"[""P202"",""P202 -> Q202""]",Q202,Expanded from V2E02 with canonical atom renaming #202. Single modus ponens derivation
+V2XN202,negative_refusal,not_entailed,easy,"[""P202 -> Q202""]",Q202,Expanded from V2N02 with canonical atom renaming #202. Missing antecedent for modus ponens
+V2XE203,direct_axiom_instance,entailed,medium,[],(!P203 -> !Q203) -> (Q203 -> P203),Expanded from V2E07 with canonical atom renaming #203. Direct A3 instance
+V2XN203,negative_refusal,not_entailed,medium,"[""P203 -> (Q203 -> R203)"",""P203""]",R203,Expanded from V2N07 with canonical atom renaming #203. Nested implication missing inner premise
+V2XE204,theorem_synthesis,entailed,hard,[],P204 -> P204,Expanded from V2E12 with canonical atom renaming #204. Identity theorem without assumptions
+V2XN204,negative_refusal,not_entailed,hard,"[""P204 -> (Q204 -> R204)"",""P204 -> Q204""]",R204,Expanded from V2N09 with canonical atom renaming #204. Bridge implication lacks the triggering antecedent
+V2XE205,direct_axiom_instance,entailed,easy,[],P205 -> ((Q205 -> R205) -> P205),Expanded from V2E05 with canonical atom renaming #205. Direct A1 instance
+V2XN205,negative_refusal,not_entailed,easy,"[""P205"",""Q205 -> R205""]",R205,Expanded from V2N04 with canonical atom renaming #205. Disconnected implication
+V2XE206,mixed_proof,entailed,medium,"[""P206""]",Q206 -> P206,Expanded from V2E09 with canonical atom renaming #206. Implication introduction via A1
+V2XN206,negative_refusal,not_entailed,medium,"[""P206 -> Q206"",""P206 -> R206""]",Q206,Expanded from V2N08 with canonical atom renaming #206. Parallel consequents without antecedent
+V2XE207,mixed_proof,entailed,hard,"[""P207"",""P207 -> Q207"",""Q207 -> R207"",""R207 -> S207""]",S207,Expanded from V2E04 with canonical atom renaming #207. Three-step modus ponens chain
+V2XN207,negative_refusal,not_entailed,hard,"[""P207 -> (Q207 -> R207)"",""P207 -> Q207""]",R207,Expanded from V2N09 with canonical atom renaming #207. Bridge implication lacks the triggering antecedent
+V2XE208,assumption_import,entailed,easy,"[""P208 -> Q208""]",P208 -> Q208,Expanded from V2E01 with canonical atom renaming #208. Import a single assumption directly
+V2XN208,negative_refusal,not_entailed,easy,"[""P208""]",!P208,Expanded from V2N06 with canonical atom renaming #208. Negation not derivable from a single atom
+V2XE209,mixed_proof,entailed,medium,"[""P209 -> (Q209 -> R209)"",""P209"",""Q209""]",R209,Expanded from V2E10 with canonical atom renaming #209. Nested implication elimination
+V2XN209,negative_refusal,not_entailed,medium,"[""!P209 -> !Q209""]",P209,Expanded from V2N10 with canonical atom renaming #209. Converse of A3 is not available
+V2XE210,mixed_proof,entailed,hard,"[""!P210 -> !Q210"",""Q210""]",P210,Expanded from V2E08 with canonical atom renaming #210. A3 premise plus premise import
+V2XN210,negative_refusal,not_entailed,hard,"[""P210 -> (Q210 -> R210)"",""P210 -> Q210""]",R210,Expanded from V2N09 with canonical atom renaming #210. Bridge implication lacks the triggering antecedent
+V2XE211,mixed_proof,entailed,easy,"[""P211"",""P211 -> Q211""]",Q211,Expanded from V2E02 with canonical atom renaming #211. Single modus ponens derivation
+V2XN211,negative_refusal,not_entailed,easy,[],P211,Expanded from V2N11 with canonical atom renaming #211. No assumptions for atomic goal
+V2XE212,mixed_proof,entailed,medium,"[""P212"",""P212 -> Q212"",""Q212 -> R212""]",R212,Expanded from V2E03 with canonical atom renaming #212. Two-step modus ponens chain
+V2XN212,negative_refusal,not_entailed,medium,"[""P212 -> Q212"",""Q212""]",P212,Expanded from V2N03 with canonical atom renaming #212. Consequent does not imply antecedent
+V2XE213,mixed_proof,entailed,hard,"[""P213 -> (Q213 -> R213)"",""P213 -> Q213"",""P213""]",R213,Expanded from V2E11 with canonical atom renaming #213. Derived bridge premise then final modus ponens
+V2XN213,negative_refusal,not_entailed,hard,"[""P213 -> (Q213 -> R213)"",""P213 -> Q213""]",R213,Expanded from V2N09 with canonical atom renaming #213. Bridge implication lacks the triggering antecedent
+V2XE214,direct_axiom_instance,entailed,easy,[],P214 -> ((Q214 -> R214) -> P214),Expanded from V2E05 with canonical atom renaming #214. Direct A1 instance
+V2XN214,negative_refusal,not_entailed,easy,"[""P214 -> Q214"",""Q214 -> R214""]",S214,Expanded from V2N12 with canonical atom renaming #214. Conclusion outside the implication chain
+V2XE215,direct_axiom_instance,entailed,medium,[],(P215 -> (Q215 -> R215)) -> ((P215 -> Q215) -> (P215 -> R215)),Expanded from V2E06 with canonical atom renaming #215. Direct A2 instance
+V2XN215,negative_refusal,not_entailed,medium,"[""P215 -> Q215"",""R215 -> S215"",""P215""]",S215,Expanded from V2N05 with canonical atom renaming #215. Two chains with a missing bridge
+V2XE216,theorem_synthesis,entailed,hard,[],P216 -> P216,Expanded from V2E12 with canonical atom renaming #216. Identity theorem without assumptions
+V2XN216,negative_refusal,not_entailed,hard,"[""P216 -> (Q216 -> R216)"",""P216 -> Q216""]",R216,Expanded from V2N09 with canonical atom renaming #216. Bridge implication lacks the triggering antecedent
+V2XE217,assumption_import,entailed,easy,"[""P217 -> Q217""]",P217 -> Q217,Expanded from V2E01 with canonical atom renaming #217. Import a single assumption directly
+V2XN217,negative_refusal,not_entailed,easy,"[""P217""]",Q217,Expanded from V2N01 with canonical atom renaming #217. Irrelevant atomic goal
+V2XE218,direct_axiom_instance,entailed,medium,[],(!P218 -> !Q218) -> (Q218 -> P218),Expanded from V2E07 with canonical atom renaming #218. Direct A3 instance
+V2XN218,negative_refusal,not_entailed,medium,"[""P218 -> (Q218 -> R218)"",""P218""]",R218,Expanded from V2N07 with canonical atom renaming #218. Nested implication missing inner premise
+V2XE219,mixed_proof,entailed,hard,"[""P219"",""P219 -> Q219"",""Q219 -> R219"",""R219 -> S219""]",S219,Expanded from V2E04 with canonical atom renaming #219. Three-step modus ponens chain
+V2XN219,negative_refusal,not_entailed,hard,"[""P219 -> (Q219 -> R219)"",""P219 -> Q219""]",R219,Expanded from V2N09 with canonical atom renaming #219. Bridge implication lacks the triggering antecedent
+V2XE220,mixed_proof,entailed,easy,"[""P220"",""P220 -> Q220""]",Q220,Expanded from V2E02 with canonical atom renaming #220. Single modus ponens derivation
+V2XN220,negative_refusal,not_entailed,easy,"[""P220 -> Q220""]",Q220,Expanded from V2N02 with canonical atom renaming #220. Missing antecedent for modus ponens
+V2XE221,mixed_proof,entailed,medium,"[""P221""]",Q221 -> P221,Expanded from V2E09 with canonical atom renaming #221. Implication introduction via A1
+V2XN221,negative_refusal,not_entailed,medium,"[""P221 -> Q221"",""P221 -> R221""]",Q221,Expanded from V2N08 with canonical atom renaming #221. Parallel consequents without antecedent
+V2XE222,mixed_proof,entailed,hard,"[""!P222 -> !Q222"",""Q222""]",P222,Expanded from V2E08 with canonical atom renaming #222. A3 premise plus premise import
+V2XN222,negative_refusal,not_entailed,hard,"[""P222 -> (Q222 -> R222)"",""P222 -> Q222""]",R222,Expanded from V2N09 with canonical atom renaming #222. Bridge implication lacks the triggering antecedent
+V2XE223,direct_axiom_instance,entailed,easy,[],P223 -> ((Q223 -> R223) -> P223),Expanded from V2E05 with canonical atom renaming #223. Direct A1 instance
+V2XN223,negative_refusal,not_entailed,easy,"[""P223"",""Q223 -> R223""]",R223,Expanded from V2N04 with canonical atom renaming #223. Disconnected implication
+V2XE224,mixed_proof,entailed,medium,"[""P224 -> (Q224 -> R224)"",""P224"",""Q224""]",R224,Expanded from V2E10 with canonical atom renaming #224. Nested implication elimination
+V2XN224,negative_refusal,not_entailed,medium,"[""!P224 -> !Q224""]",P224,Expanded from V2N10 with canonical atom renaming #224. Converse of A3 is not available
+V2XE225,mixed_proof,entailed,hard,"[""P225 -> (Q225 -> R225)"",""P225 -> Q225"",""P225""]",R225,Expanded from V2E11 with canonical atom renaming #225. Derived bridge premise then final modus ponens
+V2XN225,negative_refusal,not_entailed,hard,"[""P225 -> (Q225 -> R225)"",""P225 -> Q225""]",R225,Expanded from V2N09 with canonical atom renaming #225. Bridge implication lacks the triggering antecedent
+V2XE226,assumption_import,entailed,easy,"[""P226 -> Q226""]",P226 -> Q226,Expanded from V2E01 with canonical atom renaming #226. Import a single assumption directly
+V2XN226,negative_refusal,not_entailed,easy,"[""P226""]",!P226,Expanded from V2N06 with canonical atom renaming #226. Negation not derivable from a single atom
+V2XE227,mixed_proof,entailed,medium,"[""P227"",""P227 -> Q227"",""Q227 -> R227""]",R227,Expanded from V2E03 with canonical atom renaming #227. Two-step modus ponens chain
+V2XN227,negative_refusal,not_entailed,medium,"[""P227 -> Q227"",""Q227""]",P227,Expanded from V2N03 with canonical atom renaming #227. Consequent does not imply antecedent
+V2XE228,theorem_synthesis,entailed,hard,[],P228 -> P228,Expanded from V2E12 with canonical atom renaming #228. Identity theorem without assumptions
+V2XN228,negative_refusal,not_entailed,hard,"[""P228 -> (Q228 -> R228)"",""P228 -> Q228""]",R228,Expanded from V2N09 with canonical atom renaming #228. Bridge implication lacks the triggering antecedent
+V2XE229,mixed_proof,entailed,easy,"[""P229"",""P229 -> Q229""]",Q229,Expanded from V2E02 with canonical atom renaming #229. Single modus ponens derivation
+V2XN229,negative_refusal,not_entailed,easy,[],P229,Expanded from V2N11 with canonical atom renaming #229. No assumptions for atomic goal
+V2XE230,direct_axiom_instance,entailed,medium,[],(P230 -> (Q230 -> R230)) -> ((P230 -> Q230) -> (P230 -> R230)),Expanded from V2E06 with canonical atom renaming #230. Direct A2 instance
+V2XN230,negative_refusal,not_entailed,medium,"[""P230 -> Q230"",""R230 -> S230"",""P230""]",S230,Expanded from V2N05 with canonical atom renaming #230. Two chains with a missing bridge
+V2XE231,mixed_proof,entailed,hard,"[""P231"",""P231 -> Q231"",""Q231 -> R231"",""R231 -> S231""]",S231,Expanded from V2E04 with canonical atom renaming #231. Three-step modus ponens chain
+V2XN231,negative_refusal,not_entailed,hard,"[""P231 -> (Q231 -> R231)"",""P231 -> Q231""]",R231,Expanded from V2N09 with canonical atom renaming #231. Bridge implication lacks the triggering antecedent
+V2XE232,direct_axiom_instance,entailed,easy,[],P232 -> ((Q232 -> R232) -> P232),Expanded from V2E05 with canonical atom renaming #232. Direct A1 instance
+V2XN232,negative_refusal,not_entailed,easy,"[""P232 -> Q232"",""Q232 -> R232""]",S232,Expanded from V2N12 with canonical atom renaming #232. Conclusion outside the implication chain
+V2XE233,direct_axiom_instance,entailed,medium,[],(!P233 -> !Q233) -> (Q233 -> P233),Expanded from V2E07 with canonical atom renaming #233. Direct A3 instance
+V2XN233,negative_refusal,not_entailed,medium,"[""P233 -> (Q233 -> R233)"",""P233""]",R233,Expanded from V2N07 with canonical atom renaming #233. Nested implication missing inner premise
+V2XE234,mixed_proof,entailed,hard,"[""!P234 -> !Q234"",""Q234""]",P234,Expanded from V2E08 with canonical atom renaming #234. A3 premise plus premise import
+V2XN234,negative_refusal,not_entailed,hard,"[""P234 -> (Q234 -> R234)"",""P234 -> Q234""]",R234,Expanded from V2N09 with canonical atom renaming #234. Bridge implication lacks the triggering antecedent
+V2XE235,assumption_import,entailed,easy,"[""P235 -> Q235""]",P235 -> Q235,Expanded from V2E01 with canonical atom renaming #235. Import a single assumption directly
+V2XN235,negative_refusal,not_entailed,easy,"[""P235""]",Q235,Expanded from V2N01 with canonical atom renaming #235. Irrelevant atomic goal
+V2XE236,mixed_proof,entailed,medium,"[""P236""]",Q236 -> P236,Expanded from V2E09 with canonical atom renaming #236. Implication introduction via A1
+V2XN236,negative_refusal,not_entailed,medium,"[""P236 -> Q236"",""P236 -> R236""]",Q236,Expanded from V2N08 with canonical atom renaming #236. Parallel consequents without antecedent
+V2XE237,mixed_proof,entailed,hard,"[""P237 -> (Q237 -> R237)"",""P237 -> Q237"",""P237""]",R237,Expanded from V2E11 with canonical atom renaming #237. Derived bridge premise then final modus ponens
+V2XN237,negative_refusal,not_entailed,hard,"[""P237 -> (Q237 -> R237)"",""P237 -> Q237""]",R237,Expanded from V2N09 with canonical atom renaming #237. Bridge implication lacks the triggering antecedent
+V2XE238,mixed_proof,entailed,easy,"[""P238"",""P238 -> Q238""]",Q238,Expanded from V2E02 with canonical atom renaming #238. Single modus ponens derivation
+V2XN238,negative_refusal,not_entailed,easy,"[""P238 -> Q238""]",Q238,Expanded from V2N02 with canonical atom renaming #238. Missing antecedent for modus ponens
+V2XE239,mixed_proof,entailed,medium,"[""P239 -> (Q239 -> R239)"",""P239"",""Q239""]",R239,Expanded from V2E10 with canonical atom renaming #239. Nested implication elimination
+V2XN239,negative_refusal,not_entailed,medium,"[""!P239 -> !Q239""]",P239,Expanded from V2N10 with canonical atom renaming #239. Converse of A3 is not available
+V2XE240,theorem_synthesis,entailed,hard,[],P240 -> P240,Expanded from V2E12 with canonical atom renaming #240. Identity theorem without assumptions
+V2XN240,negative_refusal,not_entailed,hard,"[""P240 -> (Q240 -> R240)"",""P240 -> Q240""]",R240,Expanded from V2N09 with canonical atom renaming #240. Bridge implication lacks the triggering antecedent
+V2XE241,direct_axiom_instance,entailed,easy,[],P241 -> ((Q241 -> R241) -> P241),Expanded from V2E05 with canonical atom renaming #241. Direct A1 instance
+V2XN241,negative_refusal,not_entailed,easy,"[""P241"",""Q241 -> R241""]",R241,Expanded from V2N04 with canonical atom renaming #241. Disconnected implication
+V2XE242,mixed_proof,entailed,medium,"[""P242"",""P242 -> Q242"",""Q242 -> R242""]",R242,Expanded from V2E03 with canonical atom renaming #242. Two-step modus ponens chain
+V2XN242,negative_refusal,not_entailed,medium,"[""P242 -> Q242"",""Q242""]",P242,Expanded from V2N03 with canonical atom renaming #242. Consequent does not imply antecedent
+V2XE243,mixed_proof,entailed,hard,"[""P243"",""P243 -> Q243"",""Q243 -> R243"",""R243 -> S243""]",S243,Expanded from V2E04 with canonical atom renaming #243. Three-step modus ponens chain
+V2XN243,negative_refusal,not_entailed,hard,"[""P243 -> (Q243 -> R243)"",""P243 -> Q243""]",R243,Expanded from V2N09 with canonical atom renaming #243. Bridge implication lacks the triggering antecedent
+V2XE244,assumption_import,entailed,easy,"[""P244 -> Q244""]",P244 -> Q244,Expanded from V2E01 with canonical atom renaming #244. Import a single assumption directly
+V2XN244,negative_refusal,not_entailed,easy,"[""P244""]",!P244,Expanded from V2N06 with canonical atom renaming #244. Negation not derivable from a single atom
+V2XE245,direct_axiom_instance,entailed,medium,[],(P245 -> (Q245 -> R245)) -> ((P245 -> Q245) -> (P245 -> R245)),Expanded from V2E06 with canonical atom renaming #245. Direct A2 instance
+V2XN245,negative_refusal,not_entailed,medium,"[""P245 -> Q245"",""R245 -> S245"",""P245""]",S245,Expanded from V2N05 with canonical atom renaming #245. Two chains with a missing bridge
+V2XE246,mixed_proof,entailed,hard,"[""!P246 -> !Q246"",""Q246""]",P246,Expanded from V2E08 with canonical atom renaming #246. A3 premise plus premise import
+V2XN246,negative_refusal,not_entailed,hard,"[""P246 -> (Q246 -> R246)"",""P246 -> Q246""]",R246,Expanded from V2N09 with canonical atom renaming #246. Bridge implication lacks the triggering antecedent
+V2XE247,mixed_proof,entailed,easy,"[""P247"",""P247 -> Q247""]",Q247,Expanded from V2E02 with canonical atom renaming #247. Single modus ponens derivation
+V2XN247,negative_refusal,not_entailed,easy,[],P247,Expanded from V2N11 with canonical atom renaming #247. No assumptions for atomic goal
+V2XE248,direct_axiom_instance,entailed,medium,[],(!P248 -> !Q248) -> (Q248 -> P248),Expanded from V2E07 with canonical atom renaming #248. Direct A3 instance
+V2XN248,negative_refusal,not_entailed,medium,"[""P248 -> (Q248 -> R248)"",""P248""]",R248,Expanded from V2N07 with canonical atom renaming #248. Nested implication missing inner premise
+V2XE249,mixed_proof,entailed,hard,"[""P249 -> (Q249 -> R249)"",""P249 -> Q249"",""P249""]",R249,Expanded from V2E11 with canonical atom renaming #249. Derived bridge premise then final modus ponens
+V2XN249,negative_refusal,not_entailed,hard,"[""P249 -> (Q249 -> R249)"",""P249 -> Q249""]",R249,Expanded from V2N09 with canonical atom renaming #249. Bridge implication lacks the triggering antecedent
+V2XE250,direct_axiom_instance,entailed,easy,[],P250 -> ((Q250 -> R250) -> P250),Expanded from V2E05 with canonical atom renaming #250. Direct A1 instance
+V2XN250,negative_refusal,not_entailed,easy,"[""P250 -> Q250"",""Q250 -> R250""]",S250,Expanded from V2N12 with canonical atom renaming #250. Conclusion outside the implication chain

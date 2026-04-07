@@ -1,0 +1,33 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG11-FG",
+  "goal": "H -> J",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "H -> (I -> J)",
+    "H -> I"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1]
+    },
+    {
+      "kind": "assumption",
+      "ref": 1
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 3]
+    }
+  ]
+}

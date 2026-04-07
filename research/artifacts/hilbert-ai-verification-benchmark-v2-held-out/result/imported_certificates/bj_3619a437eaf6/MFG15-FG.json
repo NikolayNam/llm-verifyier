@@ -1,0 +1,85 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260403T174615+0300_compositional-mixed-family-gold-first-gpt-oss-120b-cloud-rerun-gpt-oss-120b-cloud-r01",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-gold-first-gpt-oss-120b-cloud-r03-rerun-v1",
+  "experiment_id": "compositional-mixed-family-gold-first-gpt-oss-120b-cloud-r03-rerun-v1-temp0-seed42-topp1-r01-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "MFG15-FG",
+  "theorem_id": "MFG15-FG",
+  "chain_id": "MFG15",
+  "stage_id": "fg",
+  "category": "compositional_mixed_family_gold_first",
+  "case_family": "mixed_proof_x_direct_axiom_instance_gold_first",
+  "chain_depth": 1,
+  "atom_renaming_id": "r13",
+  "goal": "G -\u003e I",
+  "assumptions": [
+    "J -\u003e K"
+  ],
+  "imported_lemmas": [
+    "G -\u003e (H -\u003e I)",
+    "G -\u003e H"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260403T174615+0300_compositional-mixed-family-gold-first-gpt-oss-120b-cloud-rerun-gpt-oss-120b-cloud-r01/MFG15-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "MFG15-FG",
+    "goal": "G-\u003eI",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "J-\u003eK",
+      "G-\u003e(H-\u003eI)",
+      "G-\u003eH"
+    ],
+    "steps": [
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(G-\u003e(H-\u003eI))-\u003e((G-\u003eH)-\u003e(G-\u003eI))"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "G-\u003e(H-\u003eI)"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 3,
+        "formula": "G-\u003eH"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          2,
+          1
+        ],
+        "formula": "(G-\u003eH)-\u003e(G-\u003eI)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          3,
+          4
+        ],
+        "formula": "G-\u003eI"
+      }
+    ]
+  }
+}

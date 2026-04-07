@@ -1,0 +1,27 @@
+{
+  "base_url": "./http:/localhost:11434",
+  "benchmark_key": "phase1",
+  "case_count": 100,
+  "command": "generate benchmark cases",
+  "experiment_name": "formal-mode",
+  "family_name": "phase1-expanded-100-main",
+  "input_file": "cases/phase1-expanded-100.csv",
+  "interrupt_policy": "drop_if_no_results",
+  "local_config": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/config/local.phase1-expanded-100.yaml",
+  "models": [
+    "gpt-oss:20b",
+    "gpt-oss:120b-cloud",
+    "glm-5:cloud",
+    "deepseek-v3.1:671b-cloud"
+  ],
+  "output_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases/phase1-expanded-100.csv",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "provider": "compatible",
+  "repeats": 10,
+  "request_timeout_abort_threshold": 10,
+  "run_id": "20260404T192741+0300",
+  "schema_version": "researchctl.generate-benchmark/v1",
+  "surface": "direct",
+  "transport_name": "local-compatible"
+}

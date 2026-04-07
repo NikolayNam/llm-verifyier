@@ -1,0 +1,33 @@
+```json
+{
+  "certificate_version": "1.0.0",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "goal": "A -> C",
+  "assumptions": [
+    "A -> B",
+    "B -> C"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "A -> B",
+      "assumption_ref": 0
+    },
+    {
+      "kind": "assumption",
+      "formula": "B -> C",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [0, 1],
+      "formula": "A -> C"
+    }
+  ]
+}
+```

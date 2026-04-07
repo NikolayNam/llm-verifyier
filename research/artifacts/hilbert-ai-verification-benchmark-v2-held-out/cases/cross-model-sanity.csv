@@ -1,0 +1,9 @@
+case_id,category,label,difficulty,assumptions_json,goal,comment
+V2E01,assumption_import,entailed,easy,"[""R -> S""]","R -> S",Low-cost assumption import sanity check
+V2E02,mixed_proof,entailed,easy,"[""R"",""R -> S""]",S,Single modus ponens sanity case
+V2E05,direct_axiom_instance,entailed,easy,[],"R -> ((S -> T) -> R)",Simple direct axiom instance for broad model screening
+V2E12,theorem_synthesis,entailed,hard,[],"R -> R",Minimal theorem synthesis sanity target
+V2N01,negative_refusal,not_entailed,easy,"[""R""]",S,Reject unrelated target from a single premise
+V2N02,negative_refusal,not_entailed,easy,"[""R -> S""]",S,Reject consequent without antecedent
+V2N07,negative_refusal,not_entailed,medium,"[""R -> (S -> T)"",""R""]",T,Reject incomplete implication chain
+V2N11,negative_refusal,not_entailed,easy,[],R,Reject unsupported theorem without premises

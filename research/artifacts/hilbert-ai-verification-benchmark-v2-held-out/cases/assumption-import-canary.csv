@@ -1,0 +1,7 @@
+case_id,category,label,difficulty,assumptions_json,goal,comment
+AIC01,assumption_import,entailed,easy,"[""R -> S""]","R -> S",Single-step assumption import over a base implication
+AIC02,assumption_import,entailed,easy,"[""R -> (S -> T)""]","R -> (S -> T)",Nested consequent should still be copied verbatim
+AIC03,assumption_import,entailed,medium,"[""(R -> S) -> (T -> U)""]","(R -> S) -> (T -> U)",Compound implication should survive unchanged
+AIC04,assumption_import,entailed,medium,"[""!R -> (S -> T)""]","!R -> (S -> T)",Assumption import with negated antecedent
+AIC05,assumption_import,entailed,medium,"[""(!S -> !R) -> (R -> S)""]","(!S -> !R) -> (R -> S)",Classical implication import without extra proof work
+AIC06,assumption_import,entailed,hard,"[""(R -> (S -> T)) -> ((R -> S) -> (R -> T))""]","(R -> (S -> T)) -> ((R -> S) -> (R -> T))",A2-shaped assumption import should not be damaged by lowering

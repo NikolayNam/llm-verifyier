@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"V2XE016_proof","goal":"P016 -> ((Q016 -> R016) -> P016)","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"steps":[{"kind":"axiom","axiom":"A1","formula":"P016 -> ((Q016 -> R016) -> P016)"}]}

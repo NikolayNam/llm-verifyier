@@ -1,0 +1,115 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260404T002701+0300_mixed-family-gold-first-hard-micro-main-deepseek-v3-1-671b-cloud-r02",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-gold-first-hard-micro-v1",
+  "experiment_id": "compositional-mixed-family-gold-first-hard-micro-v1-temp0-seed42-topp1-r02-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "GMFH17-FG",
+  "theorem_id": "GMFH17-FG",
+  "chain_id": "GMFH17",
+  "stage_id": "fg",
+  "category": "compositional_mixed_family_gold_first_hard",
+  "case_family": "direct_axiom_instance_to_negative_refusal_gold_first_hard",
+  "chain_depth": 1,
+  "atom_renaming_id": "gfmfh-d-02",
+  "goal": "T",
+  "assumptions": [
+    "P",
+    "P -\u003e Q",
+    "Q -\u003e R"
+  ],
+  "imported_lemmas": [
+    "R -\u003e S",
+    "S -\u003e T"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260404T002701+0300_mixed-family-gold-first-hard-micro-main-deepseek-v3-1-671b-cloud-r02/GMFH17-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "GMFH17-FG",
+    "goal": "T",
+    "assumptions": [
+      "P",
+      "P-\u003eQ",
+      "Q-\u003eR",
+      "R-\u003eS",
+      "S-\u003eT"
+    ],
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "P"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "P-\u003eQ"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          2
+        ],
+        "formula": "Q"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 3,
+        "formula": "Q-\u003eR"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          3,
+          4
+        ],
+        "formula": "R"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 4,
+        "formula": "R-\u003eS"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          5,
+          6
+        ],
+        "formula": "S"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 5,
+        "formula": "S-\u003eT"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          7,
+          8
+        ],
+        "formula": "T"
+      }
+    ]
+  }
+}

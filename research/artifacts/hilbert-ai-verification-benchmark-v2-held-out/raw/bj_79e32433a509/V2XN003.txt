@@ -1,0 +1,87 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN003",
+  "goal": "R003",
+  "assumptions": [
+    "P003 -> (Q003 -> R003)",
+    "P003 -> Q003"
+  ],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P003 -> (Q003 -> R003)",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P003 -> Q003",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "P003 -> ((P003 -> (Q003 -> R003)) -> (P003 -> (Q003 -> R003)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(P003 -> (Q003 -> R003)) -> (P003 -> (Q003 -> R003))",
+      "premises": [3, 1]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "P003 -> ((P003 -> Q003) -> (P003 -> Q003))"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(P003 -> Q003) -> (P003 -> Q003)",
+      "premises": [5, 2]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "P003 -> ((Q003 -> R003) -> (P003 -> (Q003 -> R003)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(Q003 -> R003) -> (P003 -> (Q003 -> R003))",
+      "premises": [7, 1]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(P003 -> (Q003 -> R003)) -> ((P003 -> Q003) -> (P003 -> R003))"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(P003 -> Q003) -> (P003 -> R003)",
+      "premises": [9, 1]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P003 -> R003",
+      "premises": [10, 2]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "R003 -> (P003 -> R003)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P003 -> R003",
+      "premises": [12, 11]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "R003",
+      "premises": [13, 11]
+    }
+  ]
+}

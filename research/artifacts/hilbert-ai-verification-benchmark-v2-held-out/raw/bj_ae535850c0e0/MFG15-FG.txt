@@ -1,0 +1,24 @@
+```json
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG15-FG_1",
+  "goal": "G -> I",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "J -> K",
+    "G -> (H -> I)",
+    "G -> H"
+  ],
+  "steps": [
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 3]
+    }
+  ]
+}
+```

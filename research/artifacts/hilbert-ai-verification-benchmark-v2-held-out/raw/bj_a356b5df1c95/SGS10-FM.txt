@@ -1,0 +1,32 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "SGS10-FM",
+  "goal": "P",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "O -> P",
+    "O"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "O -> P"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "O"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "P"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260404T095051+0300_mixed-family-semi-gold-stable-main-glm-5-cloud-r05",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-semi-gold-stable-v1",
+  "experiment_id": "compositional-mixed-family-semi-gold-stable-v1-temp0-seed42-topp1-r05-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "SGS07-M1",
+  "theorem_id": "SGS07-M1",
+  "chain_id": "SGS07",
+  "stage_id": "m1",
+  "category": "compositional_mixed_family_semi_gold_stable",
+  "case_family": "assumption_import_to_theorem_synthesis_semi_gold_stable",
+  "chain_depth": 2,
+  "atom_renaming_id": "sg-stable-07",
+  "goal": "W",
+  "assumptions": [
+    "U",
+    "U -\u003e V",
+    "V -\u003e W"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": true,
+  "trusted_reuse_reason": "verifier-confirmed reusable local lemma artifact",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260404T095051+0300_mixed-family-semi-gold-stable-main-glm-5-cloud-r05/SGS07-M1.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "SGS07-M1",
+    "goal": "W",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "U",
+      "U -\u003e V",
+      "V -\u003e W"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "U"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "U -\u003e V"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          2
+        ],
+        "formula": "V"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 3,
+        "formula": "V -\u003e W"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          3,
+          4
+        ],
+        "formula": "W"
+      }
+    ]
+  }
+}

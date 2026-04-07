@@ -1,0 +1,29 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG12-FG",
+  "goal": "R -> U",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "R -> S",
+    "S -> (T -> U)",
+    "R -> T"
+  ],
+  "steps": [
+    {"kind":"assumption","formula":"R -> S","assumption_ref":1},
+    {"kind":"assumption","formula":"S -> (T -> U)","assumption_ref":2},
+    {"kind":"assumption","formula":"R -> T","assumption_ref":3},
+    {"kind":"axiom","axiom":"A1","formula":"(S -> (T -> U)) -> (R -> (S -> (T -> U)))"},
+    {"kind":"modus_ponens","premises":[2,4],"formula":"R -> (S -> (T -> U))"},
+    {"kind":"axiom","axiom":"A2","formula":"(R -> (S -> (T -> U))) -> ((R -> S) -> (R -> (T -> U)))"},
+    {"kind":"modus_ponens","premises":[5,6],"formula":"(R -> S) -> (R -> (T -> U))"},
+    {"kind":"modus_ponens","premises":[1,7],"formula":"R -> (T -> U)"},
+    {"kind":"axiom","axiom":"A2","formula":"(R -> (T -> U)) -> ((R -> T) -> (R -> U))"},
+    {"kind":"modus_ponens","premises":[8,9],"formula":"(R -> T) -> (R -> U)"},
+    {"kind":"modus_ponens","premises":[3,10],"formula":"R -> U"}
+  ]
+}

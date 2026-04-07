@@ -1,0 +1,68 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260404T091939+0300_mixed-family-semi-gold-stable-main-deepseek-v3-1-671b-cloud-r01",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-semi-gold-stable-v1",
+  "experiment_id": "compositional-mixed-family-semi-gold-stable-v1-temp0-seed42-topp1-r01-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "SGS03-FM",
+  "theorem_id": "SGS03-FM",
+  "chain_id": "SGS03",
+  "stage_id": "fm",
+  "category": "compositional_mixed_family_semi_gold_stable",
+  "case_family": "mixed_proof_to_theorem_synthesis_semi_gold_stable",
+  "chain_depth": 2,
+  "atom_renaming_id": "sg-stable-03",
+  "goal": "O",
+  "imported_lemmas": [
+    "N -\u003e O",
+    "N"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260404T091939+0300_mixed-family-semi-gold-stable-main-deepseek-v3-1-671b-cloud-r01/SGS03-FM.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "SGS03-FM",
+    "goal": "O",
+    "assumptions": [
+      "N -\u003e O",
+      "N"
+    ],
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "N -\u003e O",
+        "assumption_ref": 1
+      },
+      {
+        "kind": "assumption",
+        "formula": "N",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "O",
+        "premises": [
+          2,
+          1
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "bridge-import-final-research-phase1-20260404_bridge-import-final-research-main-glm-5-cloud-r01",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "bridge-import-final-research-v1",
+  "experiment_id": "bridge-import-final-research-v1-temp0-seed42-topp1-r01-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "BIF04-FG",
+  "theorem_id": "BIF04-FG",
+  "chain_id": "BIF04",
+  "stage_id": "fg",
+  "category": "bridge_import_final_research",
+  "case_family": "layered_negated_bridge",
+  "chain_depth": 1,
+  "atom_renaming_id": "neg1",
+  "goal": "!X -\u003e Z",
+  "imported_lemmas": [
+    "!X -\u003e Y",
+    "Y -\u003e Z"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/bridge-import-final-research-phase1-20260404_bridge-import-final-research-main-glm-5-cloud-r01/BIF04-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "BIF04-FG",
+    "goal": "!X -\u003e Z",
+    "assumptions": [
+      "!X -\u003e Y",
+      "Y -\u003e Z"
+    ],
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "!X -\u003e Y",
+        "assumption_ref": 1
+      },
+      {
+        "kind": "assumption",
+        "formula": "Y -\u003e Z",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "axiom",
+        "formula": "(Y -\u003e Z) -\u003e (!X -\u003e (Y -\u003e Z))",
+        "axiom": "A1"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "!X -\u003e (Y -\u003e Z)",
+        "premises": [
+          2,
+          3
+        ]
+      },
+      {
+        "kind": "axiom",
+        "formula": "(!X -\u003e (Y -\u003e Z)) -\u003e ((!X -\u003e Y) -\u003e (!X -\u003e Z))",
+        "axiom": "A2"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(!X -\u003e Y) -\u003e (!X -\u003e Z)",
+        "premises": [
+          4,
+          5
+        ]
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "!X -\u003e Z",
+        "premises": [
+          1,
+          6
+        ]
+      }
+    ]
+  }
+}

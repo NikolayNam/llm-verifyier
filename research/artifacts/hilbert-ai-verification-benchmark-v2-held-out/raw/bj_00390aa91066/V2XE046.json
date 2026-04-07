@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"phase1_expanded_100_V2XE046","goal":"P046 -> Q046","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"assumptions":["P046 -> Q046"],"steps":[{"kind":"assumption","formula":"P046 -> Q046","assumption_ref":1}]}

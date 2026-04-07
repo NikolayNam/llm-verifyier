@@ -1,0 +1,32 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "pilot_shared_20260327_NDI02",
+  "goal": "Q",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P",
+    "P -> Q"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P -> Q",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q",
+      "premises": [1, 2]
+    }
+  ]
+}

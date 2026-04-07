@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"V2XE028_proof","goal":"P028 -> Q028","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"assumptions":[{"formula":"P028 -> Q028"}],"steps":[{"kind":"assumption","assumption_ref":1}]}

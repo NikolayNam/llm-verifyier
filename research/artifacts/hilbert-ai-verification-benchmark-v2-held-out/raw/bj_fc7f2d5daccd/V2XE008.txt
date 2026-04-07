@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"proof-1","goal":"(!P008 -> !Q008) -> (Q008 -> P008)","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"steps":[{"kind":"axiom","axiom":"A3"}]}

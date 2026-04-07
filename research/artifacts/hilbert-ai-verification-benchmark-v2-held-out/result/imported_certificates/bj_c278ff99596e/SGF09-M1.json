@@ -1,0 +1,85 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260404T031844+0300_mixed-family-semi-gold-frontier-main-glm-5-cloud-r02",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-semi-gold-frontier-v1",
+  "experiment_id": "compositional-mixed-family-semi-gold-frontier-v1-temp0-seed42-topp1-r02-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "SGF09-M1",
+  "theorem_id": "SGF09-M1",
+  "chain_id": "SGF09",
+  "stage_id": "m1",
+  "category": "compositional_mixed_family_semi_gold_frontier",
+  "case_family": "theorem_synthesis_to_assumption_import_semi_gold_frontier",
+  "chain_depth": 2,
+  "atom_renaming_id": "sg-frontier-09",
+  "goal": "Z -\u003e W",
+  "assumptions": [
+    "X",
+    "X -\u003e Y"
+  ],
+  "imported_lemmas": [
+    "Y -\u003e (Z -\u003e W)"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": true,
+  "trusted_reuse_reason": "verifier-confirmed reusable local lemma artifact",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260404T031844+0300_mixed-family-semi-gold-frontier-main-glm-5-cloud-r02/SGF09-M1.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "SGF09-M1",
+    "goal": "Z -\u003e W",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "X",
+      "X -\u003e Y",
+      "Y -\u003e (Z -\u003e W)"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "X",
+        "assumption_ref": 1
+      },
+      {
+        "kind": "assumption",
+        "formula": "X -\u003e Y",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "assumption",
+        "formula": "Y -\u003e (Z -\u003e W)",
+        "assumption_ref": 3
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "Y",
+        "premises": [
+          1,
+          2
+        ]
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "Z -\u003e W",
+        "premises": [
+          4,
+          3
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "SGS08-M1-proof",
+  "goal": "C",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    { "formula": "B" },
+    { "formula": "B -> C" }
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "B"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "B -> C"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "C"
+    }
+  ]
+}

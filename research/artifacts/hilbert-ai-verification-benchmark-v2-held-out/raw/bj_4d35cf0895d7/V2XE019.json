@@ -1,0 +1,19 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XE019",
+  "goal": "P019 -> Q019",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": ["P019 -> Q019"],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P019 -> Q019"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+LLM_REQUEST_ERROR: llm compatible: status=500 body={"error":{"message":"model requires more system memory (6.0 GiB) than is available (3.9 GiB)","type":"api_error","param":null,"code":null}}

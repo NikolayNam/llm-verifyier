@@ -1,0 +1,50 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG10-FG",
+  "goal": "C->E",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "C->D",
+    "D->E"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(D->E)->(C->(D->E))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "C->(D->E)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(C->(D->E))->((C->D)->(C->E))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 4],
+      "formula": "((C->D)->(C->E))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [5, 6],
+      "formula": "C->E"
+    }
+  ]
+}

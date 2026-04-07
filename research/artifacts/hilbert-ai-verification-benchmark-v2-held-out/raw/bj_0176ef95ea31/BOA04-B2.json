@@ -1,0 +1,31 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "bridge_only_authoring_phase1_BOA04-B2",
+  "goal": "Y -> Z",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "Z"
+  ],
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "Z -> (Y -> Z)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "Z"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "Y -> Z"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG14-FG",
+  "goal": "!L -> N",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "Q -> R",
+    "!L -> M",
+    "M -> N"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "!L -> M"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "M -> N"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(M -> N) -> (!L -> (M -> N))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 3],
+      "formula": "!L -> (M -> N)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!L -> (M -> N)) -> ((!L -> M) -> (!L -> N))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 5],
+      "formula": "(!L -> M) -> (!L -> N)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 6],
+      "formula": "!L -> N"
+    }
+  ]
+}

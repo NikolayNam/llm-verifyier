@@ -1,0 +1,22 @@
+{
+    "certificate_version": "1.0.0",
+    "proof_id": "MFG10-FG-step-by-step",
+    "goal": "C -> E",
+    "context": {
+        "domain": "hilbert-benchmark-v1",
+        "rule_pack": "classical-hilbert-v1",
+        "syntax": "hilbert-prop-ascii-v1",
+        "generator": "llm-benchmark-v1"
+    },
+    "assumptions": ["C -> D", "D -> E"],
+    "steps": [
+        {
+            "kind": "assumption",
+            "assumption_ref": 0
+        },
+        {
+            "kind": "modus_ponens",
+            "premises": [0, 1]
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+  "proof_version": "1.0.0",
+  "proof_id": "NDI06",
+  "goal": "(P -> (Q -> R)) -> ((P -> Q) -> (P -> R))",
+  "context": {
+    "domain": "hilbert-benchmark-nd-v1",
+    "logic_fragment": "implicational-prop-v1",
+    "front_end": "natural-deduction-v1",
+    "lowering_target": "certificate-format-v1",
+    "generator": "llm-benchmark-nd-v1"
+  },
+  "assumptions": [],
+  "steps": [
+    {
+      "id": 1,
+      "kind": "assume",
+      "scope": 1,
+      "formula": "(P -> (Q -> R))"
+    },
+    {
+      "id": 2,
+      "kind": "assume",
+      "scope": 2,
+      "formula": "(P -> Q)"
+    },
+    {
+      "id": 3,
+      "kind": "assume",
+      "scope": 3,
+      "formula": "P"
+    },
+    {
+      "id": 4,
+      "kind": "imp_elim",
+      "from": [3, 2],
+      "scope": 3,
+      "formula": "Q"
+    },
+    {
+      "id": 5,
+      "kind": "imp_elim",
+      "from": [3, 1],
+      "scope": 3,
+      "formula": "(Q -> R)"
+    },
+    {
+      "id": 6,
+      "kind": "imp_elim",
+      "from": [4, 5],
+      "scope": 3,
+      "formula": "R"
+    },
+    {
+      "id": 7,
+      "kind": "imp_intro",
+      "from": [3, 6],
+      "discharge_scope": 3,
+      "formula": "(P -> R)"
+    },
+    {
+      "id": 8,
+      "kind": "imp_intro",
+      "from": [2, 7],
+      "discharge_scope": 2,
+      "formula": "((P -> Q) -> (P -> R))"
+    },
+    {
+      "id": 9,
+      "kind": "imp_intro",
+      "from": [1, 8],
+      "discharge_scope": 1,
+      "formula": "((P -> (Q -> R)) -> ((P -> Q) -> (P -> R)))"
+    }
+  ]
+}

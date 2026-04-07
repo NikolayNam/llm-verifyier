@@ -1,0 +1,122 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN038",
+  "goal": "R038",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P038 -> (Q038 -> R038)",
+    "P038"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P038 -> (Q038 -> R038)",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P038",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q038 -> R038",
+      "premises": [2, 1]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Q038 -> R038) -> (!R038 -> !Q038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "!R038 -> !Q038",
+      "premises": [3, 4]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!R038 -> !Q038) -> (Q038 -> R038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q038 -> R038",
+      "premises": [5, 6]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "P038 -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q038 -> P038",
+      "premises": [2, 8]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(Q038 -> (P038 -> R038)) -> ((Q038 -> P038) -> (Q038 -> R038))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(P038 -> (Q038 -> R038)) -> (Q038 -> (P038 -> R038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q038 -> (P038 -> R038)",
+      "premises": [1, 11]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(Q038 -> P038) -> (Q038 -> R038)",
+      "premises": [12, 10]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q038 -> R038",
+      "premises": [9, 13]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(Q038 -> R038) -> ((Q038 -> !R038) -> !Q038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(Q038 -> !R038) -> !Q038",
+      "premises": [14, 15]
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "!R038 -> (Q038 -> !R038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!R038 -> !R038) -> R038"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "R038 -> (!R038 -> R038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!R038 -> R038) -> R038"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "R038",
+      "premises": [20, 21]
+    }
+  ]
+}

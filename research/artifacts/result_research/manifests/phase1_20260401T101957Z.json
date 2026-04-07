@@ -1,0 +1,43 @@
+{
+  "command": "phase1 run",
+  "config_fingerprint": "33040b770e931fc01494610a8167929ac9df7c0517abce6123681f01172e783b",
+  "created_at_utc": "2026-04-01T10:19:57Z",
+  "input_file": "cases.csv",
+  "input_kind": "cases",
+  "input_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases.csv",
+  "jobs": [
+    {
+      "artifact_key": "bj_67f60ab9cd1c",
+      "base_url": "./http:/localhost:11434",
+      "command": "phase1 run",
+      "family": "local-compatible",
+      "input_file": "cases.csv",
+      "input_kind": "cases",
+      "input_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases.csv",
+      "key": "local-compatible-gpt-oss-20b-r01",
+      "model": "gpt-oss:20b",
+      "phase": "phase1",
+      "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+      "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+      "provider": "compatible",
+      "raw_dir": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/raw/bj_67f60ab9cd1c",
+      "repeat": 1,
+      "results_path": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/result_bj_67f60ab9cd1c.csv",
+      "run_id": "20260401T101957Z_local-compatible-gpt-oss-20b-r01",
+      "selector": "cases.csv",
+      "spec_hash": "08e7d1060ac4c448fddf3f221c55184305e231a953ff1a6cc62aafa26fc3e410",
+      "summary_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/waves/phase1_20260401T101957Z.csv",
+      "timeout": "1m0s"
+    }
+  ],
+  "manifest_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase1_20260401T101957Z.json",
+  "model_catalog_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase1_20260401T101957Z_model_catalog.csv",
+  "phase": "phase1",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "repeat_count": 1,
+  "report_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/result_research_report/direct/phase1_20260401T101957Z.md",
+  "run_id": "20260401T101957Z",
+  "schema_version": "researchctl.manifest/v1",
+  "summary_path": "/mnt/c/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/waves/phase1_20260401T101957Z.csv"
+}

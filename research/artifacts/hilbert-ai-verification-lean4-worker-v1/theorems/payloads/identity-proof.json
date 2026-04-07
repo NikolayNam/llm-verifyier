@@ -1,0 +1,7 @@
+{
+  "imports": [
+    "Mathlib.Tactic"
+  ],
+  "helpers": [],
+  "proof": "intro h\nexact h"
+}

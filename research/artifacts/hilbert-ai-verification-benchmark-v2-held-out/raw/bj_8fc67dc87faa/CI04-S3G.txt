@@ -1,0 +1,52 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CI04-S3G",
+  "goal": "!X -> Z",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "!X -> Y",
+    "Y -> Z"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "!X -> Y",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "Y -> Z",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "formula": "(Y -> Z) -> (!X -> (Y -> Z))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "!X -> (Y -> Z)",
+      "premises": [2, 3]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(!X -> (Y -> Z)) -> ((!X -> Y) -> (!X -> Z))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(!X -> Y) -> (!X -> Z)",
+      "premises": [4, 5]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "!X -> Z",
+      "premises": [1, 6]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "GMF2A10-FG",
+  "goal": "O",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": ["N", "N -> O"],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "N"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "N -> O"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "O"
+    }
+  ]
+}

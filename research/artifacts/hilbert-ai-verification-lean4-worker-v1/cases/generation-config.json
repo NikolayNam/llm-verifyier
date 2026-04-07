@@ -1,0 +1,16 @@
+{
+  "mode": "enumerator",
+  "atoms": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "max_formula_depth": 1,
+  "max_assumptions": 2,
+  "limit": 32,
+  "filters": [
+    "non_duplicate",
+    "syntactic_minimal",
+    "interesting"
+  ]
+}

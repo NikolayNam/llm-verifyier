@@ -1,0 +1,118 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CBR02-BG",
+  "goal": "M -> P",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "M -> N",
+    "M -> O",
+    "N -> (O -> P)"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "M -> N",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "M -> O",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "assumption",
+      "formula": "N -> (O -> P)",
+      "assumption_ref": 3
+    },
+    {
+      "kind": "axiom",
+      "formula": "(N -> (O -> P)) -> ((N -> O) -> (N -> P))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(N -> O) -> (N -> P)",
+      "premises": [3, 4]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(M -> O) -> ((M -> N) -> (M -> O))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(M -> N) -> (M -> O)",
+      "premises": [2, 6]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "M -> O",
+      "premises": [1, 7]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(M -> O) -> (N -> (M -> O))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "N -> (M -> O)",
+      "premises": [8, 9]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(N -> (M -> O)) -> ((N -> M) -> (N -> O))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(N -> M) -> (N -> O)",
+      "premises": [10, 11]
+    },
+    {
+      "kind": "axiom",
+      "formula": "M -> (N -> M)",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "N -> O",
+      "premises": [13, 12]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "N -> P",
+      "premises": [14, 5]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(N -> P) -> (M -> (N -> P))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "M -> (N -> P)",
+      "premises": [15, 16]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(M -> (N -> P)) -> ((M -> N) -> (M -> P))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(M -> N) -> (M -> P)",
+      "premises": [17, 18]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "M -> P",
+      "premises": [1, 19]
+    }
+  ]
+}

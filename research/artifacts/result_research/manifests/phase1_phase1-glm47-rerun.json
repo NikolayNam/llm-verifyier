@@ -1,0 +1,63 @@
+{
+  "command": "phase1 run",
+  "config_fingerprint": "d667e4d92dad833f37d8f80cef5b366dc3e708790ba0cfe50aeb285f72d19c9c",
+  "created_at_utc": "2026-04-02T06:08:22Z",
+  "input_file": "cases.csv",
+  "input_kind": "cases",
+  "input_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases.csv",
+  "interrupt_policy": "drop_if_no_results",
+  "jobs": [
+    {
+      "api_key_env": "LLM_API_KEY",
+      "artifact_key": "bj_90127c56e4ee",
+      "base_url": "./http:/localhost:11434",
+      "command": "phase1 run",
+      "effective_sampling_by_surface": {
+        "seed": 42,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "effective_sampling_profile": "temp0_seed42_topp1",
+      "experiment_id": "formal-mode-temp0-seed42-topp1-r01-20260402",
+      "experiment_name": "formal-mode",
+      "family": "local-compatible",
+      "input_file": "cases.csv",
+      "input_kind": "cases",
+      "input_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases.csv",
+      "interrupt_policy": "drop_if_no_results",
+      "key": "local-compatible-glm-4-7-flash-latest-r01",
+      "model": "glm-4.7-flash:latest",
+      "phase": "phase1",
+      "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+      "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+      "provider": "compatible",
+      "raw_dir": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/raw/bj_90127c56e4ee",
+      "repeat": 1,
+      "request_timeout_abort_threshold": 5,
+      "requested_sampling_family": {
+        "seed": 42,
+        "temperature": 0,
+        "top_p": 1
+      },
+      "requested_sampling_profile": "temp0_seed42_topp1",
+      "results_path": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/result_bj_90127c56e4ee.csv",
+      "run_id": "phase1-glm47-rerun_local-compatible-glm-4-7-flash-latest-r01",
+      "sampling_surface": "compatible_openai_chat_completions",
+      "selector": "cases.csv",
+      "spec_hash": "093aa8d6a6da1248dc0aa7dd57f63113c4d871346370a087e34756cbeb0838e6",
+      "summary_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/waves/phase1_phase1-glm47-rerun.csv",
+      "timeout": "1m0s"
+    }
+  ],
+  "manifest_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase1_phase1-glm47-rerun.json",
+  "model_catalog_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase1_phase1-glm47-rerun_model_catalog.csv",
+  "phase": "phase1",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "repeat_count": 1,
+  "report_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/result_research_report/direct/phase1_phase1-glm47-rerun.md",
+  "request_timeout_abort_threshold": 5,
+  "run_id": "phase1-glm47-rerun",
+  "schema_version": "researchctl.manifest/v1",
+  "summary_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/waves/phase1_phase1-glm47-rerun.csv"
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": "researchctl.artifact-compaction/v1",
+  "created_at_utc": "2026-04-07T06:17:31Z",
+  "workspace_root": "C:/Users/nokclock/Documents/GitHub/llm-verifyier",
+  "apply": true,
+  "renamed_paths": [
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/gold-final-composition-only/gold-final-composition-only_gold-final-composition-only-explicit-import-refs-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/gold-final-composition-only/gold-final-composition-only-explicit-import-refs-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-hard-micro/compositional-mixed-family-gold-first-hard_20260404T002701+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-hard-micro/20260404T002701+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-frontier/compositional-mixed-family-semi-gold-frontier_20260404T031844+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-frontier/20260404T031844+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-frontier/compositional-mixed-family-semi-gold-frontier_20260404T034053+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-frontier/20260404T034053+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-frontier/compositional-mixed-family-semi-gold-frontier_20260404T074314+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-frontier/20260404T074314+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-phase2/compositional-mixed-family-gold-first-phase2_20260403T193255+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-phase2/20260403T193255+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-phase2/compositional-mixed-family-gold-first-phase2_20260403T204508+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-phase2/20260403T204508+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-stable/compositional-mixed-family-semi-gold-stable_20260404T030551+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-stable/20260404T030551+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-stable/compositional-mixed-family-semi-gold-stable_20260404T091939+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-stable/20260404T091939+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-stable/compositional-mixed-family-semi-gold-stable_20260404T095051+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-semi-gold-stable/20260404T095051+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-hard/compositional-mixed-family-gold-first-hard_20260404T021451+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-hard/20260404T021451+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-reruns/compositional-mixed-family-gold-first_20260403T174615+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first-reruns/20260403T174615+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-import-final-research/bridge-import-final-research_bridge-import-final-research-phase1-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-import-final-research/bridge-import-final-research-phase1-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/gold-final-composition-only/gold-final-composition-only_gold-final-composition-only-phase1-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/gold-final-composition-only/gold-final-composition-only-phase1-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first/compositional-mixed-family-gold-first_20260403T152413+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first/20260403T152413+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first/compositional-mixed-family-gold-first_20260403T160643+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first/20260403T160643+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first/compositional-mixed-family-gold-first_20260403T171817+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-mixed-family-gold-first/20260403T171817+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-depth-ladder/compositional-depth-ladder_depth-ladder-20260403--best-effort.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-depth-ladder/depth-ladder-20260403--best-effort.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-only-authoring/bridge-only-authoring_bridge-only-authoring-canonical-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-only-authoring/bridge-only-authoring-canonical-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-only-authoring/bridge-only-authoring_bridge-only-authoring-skeleton-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-only-authoring/bridge-only-authoring-skeleton-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-only-authoring/bridge-only-authoring_bridge-only-authoring-phase1-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/bridge-only-authoring/bridge-only-authoring-phase1-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-branching/compositional-branching_20260403T133842+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional-branching/20260403T133842+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional/compositional-assumption-import_20260403T082656+0300.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/compositional/20260403T082656+0300.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1_phase1-direct-axiom-mixed-proof-ladder-20260402.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1-direct-axiom-mixed-proof-ladder-20260402.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1_phase1-negative-refusal-sanity-2026040.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1-negative-refusal-sanity-2026040.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1_phase1-cross-model-sanity-20260402.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1-cross-model-sanity-20260402.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1_phase1-entailed-gap-audit-20260402.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1-entailed-gap-audit-20260402.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1_phase1-expanded-100-20260404-01.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1-expanded-100-20260404-01.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1_phase1-expanded-100-20260404.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase1-expanded-100-20260404.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase2-direct_phase2-2026040_direct.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/direct/phase2-2026040_direct.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/pair/phase2_pair_phase2-2026040.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/pair/phase2-2026040.md"
+    },
+    {
+      "source": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/nd/phase2-nd_phase2-2026040_nd.md",
+      "target": "C:/Users/nokclock/Documents/GitHub/llm-verifyier/research/result_research_report/nd/phase2-2026040_nd.md"
+    }
+  ]
+}

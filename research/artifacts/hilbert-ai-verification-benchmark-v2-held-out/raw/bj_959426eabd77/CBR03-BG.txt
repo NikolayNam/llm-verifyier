@@ -1,0 +1,74 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CBR03-BG",
+  "goal": "!X -> W",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P -> Q",
+    "!X -> Y",
+    "!X -> Z",
+    "Y -> (Z -> W)"
+  ],
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Y -> (Z -> W)) -> (!X -> (Y -> (Z -> W)))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 4,
+      "formula": "Y -> (Z -> W)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "!X -> (Y -> (Z -> W))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!X -> (Y -> (Z -> W))) -> ((!X -> Y) -> (!X -> (Z -> W)))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "!X -> Y"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 4],
+      "formula": "(!X -> Y) -> (!X -> (Z -> W))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [5, 6],
+      "formula": "!X -> (Z -> W)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!X -> (Z -> W)) -> ((!X -> Z) -> (!X -> W))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "!X -> Z"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 8],
+      "formula": "(!X -> Z) -> (!X -> W)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [9, 10],
+      "formula": "!X -> W"
+    }
+  ]
+}

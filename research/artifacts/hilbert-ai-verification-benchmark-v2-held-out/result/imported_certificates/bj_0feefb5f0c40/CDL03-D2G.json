@@ -1,0 +1,94 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "depth-ladder-20260403--best-effort_compositional-depth-ladder-main-gpt-oss-120b-cloud-r05",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-depth-ladder-v1",
+  "experiment_id": "compositional-depth-ladder-v1-temp0-seed42-topp1-r05-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "CDL03-D2G",
+  "theorem_id": "CDL03-D2G",
+  "chain_id": "CDL03",
+  "stage_id": "d2g",
+  "category": "compositional_depth_ladder",
+  "case_family": "depth3_linear",
+  "chain_depth": 3,
+  "atom_renaming_id": "r1",
+  "goal": "M -\u003e O",
+  "imported_lemmas": [
+    "M -\u003e N",
+    "N -\u003e O"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/depth-ladder-20260403--best-effort_compositional-depth-ladder-main-gpt-oss-120b-cloud-r05/CDL03-D2G.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "CDL03-D2G",
+    "goal": "M-\u003eO",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "M-\u003eN",
+      "N-\u003eO"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "M-\u003eN",
+        "assumption_ref": 1
+      },
+      {
+        "kind": "assumption",
+        "formula": "N-\u003eO",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "axiom",
+        "formula": "(N-\u003eO)-\u003e(M-\u003e(N-\u003eO))",
+        "axiom": "A1"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M-\u003e(N-\u003eO)",
+        "premises": [
+          2,
+          3
+        ]
+      },
+      {
+        "kind": "axiom",
+        "formula": "(M-\u003e(N-\u003eO))-\u003e((M-\u003eN)-\u003e(M-\u003eO))",
+        "axiom": "A2"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(M-\u003eN)-\u003e(M-\u003eO)",
+        "premises": [
+          4,
+          5
+        ]
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M-\u003eO",
+        "premises": [
+          1,
+          6
+        ]
+      }
+    ]
+  }
+}

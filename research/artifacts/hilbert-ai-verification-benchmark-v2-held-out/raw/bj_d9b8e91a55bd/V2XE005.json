@@ -1,0 +1,17 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "phase1_expanded_100_V2XE005",
+  "goal": "(P005 -> (Q005 -> R005)) -> ((P005 -> Q005) -> (P005 -> R005))",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A2"
+    }
+  ]
+}

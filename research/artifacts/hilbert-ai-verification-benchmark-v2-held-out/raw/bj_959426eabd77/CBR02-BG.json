@@ -1,0 +1,73 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "compositional_branching_phase1_CBR02-BG",
+  "goal": "M -> P",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "M -> N",
+    "M -> O",
+    "N -> (O -> P)"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "M -> N"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "M -> O"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "N -> (O -> P)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(N -> (O -> P)) -> (M -> (N -> (O -> P)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 4],
+      "formula": "M -> (N -> (O -> P))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(M -> (N -> (O -> P))) -> ((M -> N) -> (M -> (O -> P)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [5, 6],
+      "formula": "(M -> N) -> (M -> (O -> P))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 7],
+      "formula": "M -> (O -> P)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(M -> (O -> P)) -> ((M -> O) -> (M -> P))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [8, 9],
+      "formula": "(M -> O) -> (M -> P)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 10],
+      "formula": "M -> P"
+    }
+  ]
+}

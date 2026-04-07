@@ -1,0 +1,73 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG13-FG",
+  "goal": "X -> A",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "X -> Y",
+    "Y -> (Z -> A)",
+    "X -> Z"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "Y -> (Z -> A)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Y -> (Z -> A)) -> (X -> (Y -> (Z -> A)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "X -> (Y -> (Z -> A))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "X -> Y"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(X -> (Y -> (Z -> A))) -> ((X -> Y) -> (X -> (Z -> A)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 5],
+      "formula": "(X -> Y) -> (X -> (Z -> A))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 6],
+      "formula": "X -> (Z -> A)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "X -> Z"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(X -> (Z -> A)) -> ((X -> Z) -> (X -> A))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 9],
+      "formula": "(X -> Z) -> (X -> A)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [8, 10],
+      "formula": "X -> A"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2E06",
+  "goal": "(R -> (S -> T)) -> ((R -> S) -> (R -> T))",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(R -> (S -> T)) -> ((R -> S) -> (R -> (S -> T)))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "((R -> (S -> T)) -> ((R -> S) -> (R -> (S -> T)))) -> (((R -> (S -> T)) -> (((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T)))) -> ((R -> (S -> T)) -> ((R -> S) -> (R -> T))))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "((R -> (S -> T)) -> (((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T)))) -> ((R -> (S -> T)) -> ((R -> S) -> (R -> T)))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "((R -> S) -> (R -> (S -> T))) -> (((R -> S) -> ((R -> (S -> T)) -> (R -> T))) -> ((R -> S) -> (R -> T)))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(R -> (S -> T)) -> ((R -> S) -> (R -> (S -> T)))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(R -> (S -> T)) -> ((R -> S) -> ((R -> (S -> T)) -> (R -> T)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [5, 6],
+      "formula": "(R -> S) -> ((R -> (S -> T)) -> (R -> T))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "((R -> S) -> ((R -> (S -> T)) -> (R -> T))) -> ((R -> (S -> T)) -> ((R -> S) -> ((R -> (S -> T)) -> (R -> T))))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 8],
+      "formula": "(R -> (S -> T)) -> ((R -> S) -> ((R -> (S -> T)) -> (R -> T)))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "((R -> S) -> ((R -> (S -> T)) -> (R -> T))) -> (((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 10],
+      "formula": "((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T))) -> ((R -> (S -> T)) -> (((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T))))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [11, 12],
+      "formula": "(R -> (S -> T)) -> (((R -> S) -> (R -> (S -> T))) -> ((R -> S) -> (R -> T)))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [13, 3],
+      "formula": "(R -> (S -> T)) -> ((R -> S) -> (R -> T))"
+    }
+  ]
+}

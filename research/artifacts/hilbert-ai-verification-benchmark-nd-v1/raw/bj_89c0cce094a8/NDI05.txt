@@ -1,0 +1,33 @@
+{
+  "proof_version": "1.0.0",
+  "proof_id": "proof-1",
+  "goal": "P -> P",
+  "context": {
+    "domain": "hilbert-benchmark-nd-v1",
+    "logic_fragment": "implicational-prop-v1",
+    "front_end": "natural-deduction-v1",
+    "lowering_target": "certificate-format-v1",
+    "generator": "llm-benchmark-nd-v1"
+  },
+  "steps": [
+    {
+      "id": 1,
+      "kind": "assume",
+      "scope": 1,
+      "formula": "P"
+    },
+    {
+      "id": 2,
+      "kind": "reiterate",
+      "from": [1],
+      "formula": "P"
+    },
+    {
+      "id": 3,
+      "kind": "imp_intro",
+      "from": [1, 2],
+      "discharge_scope": 1,
+      "formula": "P -> P"
+    }
+  ]
+}

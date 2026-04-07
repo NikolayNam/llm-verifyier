@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"V2XE050","goal":"(P050 -> (Q050 -> R050)) -> ((P050 -> Q050) -> (P050 -> R050))","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"steps":[{"kind":"axiom","axiom":"A2","formula":"(P050 -> (Q050 -> R050)) -> ((P050 -> Q050) -> (P050 -> R050))"}]}

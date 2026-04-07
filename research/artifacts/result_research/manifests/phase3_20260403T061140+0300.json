@@ -1,0 +1,18 @@
+{
+  "schema_version": "researchctl.workflow-manifest/v1",
+  "command": "phase3 run",
+  "phase": "phase3",
+  "run_id": "20260403T061140+0300",
+  "created_at_utc": "2026-04-03T03:11:40Z",
+  "config_fingerprint": "3785b37bdb841921783fbfb4aa12e9f33fffefb12dbb1935687945a3bd790569",
+  "manifest_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/result_research/manifests/phase3_20260403T061140+0300.json",
+  "workspace_dir": "C:/Users/nokclock/Documents/GitHub/collabsphere/.tmp/research/lean4/20260403T061140+0300/hilbert-ai-verification-lean4-worker-v1/lean-project",
+  "job_name": "identity_proved",
+  "job_statement": "P -\u003e P",
+  "job_payload_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-worker-v1/theorems/payloads/identity-proof.json",
+  "theorem_pack_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-worker-v1/theorems/theorems.csv",
+  "generation_config_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-worker-v1/theorems/generation-config.json",
+  "default_payload_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-worker-v1/theorems/payloads/identity-proof.json",
+  "export_output_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-nd-v1/theorems/lean4-generated.csv",
+  "benchmark_project_folder": "hilbert-ai-verification-benchmark-nd-v1"
+}

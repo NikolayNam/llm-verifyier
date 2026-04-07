@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"proof1","goal":"A -> B","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"assumptions":["B","D -> E"],"steps":[{"kind":"assumption","assumption_ref":1},{"kind":"axiom","axiom":"A1"},{"kind":"modus_ponens","premises":[1,2]}]}

@@ -1,0 +1,27 @@
+```json
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG09-FG",
+  "goal": "S -> U",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "S -> (T -> U)",
+    "S -> T"
+  ],
+  "steps": [
+    {
+      "kind": "modus_ponens",
+      "premises": [2]
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2]
+    }
+  ]
+}
+```

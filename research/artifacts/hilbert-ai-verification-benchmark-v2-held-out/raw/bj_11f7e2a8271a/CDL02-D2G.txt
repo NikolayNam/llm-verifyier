@@ -1,0 +1,49 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CDL02-D2G",
+  "goal": "P -> R",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": ["P -> Q", "Q -> R"],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P -> Q",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "Q -> R",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "formula": "(Q -> R) -> (P -> (Q -> R))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P -> (Q -> R)",
+      "premises": [2, 3]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(P -> (Q -> R)) -> ((P -> Q) -> (P -> R))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(P -> Q) -> (P -> R)",
+      "premises": [4, 5]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P -> R",
+      "premises": [1, 6]
+    }
+  ]
+}

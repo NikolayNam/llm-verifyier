@@ -1,0 +1,39 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "SGF05-FM",
+  "goal": "M",
+  "assumptions": ["K -> L", "L -> M", "K"],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "K -> L"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "L -> M"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "K"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 1],
+      "formula": "L"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 2],
+      "formula": "M"
+    }
+  ]
+}

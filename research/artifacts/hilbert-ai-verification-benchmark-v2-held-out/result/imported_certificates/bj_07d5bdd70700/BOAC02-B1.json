@@ -1,0 +1,66 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "bridge-only-authoring-canonical-20260404_bridge-only-authoring-main-gpt-oss-20b-r02",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "bridge-only-authoring-canonical-v1",
+  "experiment_id": "bridge-only-authoring-canonical-v1-temp0-seed42-topp1-r02-20260404",
+  "prompt_version": "hilbert-ai-verification-bridge-only-canonical-vars-v1.0",
+  "certificate_version": "1.0.0",
+  "case_id": "BOAC02-B1",
+  "theorem_id": "BOAC02-B1",
+  "chain_id": "BOAC02",
+  "stage_id": "b1",
+  "category": "bridge_only_authoring",
+  "case_family": "layered_linear_renamed_canonical",
+  "chain_depth": 1,
+  "atom_renaming_id": "canon1",
+  "goal": "A -\u003e B",
+  "assumptions": [
+    "B"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": true,
+  "trusted_reuse_reason": "verifier-confirmed reusable local lemma artifact",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/bridge-only-authoring-canonical-20260404_bridge-only-authoring-main-gpt-oss-20b-r02/BOAC02-B1.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "BOAC02-B1",
+    "goal": "A -\u003e B",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "B"
+    ],
+    "steps": [
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "B -\u003e (A -\u003e B)"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "B"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          2,
+          1
+        ],
+        "formula": "A -\u003e B"
+      }
+    ]
+  }
+}

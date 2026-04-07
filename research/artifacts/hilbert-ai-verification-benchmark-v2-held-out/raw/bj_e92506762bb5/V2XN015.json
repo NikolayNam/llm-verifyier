@@ -1,0 +1,92 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN015",
+  "goal": "R015",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P015 -> (Q015 -> R015)",
+    "P015 -> Q015"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P015 -> (Q015 -> R015)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "P015 -> Q015"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(P015 -> (Q015 -> R015)) -> ((P015 -> Q015) -> (P015 -> R015))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 3],
+      "formula": "(P015 -> Q015) -> (P015 -> R015)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 4],
+      "formula": "P015 -> R015"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P015 -> (Q015 -> R015)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "P015 -> Q015"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(P015 -> (Q015 -> R015)) -> ((P015 -> Q015) -> (P015 -> R015))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [6, 8],
+      "formula": "(P015 -> Q015) -> (P015 -> R015)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 9],
+      "formula": "P015 -> R015"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P015 -> (Q015 -> R015)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "P015 -> Q015"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(P015 -> (Q015 -> R015)) -> ((P015 -> Q015) -> (P015 -> R015))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [11, 13],
+      "formula": "(P015 -> Q015) -> (P015 -> R015)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [12, 14],
+      "formula": "P015 -> R015"
+    }
+  ]
+}

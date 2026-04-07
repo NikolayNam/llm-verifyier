@@ -1,0 +1,23 @@
+{
+  "proof_version": "1.0.0",
+  "proof_id": "NDI01_proof",
+  "goal": "P",
+  "context": {
+    "domain": "hilbert-benchmark-nd-v1",
+    "logic_fragment": "implicational-prop-v1",
+    "front_end": "natural-deduction-v1",
+    "lowering_target": "certificate-format-v1",
+    "generator": "llm-benchmark-nd-v1"
+  },
+  "assumptions": [
+    "P"
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "kind": "premise",
+      "formula": "P",
+      "premise_ref": 1
+    }
+  ]
+}

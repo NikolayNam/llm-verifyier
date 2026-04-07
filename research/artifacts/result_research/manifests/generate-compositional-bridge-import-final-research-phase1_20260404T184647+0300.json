@@ -1,0 +1,29 @@
+{
+  "base_url": "./http:/localhost:11434",
+  "benchmark_key": "bridge_import_final_research",
+  "case_count": 100,
+  "chain_count": 20,
+  "command": "generate bridge-final hypotheses",
+  "experiment_name": "bridge-import-final-research-v1",
+  "family_name": "bridge-import-final-research-main",
+  "input_file": "cases/bridge-import-final-research-phase1-expanded-100.csv",
+  "interrupt_policy": "drop_if_no_results",
+  "local_config": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/config/local.bridge-import-final-research.phase1-expanded-100.yaml",
+  "mode": "phase1",
+  "models": [
+    "gpt-oss:20b",
+    "gpt-oss:120b-cloud",
+    "glm-5:cloud",
+    "deepseek-v3.1:671b-cloud"
+  ],
+  "output_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/cases/bridge-import-final-research-phase1-expanded-100.csv",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "provider": "compatible",
+  "repeats": 5,
+  "request_timeout_abort_threshold": 5,
+  "run_id": "20260404T184647+0300",
+  "schema_version": "researchctl.generate-compositional/v1",
+  "surface": "bridge-import-final-research",
+  "transport_name": "local-compatible"
+}

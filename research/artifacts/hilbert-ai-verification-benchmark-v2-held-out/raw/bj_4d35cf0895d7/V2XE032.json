@@ -1,0 +1,39 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XE032",
+  "goal": "R032",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": ["P032", "P032 -> Q032", "Q032 -> R032"],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P032",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P032 -> Q032",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q032",
+      "premises": [1, 2]
+    },
+    {
+      "kind": "assumption",
+      "formula": "Q032 -> R032",
+      "assumption_ref": 3
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "R032",
+      "premises": [3, 4]
+    }
+  ]
+}

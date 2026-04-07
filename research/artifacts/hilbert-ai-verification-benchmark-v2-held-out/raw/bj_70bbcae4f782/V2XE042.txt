@@ -1,0 +1,72 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XE042",
+  "goal": "P042",
+  "assumptions": [
+    "!P042 -> !Q042",
+    "Q042"
+  ],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "!P042 -> !Q042"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "Q042"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!Q042 -> !P042) -> ((!Q042 -> P042) -> Q042)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 3],
+      "formula": "(!Q042 -> !P042) -> ((!Q042 -> P042) -> Q042)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "!Q042 -> (!P042 -> !Q042)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 5],
+      "formula": "!Q042 -> !P042"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [6, 4],
+      "formula": "(!Q042 -> P042) -> Q042"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "Q042 -> (!Q042 -> P042)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 8],
+      "formula": "!Q042 -> P042"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [9, 7],
+      "formula": "Q042"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [10, 2],
+      "formula": "P042"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "proof_version": "1.0.0",
+  "proof_id": "pilot_shared_20260327_NDI02",
+  "goal": "Q",
+  "assumptions": [
+    "P",
+    "P -> Q"
+  ],
+  "context": {
+    "domain": "hilbert-benchmark-nd-v1",
+    "logic_fragment": "implicational-prop-v1",
+    "front_end": "natural-deduction-v1",
+    "lowering_target": "certificate-format-v1",
+    "generator": "llm-benchmark-nd-v1"
+  },
+  "steps": [
+    {
+      "id": 1,
+      "kind": "premise",
+      "premise_ref": 1,
+      "formula": "P"
+    },
+    {
+      "id": 2,
+      "kind": "premise",
+      "premise_ref": 2,
+      "formula": "P -> Q"
+    },
+    {
+      "id": 3,
+      "kind": "imp_elim",
+      "from": [1, 2],
+      "formula": "Q"
+    }
+  ]
+}

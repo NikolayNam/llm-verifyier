@@ -1,0 +1,283 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XE038",
+  "goal": "(!P038 -> !Q038) -> (Q038 -> P038)",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!Q038 -> !P038) -> ((!Q038 -> P038) -> Q038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(!P038 -> !Q038) -> (!Q038 -> !P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Q038 -> (!Q038 -> !P038)) -> ((!Q038 -> !P038) -> P038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "(!Q038 -> !P038) -> ((!Q038 -> P038) -> Q038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(Q038 -> (!Q038 -> !P038)) -> (Q038 -> !Q038) -> (Q038 -> !P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!P038 -> !Q038) -> (!P038 -> Q038) -> (!P038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "((!Q038 -> P038) -> Q038) -> (Q038 -> P038) -> ((!Q038 -> P038) -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 7],
+      "formula": "(Q038 -> P038) -> ((!Q038 -> P038) -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "((!P038 -> Q038) -> (!P038 -> P038)) -> (!P038 -> P038) -> P038"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [6, 9],
+      "formula": "(!P038 -> P038) -> P038"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(!P038 -> !Q038) -> (!Q038 -> P038) -> (!P038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [11, 10],
+      "formula": "(!Q038 -> P038) -> (!P038 -> P038) -> P038"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "((!Q038 -> P038) -> (!P038 -> P038)) -> ((!Q038 -> P038) -> P038) -> (!Q038 -> P038) -> P038"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [12, 13],
+      "formula": "((!Q038 -> P038) -> P038) -> (!Q038 -> P038) -> P038"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [8, 14],
+      "formula": "(!Q038 -> P038) -> P038"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(!P038 -> !Q038) -> (Q038 -> (!P038 -> !Q038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 16],
+      "formula": "Q038 -> (!Q038 -> !P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [17, 5],
+      "formula": "(Q038 -> !Q038) -> (Q038 -> !P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "Q038 -> (!Q038 -> Q038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [19, 18],
+      "formula": "Q038 -> !Q038 -> (Q038 -> !P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(Q038 -> !Q038) -> (Q038 -> (Q038 -> !P038)) -> (Q038 -> !P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [20, 21],
+      "formula": "(Q038 -> (Q038 -> !P038)) -> (Q038 -> !P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Q038 -> !P038) -> (!P038 -> P038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [22, 23],
+      "formula": "(Q038 -> (Q038 -> !P038)) -> (!P038 -> P038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(!P038 -> P038) -> (Q038 -> (!P038 -> P038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [25, 24],
+      "formula": "Q038 -> (!P038 -> P038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(Q038 -> (!P038 -> P038)) -> (Q038 -> (Q038 -> P038)) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [26, 27],
+      "formula": "(Q038 -> (Q038 -> P038)) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "Q038 -> (Q038 -> Q038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(Q038 -> (Q038 -> Q038)) -> (Q038 -> Q038) -> (Q038 -> Q038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [29, 30],
+      "formula": "(Q038 -> Q038) -> (Q038 -> Q038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "Q038 -> Q038"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [32, 31],
+      "formula": "Q038 -> Q038"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Q038 -> P038) -> (Q038 -> (Q038 -> P038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [33, 34],
+      "formula": "Q038 -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [35, 28],
+      "formula": "Q038 -> P038"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Q038 -> P038) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [36, 37],
+      "formula": "(!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "((!P038 -> !Q038) -> (Q038 -> P038)) -> (!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [38, 39],
+      "formula": "(!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038)) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [40, 41],
+      "formula": "(!P038 -> !Q038) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(!P038 -> !Q038) -> (!P038 -> !Q038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [43, 42],
+      "formula": "(!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "((!P038 -> !Q038) -> (Q038 -> P038)) -> (!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [44, 45],
+      "formula": "(!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038)) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [46, 47],
+      "formula": "(!P038 -> !Q038) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [43, 48],
+      "formula": "(!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "((!P038 -> !Q038) -> (Q038 -> P038)) -> (!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [49, 50],
+      "formula": "(!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038))"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(!P038 -> !Q038) -> ((!P038 -> !Q038) -> (Q038 -> P038)) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [51, 52],
+      "formula": "(!P038 -> !Q038) -> (!P038 -> !Q038) -> (Q038 -> P038)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [43, 53],
+      "formula": "(!P038 -> !Q038) -> (Q038 -> P038)"
+    }
+  ]
+}

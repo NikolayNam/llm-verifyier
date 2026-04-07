@@ -1,0 +1,49 @@
+{
+  "proof_version": "1.0.0",
+  "proof_id": "proof1",
+  "goal": "R",
+  "context": {
+    "domain": "hilbert-benchmark-nd-v1",
+    "logic_fragment": "implicational-prop-v1",
+    "front_end": "natural-deduction-v1",
+    "lowering_target": "certificate-format-v1",
+    "generator": "llm-benchmark-nd-v1"
+  },
+  "assumptions": [
+    "P",
+    "P -> Q",
+    "Q -> R"
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "kind": "premise",
+      "formula": "P",
+      "premise_ref": 1
+    },
+    {
+      "id": 2,
+      "kind": "premise",
+      "formula": "P -> Q",
+      "premise_ref": 2
+    },
+    {
+      "id": 3,
+      "kind": "premise",
+      "formula": "Q -> R",
+      "premise_ref": 3
+    },
+    {
+      "id": 4,
+      "kind": "imp_elim",
+      "formula": "Q",
+      "from": [1, 2]
+    },
+    {
+      "id": 5,
+      "kind": "imp_elim",
+      "formula": "R",
+      "from": [4, 3]
+    }
+  ]
+}

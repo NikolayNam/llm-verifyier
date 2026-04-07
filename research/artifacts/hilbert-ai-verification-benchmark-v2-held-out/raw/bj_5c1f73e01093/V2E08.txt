@@ -1,0 +1,42 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2E08",
+  "goal": "S",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "!S -> !R",
+    "R"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "!S -> !R",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "R",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A3",
+      "formula": "(!S -> !R) -> (R -> S)"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "R -> S",
+      "premises": [1, 3]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "S",
+      "premises": [2, 4]
+    }
+  ]
+}

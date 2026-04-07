@@ -1,0 +1,125 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "GMFH19-FG",
+  "goal": "V",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "X",
+    "X -> Y",
+    "Y -> Z",
+    "Z -> U",
+    "U -> V"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "X"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "X -> Y"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "Y -> Z"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 4,
+      "formula": "Z -> U"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 5,
+      "formula": "U -> V"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Y -> Z) -> (X -> (Y -> Z))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 6],
+      "formula": "X -> (Y -> Z)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(X -> (Y -> Z)) -> ((X -> Y) -> (X -> Z))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 8],
+      "formula": "(X -> Y) -> (X -> Z)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 9],
+      "formula": "X -> Z"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Z -> U) -> (X -> (Z -> U))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [4, 11],
+      "formula": "X -> (Z -> U)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(X -> (Z -> U)) -> ((X -> Z) -> (X -> U))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [12, 13],
+      "formula": "(X -> Z) -> (X -> U)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [10, 14],
+      "formula": "X -> U"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(U -> V) -> (X -> (U -> V))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [5, 16],
+      "formula": "X -> (U -> V)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(X -> (U -> V)) -> ((X -> U) -> (X -> V))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [17, 18],
+      "formula": "(X -> U) -> (X -> V)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [15, 19],
+      "formula": "X -> V"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 20],
+      "formula": "V"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "depth-ladder-20260403--best-effort_compositional-depth-ladder-main-gpt-oss-120b-cloud-r01",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-depth-ladder-v1",
+  "experiment_id": "compositional-depth-ladder-v1-temp0-seed42-topp1-r01-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "CDL02-D2G",
+  "theorem_id": "CDL02-D2G",
+  "chain_id": "CDL02",
+  "stage_id": "d2g",
+  "category": "compositional_depth_ladder",
+  "case_family": "depth3_linear",
+  "chain_depth": 3,
+  "atom_renaming_id": "r0",
+  "goal": "P -\u003e R",
+  "imported_lemmas": [
+    "P -\u003e Q",
+    "Q -\u003e R"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/depth-ladder-20260403--best-effort_compositional-depth-ladder-main-gpt-oss-120b-cloud-r01/CDL02-D2G.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "CDL02-D2G",
+    "goal": "P -\u003e R",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "P -\u003e Q",
+      "Q -\u003e R"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "P -\u003e Q"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "Q -\u003e R"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(Q -\u003e R) -\u003e (P -\u003e (Q -\u003e R))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          2,
+          3
+        ],
+        "formula": "P -\u003e (Q -\u003e R)"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(P -\u003e (Q -\u003e R)) -\u003e ((P -\u003e Q) -\u003e (P -\u003e R))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          4,
+          5
+        ],
+        "formula": "(P -\u003e Q) -\u003e (P -\u003e R)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          6
+        ],
+        "formula": "P -\u003e R"
+      }
+    ]
+  }
+}

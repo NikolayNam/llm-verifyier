@@ -1,0 +1,2 @@
+run_id,case_id,chain_id,stage_id,category,case_family,chain_depth,goal,trusted_for_reuse,trusted_reuse_reason,certificate_object_file
+20260403T133842+0300_compositional-branching-main-gpt-oss-20b-r01,CBR01-BG,CBR01,bg,compositional_branching,fan_in_merge,2,A -> D,false,stage is not marked reusable in the current chain protocol,C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260403T133842+0300_compositional-branching-main-gpt-oss-20b-r01/CBR01-BG.json

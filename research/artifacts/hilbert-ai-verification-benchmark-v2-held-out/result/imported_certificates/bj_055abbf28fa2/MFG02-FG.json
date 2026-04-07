@@ -1,0 +1,81 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260403T152413+0300_compositional-mixed-family-gold-first-main-gpt-oss-20b-r05",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-gold-first-v1",
+  "experiment_id": "compositional-mixed-family-gold-first-v1-temp0-seed42-topp1-r05-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "MFG02-FG",
+  "theorem_id": "MFG02-FG",
+  "chain_id": "MFG02",
+  "stage_id": "fg",
+  "category": "compositional_mixed_family_gold_first",
+  "case_family": "direct_axiom_instance_x_mixed_proof_gold_first",
+  "chain_depth": 1,
+  "atom_renaming_id": "r1",
+  "goal": "P -\u003e R",
+  "imported_lemmas": [
+    "P -\u003e (Q -\u003e R)",
+    "P -\u003e Q"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260403T152413+0300_compositional-mixed-family-gold-first-main-gpt-oss-20b-r05/MFG02-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "MFG02-FG",
+    "goal": "P -\u003e R",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "P -\u003e (Q -\u003e R)",
+      "P -\u003e Q"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "P -\u003e (Q -\u003e R)"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "P -\u003e Q"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(P -\u003e (Q -\u003e R)) -\u003e ((P -\u003e Q) -\u003e (P -\u003e R))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          3
+        ],
+        "formula": "(P -\u003e Q) -\u003e (P -\u003e R)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          2,
+          4
+        ],
+        "formula": "P -\u003e R"
+      }
+    ]
+  }
+}

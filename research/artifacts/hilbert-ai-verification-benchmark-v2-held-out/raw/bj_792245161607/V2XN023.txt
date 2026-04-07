@@ -1,0 +1,35 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN023",
+  "goal": "R023",
+  "assumptions": [
+    "P023 -> (Q023 -> R023)",
+    "P023"
+  ],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P023 -> (Q023 -> R023)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "P023"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "Q023 -> R023"
+    }
+  ],
+  "meta": {
+    "note": "The goal R023 cannot be derived from the assumptions as we lack Q023 to apply modus_ponens on Q023 -> R023. Therefore, output NOT_DERIVABLE."
+  }
+}

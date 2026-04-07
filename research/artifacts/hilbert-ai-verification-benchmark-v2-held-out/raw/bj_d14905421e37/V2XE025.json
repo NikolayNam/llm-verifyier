@@ -1,0 +1,1 @@
+{"certificate_version":"1.0.0","proof_id":"phase1_expanded_100_V2XE025","goal":"P025 -> ((Q025 -> R025) -> P025)","context":{"domain":"hilbert-benchmark-v1","rule_pack":"classical-hilbert-v1","syntax":"hilbert-prop-ascii-v1","generator":"llm-benchmark-v1"},"steps":[{"kind":"axiom","axiom":"A1","formula":"P025 -> ((Q025 -> R025) -> P025)"}]}

@@ -78,4 +78,6 @@ deploy/.env.dev
 /.gomodcache-platform-tooling
 /.gomodcache-platform
 /.gotmp-platform/
-/research/artifacts/
+
+# Lean build cache under tracked research artifacts
+research/artifacts/**/lean-project/.lake/

@@ -1,0 +1,29 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "CBR01-BG",
+  "goal": "A -> D",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "A -> B",
+    "A -> C",
+    "B -> (C -> D)"
+  ],
+  "steps": [
+    {"kind": "assumption", "assumption_ref": 1},
+    {"kind": "assumption", "assumption_ref": 2},
+    {"kind": "assumption", "assumption_ref": 3},
+    {"kind": "axiom", "axiom": "A1", "formula": "(B -> (C -> D)) -> (A -> (B -> (C -> D)))"},
+    {"kind": "modus_ponens", "premises": [3, 4]},
+    {"kind": "axiom", "axiom": "A2", "formula": "(A -> (B -> (C -> D))) -> ((A -> B) -> (A -> (C -> D)))"},
+    {"kind": "modus_ponens", "premises": [5, 6]},
+    {"kind": "modus_ponens", "premises": [1, 7]},
+    {"kind": "axiom", "axiom": "A2", "formula": "(A -> (C -> D)) -> ((A -> C) -> (A -> D))"},
+    {"kind": "modus_ponens", "premises": [8, 9]},
+    {"kind": "modus_ponens", "premises": [2, 10]}
+  ]
+}

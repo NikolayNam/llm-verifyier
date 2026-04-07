@@ -1,0 +1,98 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "bridge-import-final-research-phase1-20260404_bridge-import-final-research-main-gpt-oss-120b-cloud-r04",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "bridge-import-final-research-v1",
+  "experiment_id": "bridge-import-final-research-v1-temp0-seed42-topp1-r04-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "BIF03-FG",
+  "theorem_id": "BIF03-FG",
+  "chain_id": "BIF03",
+  "stage_id": "fg",
+  "category": "bridge_import_final_research",
+  "case_family": "layered_distractor",
+  "chain_depth": 1,
+  "atom_renaming_id": "r2",
+  "goal": "M -\u003e O",
+  "assumptions": [
+    "P -\u003e Q"
+  ],
+  "imported_lemmas": [
+    "M -\u003e N",
+    "N -\u003e O"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/bridge-import-final-research-phase1-20260404_bridge-import-final-research-main-gpt-oss-120b-cloud-r04/BIF03-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "bridge_import_final_research_phase1_BIF03-FG",
+    "goal": "M -\u003e O",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "P -\u003e Q",
+      "M -\u003e N",
+      "N -\u003e O"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "N -\u003e O",
+        "assumption_ref": 3
+      },
+      {
+        "kind": "axiom",
+        "formula": "(N -\u003e O) -\u003e (M -\u003e (N -\u003e O))",
+        "axiom": "A1"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M -\u003e (N -\u003e O)",
+        "premises": [
+          1,
+          2
+        ]
+      },
+      {
+        "kind": "assumption",
+        "formula": "M -\u003e N",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "axiom",
+        "formula": "(M -\u003e (N -\u003e O)) -\u003e ((M -\u003e N) -\u003e (M -\u003e O))",
+        "axiom": "A2"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(M -\u003e N) -\u003e (M -\u003e O)",
+        "premises": [
+          3,
+          5
+        ]
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M -\u003e O",
+        "premises": [
+          4,
+          6
+        ]
+      }
+    ]
+  }
+}

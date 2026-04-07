@@ -1,0 +1,122 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260403T133842+0300_compositional-branching-main-gpt-oss-120b-cloud-r04",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-branching-v1",
+  "experiment_id": "compositional-branching-v1-temp0-seed42-topp1-r04-20260403",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "CBR02-BG",
+  "theorem_id": "CBR02-BG",
+  "chain_id": "CBR02",
+  "stage_id": "bg",
+  "category": "compositional_branching",
+  "case_family": "fan_in_merge_renamed",
+  "chain_depth": 2,
+  "atom_renaming_id": "r1",
+  "goal": "M -\u003e P",
+  "imported_lemmas": [
+    "M -\u003e N",
+    "M -\u003e O",
+    "N -\u003e (O -\u003e P)"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260403T133842+0300_compositional-branching-main-gpt-oss-120b-cloud-r04/CBR02-BG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "CBR02-BG",
+    "goal": "M -\u003e P",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "M -\u003e N",
+      "M -\u003e O",
+      "N -\u003e (O -\u003e P)"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "formula": "M -\u003e N",
+        "assumption_ref": 1
+      },
+      {
+        "kind": "assumption",
+        "formula": "M -\u003e O",
+        "assumption_ref": 2
+      },
+      {
+        "kind": "assumption",
+        "formula": "N -\u003e (O -\u003e P)",
+        "assumption_ref": 3
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(N -\u003e (O -\u003e P)) -\u003e (M -\u003e (N -\u003e (O -\u003e P)))"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M -\u003e (N -\u003e (O -\u003e P))",
+        "premises": [
+          3,
+          4
+        ]
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(M -\u003e (N -\u003e (O -\u003e P))) -\u003e ((M -\u003e N) -\u003e (M -\u003e (O -\u003e P)))"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(M -\u003e N) -\u003e (M -\u003e (O -\u003e P))",
+        "premises": [
+          5,
+          6
+        ]
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M -\u003e (O -\u003e P)",
+        "premises": [
+          1,
+          7
+        ]
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(M -\u003e (O -\u003e P)) -\u003e ((M -\u003e O) -\u003e (M -\u003e P))"
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "(M -\u003e O) -\u003e (M -\u003e P)",
+        "premises": [
+          8,
+          9
+        ]
+      },
+      {
+        "kind": "modus_ponens",
+        "formula": "M -\u003e P",
+        "premises": [
+          2,
+          10
+        ]
+      }
+    ]
+  }
+}

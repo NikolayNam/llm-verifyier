@@ -1,0 +1,40 @@
+```json
+{
+  "certificate_version": "1.0",
+  "proof_id": "V2E12",
+  "goal": "R -> R",
+  "context": {
+    "domain": "math",
+    "rule_pack": "math/logic/propositional/hilbert",
+    "syntax": "math/logic/propositional",
+    "generator": "math/logic/propositional/hilbert/derivation"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "formula": "R -> (R -> R)",
+      "axiom": "A1"
+    },
+    {
+      "kind": "axiom",
+      "formula": "R -> ((R -> R) -> R)",
+      "axiom": "A1"
+    },
+    {
+      "kind": "axiom",
+      "formula": "(R -> ((R -> R) -> R)) -> ((R -> (R -> R)) -> (R -> R))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "((R -> (R -> R)) -> (R -> R))",
+      "premises": [2, 3]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "R -> R",
+      "premises": [1, 4]
+    }
+  ]
+}
+```

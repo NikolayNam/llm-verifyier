@@ -1,0 +1,65 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "GMFH19-FG",
+  "goal": "V",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "X",
+    "X -> Y",
+    "Y -> Z",
+    "Z -> U",
+    "U -> V"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "X"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "X -> Y"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [1, 2],
+      "formula": "Y"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "Y -> Z"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 4],
+      "formula": "Z"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 4,
+      "formula": "Z -> U"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [5, 6],
+      "formula": "U"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 5,
+      "formula": "U -> V"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 8],
+      "formula": "V"
+    }
+  ]
+}

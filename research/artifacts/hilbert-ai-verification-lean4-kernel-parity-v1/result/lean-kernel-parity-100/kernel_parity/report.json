@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-04-04T08:55:45Z",
+  "workspace_dir": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-worker-v1/lean-project",
+  "result_dir": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-kernel-parity-v1/result/lean-kernel-parity-100/kernel_parity",
+  "module_path": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-lean4-worker-v1/lean-project/.generated/lean-kernel-parity-100/kernel_parity/Generated.lean",
+  "lake_binary": "lake",
+  "corpus_root": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/raw",
+  "corpus_limit": 100,
+  "run_id": "lean-kernel-parity-100",
+  "project_folder": "hilbert-ai-verification-lean4-kernel-parity-v1",
+  "lean_exit_code": 0
+}

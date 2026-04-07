@@ -1,0 +1,193 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "20260404T002701+0300_mixed-family-gold-first-hard-micro-main-gpt-oss-120b-cloud-r02",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "compositional-mixed-family-gold-first-hard-micro-v1",
+  "experiment_id": "compositional-mixed-family-gold-first-hard-micro-v1-temp0-seed42-topp1-r02-20260404",
+  "prompt_version": "hilbert-ai-verification-benchmark-v1.3",
+  "certificate_version": "1.0.0",
+  "case_id": "GMFH19-FG",
+  "theorem_id": "GMFH19-FG",
+  "chain_id": "GMFH19",
+  "stage_id": "fg",
+  "category": "compositional_mixed_family_gold_first_hard",
+  "case_family": "theorem_synthesis_to_mixed_proof_gold_first_hard",
+  "chain_depth": 1,
+  "atom_renaming_id": "gfmfh-d-04",
+  "goal": "V",
+  "assumptions": [
+    "X",
+    "X -\u003e Y",
+    "Y -\u003e Z"
+  ],
+  "imported_lemmas": [
+    "Z -\u003e U",
+    "U -\u003e V"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": false,
+  "trusted_reuse_reason": "stage is not marked reusable in the current chain protocol",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/20260404T002701+0300_mixed-family-gold-first-hard-micro-main-gpt-oss-120b-cloud-r02/GMFH19-FG.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "GMFH19-FG",
+    "goal": "V",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "X",
+      "X -\u003e Y",
+      "Y -\u003e Z",
+      "Z -\u003e U",
+      "U -\u003e V"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "X"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 2,
+        "formula": "X -\u003e Y"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 3,
+        "formula": "Y -\u003e Z"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 4,
+        "formula": "Z -\u003e U"
+      },
+      {
+        "kind": "assumption",
+        "assumption_ref": 5,
+        "formula": "U -\u003e V"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(Y -\u003e Z) -\u003e (X -\u003e (Y -\u003e Z))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          3,
+          6
+        ],
+        "formula": "X -\u003e (Y -\u003e Z)"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(X -\u003e (Y -\u003e Z)) -\u003e ((X -\u003e Y) -\u003e (X -\u003e Z))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          7,
+          8
+        ],
+        "formula": "(X -\u003e Y) -\u003e (X -\u003e Z)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          2,
+          9
+        ],
+        "formula": "X -\u003e Z"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(Z -\u003e U) -\u003e (X -\u003e (Z -\u003e U))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          4,
+          11
+        ],
+        "formula": "X -\u003e (Z -\u003e U)"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(X -\u003e (Z -\u003e U)) -\u003e ((X -\u003e Z) -\u003e (X -\u003e U))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          12,
+          13
+        ],
+        "formula": "(X -\u003e Z) -\u003e (X -\u003e U)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          10,
+          14
+        ],
+        "formula": "X -\u003e U"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "(U -\u003e V) -\u003e (X -\u003e (U -\u003e V))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          5,
+          16
+        ],
+        "formula": "X -\u003e (U -\u003e V)"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A2",
+        "formula": "(X -\u003e (U -\u003e V)) -\u003e ((X -\u003e U) -\u003e (X -\u003e V))"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          17,
+          18
+        ],
+        "formula": "(X -\u003e U) -\u003e (X -\u003e V)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          15,
+          19
+        ],
+        "formula": "X -\u003e V"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          20
+        ],
+        "formula": "V"
+      }
+    ]
+  }
+}

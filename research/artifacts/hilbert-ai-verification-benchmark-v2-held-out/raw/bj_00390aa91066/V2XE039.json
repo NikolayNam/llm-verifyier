@@ -1,0 +1,94 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XE039",
+  "goal": "S039",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "P039",
+    "P039 -> Q039",
+    "Q039 -> R039",
+    "R039 -> S039"
+  ],
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(Q039 -> R039) -> (P039 -> (Q039 -> R039))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 3,
+      "formula": "Q039 -> R039"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "P039 -> (Q039 -> R039)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(P039 -> (Q039 -> R039)) -> ((P039 -> Q039) -> (P039 -> R039))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [3, 4],
+      "formula": "(P039 -> Q039) -> (P039 -> R039)"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 2,
+      "formula": "P039 -> Q039"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [6, 5],
+      "formula": "P039 -> R039"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(R039 -> S039) -> (P039 -> (R039 -> S039))"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 4,
+      "formula": "R039 -> S039"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [9, 8],
+      "formula": "P039 -> (R039 -> S039)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A2",
+      "formula": "(P039 -> (R039 -> S039)) -> ((P039 -> R039) -> (P039 -> S039))"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [10, 11],
+      "formula": "(P039 -> R039) -> (P039 -> S039)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [7, 12],
+      "formula": "P039 -> S039"
+    },
+    {
+      "kind": "assumption",
+      "assumption_ref": 1,
+      "formula": "P039"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [14, 13],
+      "formula": "S039"
+    }
+  ]
+}

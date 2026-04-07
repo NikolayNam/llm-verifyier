@@ -1,0 +1,32 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "SGS07-FM-proof",
+  "goal": "X",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "W->X",
+    "W"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "W->X",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "W",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "X",
+      "premises": [2, 1]
+    }
+  ]
+}

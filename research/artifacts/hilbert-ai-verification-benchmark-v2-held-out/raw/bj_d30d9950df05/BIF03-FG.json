@@ -1,0 +1,21 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "BIF03-FG",
+  "goal": "M -> O",
+  "assumptions": ["P -> Q", "M -> N", "N -> O"],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {"kind": "assumption", "assumption_ref": 2, "formula": "M -> N"},
+    {"kind": "assumption", "assumption_ref": 3, "formula": "N -> O"},
+    {"kind": "axiom", "axiom": "A1", "formula": "(N -> O) -> (M -> (N -> O))"},
+    {"kind": "modus_ponens", "premises": [2, 3], "formula": "M -> (N -> O)"},
+    {"kind": "axiom", "axiom": "A2", "formula": "(M -> (N -> O)) -> ((M -> N) -> (M -> O))"},
+    {"kind": "modus_ponens", "premises": [4, 5], "formula": "(M -> N) -> (M -> O)"},
+    {"kind": "modus_ponens", "premises": [1, 6], "formula": "M -> O"}
+  ]
+}

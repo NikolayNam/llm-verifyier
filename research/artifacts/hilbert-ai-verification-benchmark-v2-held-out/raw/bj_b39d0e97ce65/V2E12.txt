@@ -1,0 +1,28 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2E12",
+  "goal": "R -> R",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "(R -> (R -> R)) -> (R -> R)"
+    },
+    {
+      "kind": "axiom",
+      "axiom": "A1",
+      "formula": "R -> (R -> R)"
+    },
+    {
+      "kind": "modus_ponens",
+      "premises": [2, 1],
+      "formula": "R -> R"
+    }
+  ]
+}

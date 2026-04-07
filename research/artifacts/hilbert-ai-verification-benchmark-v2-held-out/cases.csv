@@ -1,0 +1,25 @@
+case_id,category,label,difficulty,assumptions_json,goal,comment
+V2E01,assumption_import,entailed,easy,"[""R -> S""]","R -> S",Import a single assumption directly
+V2E02,mixed_proof,entailed,easy,"[""R"",""R -> S""]",S,Single modus ponens derivation
+V2E03,mixed_proof,entailed,medium,"[""R"",""R -> S"",""S -> T""]",T,Two-step modus ponens chain
+V2E04,mixed_proof,entailed,hard,"[""R"",""R -> S"",""S -> T"",""T -> U""]",U,Three-step modus ponens chain
+V2E05,direct_axiom_instance,entailed,easy,[],"R -> ((S -> T) -> R)",Direct A1 instance on held-out atoms
+V2E06,direct_axiom_instance,entailed,medium,[],"(R -> (S -> T)) -> ((R -> S) -> (R -> T))",Direct A2 instance on held-out atoms
+V2E07,direct_axiom_instance,entailed,medium,[],"(!S -> !R) -> (R -> S)",Direct A3 instance on held-out atoms
+V2E08,mixed_proof,entailed,hard,"[""!S -> !R"",""R""]",S,Mixed A3 plus assumption derivation
+V2E09,mixed_proof,entailed,medium,"[""R""]","S -> R",Assumption plus A1 plus modus ponens
+V2E10,mixed_proof,entailed,medium,"[""R -> (S -> T)"",""R"",""S""]",T,Implication chain with explicit antecedents
+V2E11,mixed_proof,entailed,hard,"[""R -> (S -> T)"",""R -> S"",""R""]",T,Mixed proof requiring chained modus ponens
+V2E12,theorem_synthesis,entailed,hard,[],"R -> R",Theorem synthesis without top-level assumptions
+V2N01,negative_refusal,not_entailed,easy,"[""R""]",S,Unrelated target from a single assumption
+V2N02,negative_refusal,not_entailed,easy,"[""R -> S""]",S,Consequent without antecedent
+V2N03,negative_refusal,not_entailed,medium,"[""R -> S"",""S""]",R,Affirming the consequent
+V2N04,negative_refusal,not_entailed,easy,"[""R"",""S -> T""]",T,Missing bridge assumption
+V2N05,negative_refusal,not_entailed,medium,"[""R -> S"",""T -> U"",""R""]",U,Disconnected implication branch
+V2N06,negative_refusal,not_entailed,easy,"[""R""]","!R",Contradiction is not derivable here
+V2N07,negative_refusal,not_entailed,medium,"[""R -> (S -> T)"",""R""]",T,Intermediate antecedent is missing
+V2N08,negative_refusal,not_entailed,medium,"[""R -> S"",""R -> T""]",S,Shared antecedent still leaves S underived
+V2N09,negative_refusal,not_entailed,hard,"[""R -> (S -> T)"",""R -> S""]",T,Potential chain still lacks R
+V2N10,negative_refusal,not_entailed,medium,"[""!S -> !R""]",S,Contrapositive alone does not derive the consequent
+V2N11,negative_refusal,not_entailed,easy,[],R,No assumptions and no theorem support
+V2N12,negative_refusal,not_entailed,easy,"[""R -> S"",""S -> T""]",U,Target atom disconnected from premises

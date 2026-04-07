@@ -1,0 +1,43 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG15-FG-proof",
+  "goal": "G -> I",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "J -> K",
+    "G -> (H -> I)",
+    "G -> H"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "G -> (H -> I)",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "assumption",
+      "formula": "G -> H",
+      "assumption_ref": 3
+    },
+    {
+      "kind": "axiom",
+      "formula": "(G -> (H -> I)) -> ((G -> H) -> (G -> I))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(G -> H) -> (G -> I)",
+      "premises": [1, 3]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "G -> I",
+      "premises": [2, 4]
+    }
+  ]
+}

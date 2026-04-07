@@ -1,0 +1,22 @@
+case_id,chain_id,chain_protocol,stage_id,stage_order,stage_role,category,label,difficulty,case_family,chain_depth,provenance_mode,atom_renaming_id,trusted_reuse,import_stage_ids_json,assumptions_json,imported_lemmas_json,goal,expected_behavior,comment
+CDL01-S1,CDL01,depth-ladder-v1,s1,1,seed_lemma,compositional_depth_ladder,entailed,medium,depth2_linear,2,none,r0,true,"[]","[]","[]","A -> B",prove,Depth-2 seed lemma 1
+CDL01-S2,CDL01,depth-ladder-v1,s2,2,bridge_lemma,compositional_depth_ladder,entailed,medium,depth2_linear,2,none,r0,true,"[]","[]","[]","B -> C",prove,Depth-2 seed lemma 2
+CDL01-D2G,CDL01,depth-ladder-v1,d2g,3,final_gold,compositional_depth_ladder,entailed,medium,depth2_linear,2,gold,r0,false,"[""s1"",""s2""]","[]","[""A -> B"",""B -> C""]","A -> C",prove,Depth-2 gold composition
+CDL01-D2M,CDL01,depth-ladder-v1,d2m,4,final_model,compositional_depth_ladder,entailed,medium,depth2_linear,2,model,r0,false,"[""s1"",""s2""]","[]","[""A -> B"",""B -> C""]","A -> C",prove,Depth-2 model composition
+CDL01-NEG,CDL01,depth-ladder-v1,neg,5,negative_control,compositional_depth_ladder,not_entailed,medium,depth2_linear,2,model,r0,false,"[""s1"",""s2""]","[]","[""A -> B"",""B -> C""]","C -> A",not_derivable,Depth-2 negative control
+CDL02-S1,CDL02,depth-ladder-v1,s1,1,seed_lemma,compositional_depth_ladder,entailed,hard,depth3_linear,3,none,r0,true,"[]","[]","[]","P -> Q",prove,Depth-3 seed lemma 1
+CDL02-S2,CDL02,depth-ladder-v1,s2,2,bridge_lemma,compositional_depth_ladder,entailed,hard,depth3_linear,3,none,r0,true,"[]","[]","[]","Q -> R",prove,Depth-3 seed lemma 2
+CDL02-S3,CDL02,depth-ladder-v1,s3,3,bridge_lemma,compositional_depth_ladder,entailed,hard,depth3_linear,3,none,r0,true,"[]","[]","[]","R -> S",prove,Depth-3 seed lemma 3
+CDL02-D2G,CDL02,depth-ladder-v1,d2g,4,intermediate_gold,compositional_depth_ladder,entailed,hard,depth3_linear,3,gold,r0,false,"[""s1"",""s2""]","[]","[""P -> Q"",""Q -> R""]","P -> R",prove,Depth-3 gold intermediate
+CDL02-D2M,CDL02,depth-ladder-v1,d2m,5,intermediate_model,compositional_depth_ladder,entailed,hard,depth3_linear,3,model,r0,true,"[""s1"",""s2""]","[]","[""P -> Q"",""Q -> R""]","P -> R",prove,Depth-3 model intermediate
+CDL02-D3G,CDL02,depth-ladder-v1,d3g,6,final_gold,compositional_depth_ladder,entailed,hard,depth3_linear,3,gold,r0,false,"[""d2g"",""s3""]","[]","[""P -> R"",""R -> S""]","P -> S",prove,Depth-3 gold composition
+CDL02-D3M,CDL02,depth-ladder-v1,d3m,7,final_model,compositional_depth_ladder,entailed,hard,depth3_linear,3,model,r0,false,"[""d2m"",""s3""]","[]","[""P -> R"",""R -> S""]","P -> S",prove,Depth-3 model composition
+CDL02-NEG,CDL02,depth-ladder-v1,neg,8,negative_control,compositional_depth_ladder,not_entailed,hard,depth3_linear,3,model,r0,false,"[""d2m"",""s3""]","[]","[""P -> R"",""R -> S""]","S -> P",not_derivable,Depth-3 negative control
+CDL03-S1,CDL03,depth-ladder-v1,s1,1,seed_lemma,compositional_depth_ladder,entailed,hard,depth3_linear,3,none,r1,true,"[]","[]","[]","M -> N",prove,Renamed depth-3 seed lemma 1
+CDL03-S2,CDL03,depth-ladder-v1,s2,2,bridge_lemma,compositional_depth_ladder,entailed,hard,depth3_linear,3,none,r1,true,"[]","[]","[]","N -> O",prove,Renamed depth-3 seed lemma 2
+CDL03-S3,CDL03,depth-ladder-v1,s3,3,bridge_lemma,compositional_depth_ladder,entailed,hard,depth3_linear,3,none,r1,true,"[]","[]","[]","O -> P",prove,Renamed depth-3 seed lemma 3
+CDL03-D2G,CDL03,depth-ladder-v1,d2g,4,intermediate_gold,compositional_depth_ladder,entailed,hard,depth3_linear,3,gold,r1,false,"[""s1"",""s2""]","[]","[""M -> N"",""N -> O""]","M -> O",prove,Renamed depth-3 gold intermediate
+CDL03-D2M,CDL03,depth-ladder-v1,d2m,5,intermediate_model,compositional_depth_ladder,entailed,hard,depth3_linear,3,model,r1,true,"[""s1"",""s2""]","[]","[""M -> N"",""N -> O""]","M -> O",prove,Renamed depth-3 model intermediate
+CDL03-D3G,CDL03,depth-ladder-v1,d3g,6,final_gold,compositional_depth_ladder,entailed,hard,depth3_linear,3,gold,r1,false,"[""d2g"",""s3""]","[]","[""M -> O"",""O -> P""]","M -> P",prove,Renamed depth-3 gold composition
+CDL03-D3M,CDL03,depth-ladder-v1,d3m,7,final_model,compositional_depth_ladder,entailed,hard,depth3_linear,3,model,r1,false,"[""d2m"",""s3""]","[]","[""M -> O"",""O -> P""]","M -> P",prove,Renamed depth-3 model composition
+CDL03-NEG,CDL03,depth-ladder-v1,neg,8,negative_control,compositional_depth_ladder,not_entailed,hard,depth3_linear,3,model,r1,false,"[""d2m"",""s3""]","[]","[""M -> O"",""O -> P""]","P -> M",not_derivable,Renamed depth-3 negative control

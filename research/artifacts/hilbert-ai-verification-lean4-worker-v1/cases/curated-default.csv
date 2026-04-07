@@ -1,0 +1,9 @@
+case_id,category,difficulty,assumptions_json,goal,comment
+LEANC01,assumption_import,easy,"[""P""]",P,Curated direct premise import
+LEANC02,single_mp,easy,"[""P"",""P -> Q""]",Q,Curated single implication elimination
+LEANC03,mp_chain,medium,"[""P"",""P -> Q"",""Q -> R""]",R,Curated two-step implication chain
+LEANC04,nested_imp_intro,medium,"[""P""]",Q -> P,Curated nested implication introduction target
+LEANC05,theorem_synthesis,medium,[],P -> P,Curated identity theorem candidate
+LEANC06,theorem_synthesis,hard,[],(P -> (Q -> R)) -> ((P -> Q) -> (P -> R)),Curated composition theorem candidate
+LEANC07,negative_refusal,easy,"[""P -> Q""]",P,Curated refutation target: consequent should not imply antecedent
+LEANC08,negative_refusal,easy,"[""P""]",Q,Curated refutation target: irrelevant atomic goal

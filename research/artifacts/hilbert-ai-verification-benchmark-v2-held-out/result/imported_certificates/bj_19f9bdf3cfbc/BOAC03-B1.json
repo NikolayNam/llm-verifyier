@@ -1,0 +1,68 @@
+{
+  "schema_version": "research.imported-certificate/v1",
+  "run_id": "bridge-only-authoring-canonical-20260404_bridge-only-authoring-main-gpt-oss-120b-cloud-r01",
+  "project_folder": "hilbert-ai-verification-benchmark-v2-held-out",
+  "surface": "direct",
+  "experiment_name": "bridge-only-authoring-canonical-v1",
+  "experiment_id": "bridge-only-authoring-canonical-v1-temp0-seed42-topp1-r01-20260404",
+  "prompt_version": "hilbert-ai-verification-bridge-only-canonical-vars-v1.0",
+  "certificate_version": "1.0.0",
+  "case_id": "BOAC03-B1",
+  "theorem_id": "BOAC03-B1",
+  "chain_id": "BOAC03",
+  "stage_id": "b1",
+  "category": "bridge_only_authoring",
+  "case_family": "layered_distractor_canonical",
+  "chain_depth": 1,
+  "atom_renaming_id": "canon2",
+  "goal": "A -\u003e B",
+  "assumptions": [
+    "B",
+    "D -\u003e E"
+  ],
+  "expected_behavior": "prove",
+  "raw_output_kind": "certificate",
+  "score_bucket": "pass",
+  "schema_status": "pass",
+  "parse_status": "pass",
+  "kernel_status": "accept",
+  "cli_exit_code": "0",
+  "trusted_for_reuse": true,
+  "trusted_reuse_reason": "verifier-confirmed reusable local lemma artifact",
+  "certificate_object_file": "C:/Users/nokclock/Documents/GitHub/collabsphere/research/artifacts/hilbert-ai-verification-benchmark-v2-held-out/result/imported_certificates/bridge-only-authoring-canonical-20260404_bridge-only-authoring-main-gpt-oss-120b-cloud-r01/BOAC03-B1.json",
+  "certificate_json": {
+    "certificate_version": "1.0.0",
+    "proof_id": "bridge_only_authoring_canonical_phase1-BOAC03-B1",
+    "goal": "A -\u003e B",
+    "context": {
+      "domain": "hilbert-benchmark-v1",
+      "rule_pack": "classical-hilbert-v1",
+      "syntax": "hilbert-prop-ascii-v1",
+      "generator": "llm-benchmark-v1"
+    },
+    "assumptions": [
+      "B",
+      "D -\u003e E"
+    ],
+    "steps": [
+      {
+        "kind": "assumption",
+        "assumption_ref": 1,
+        "formula": "B"
+      },
+      {
+        "kind": "axiom",
+        "axiom": "A1",
+        "formula": "B -\u003e (A -\u003e B)"
+      },
+      {
+        "kind": "modus_ponens",
+        "premises": [
+          1,
+          2
+        ],
+        "formula": "A -\u003e B"
+      }
+    ]
+  }
+}

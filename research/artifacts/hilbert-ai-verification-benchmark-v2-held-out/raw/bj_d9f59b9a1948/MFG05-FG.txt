@@ -1,0 +1,42 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG05-FG",
+  "goal": "U -> W",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "U -> (V -> W)",
+    "U -> V"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "U -> (V -> W)",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "U -> V",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "formula": "(U -> (V -> W)) -> ((U -> V) -> (U -> W))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "((U -> V) -> (U -> W))",
+      "premises": [1, 3]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "U -> W",
+      "premises": [2, 4]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XN008",
+  "goal": "R008",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": ["P008 -> (Q008 -> R008)", "P008"],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "P008 -> (Q008 -> R008)",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "P008",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q008 -> R008",
+      "premises": [2, 1]
+    }
+  ]
+}

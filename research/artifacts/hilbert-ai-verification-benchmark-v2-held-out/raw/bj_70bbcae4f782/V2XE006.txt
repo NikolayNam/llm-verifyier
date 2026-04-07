@@ -1,0 +1,102 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "V2XE006",
+  "goal": "P006",
+  "assumptions": [
+    "!P006 -> !Q006",
+    "Q006"
+  ],
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "!P006 -> !Q006",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "Q006",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "axiom",
+      "formula": "(!Q006 -> !!P006) -> ((!Q006 -> !P006) -> Q006)",
+      "axiom": "A3"
+    },
+    {
+      "kind": "axiom",
+      "formula": "Q006 -> (!Q006 -> !!P006)",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "!Q006 -> !!P006",
+      "premises": [2, 4]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(!Q006 -> !P006) -> Q006",
+      "premises": [5, 3]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(!P006 -> !Q006) -> ((!Q006 -> !P006) -> (P006 -> Q006))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(!Q006 -> !P006) -> (P006 -> Q006)",
+      "premises": [1, 7]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(P006 -> Q006) -> ((!Q006 -> !P006) -> (P006 -> Q006))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(!Q006 -> !P006) -> (P006 -> Q006)",
+      "premises": [2, 9]
+    },
+    {
+      "kind": "axiom",
+      "formula": "((!Q006 -> !P006) -> Q006) -> (((!Q006 -> !P006) -> (P006 -> Q006)) -> (!Q006 -> !P006))",
+      "axiom": "A3"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "((!Q006 -> !P006) -> (P006 -> Q006)) -> (!Q006 -> !P006)",
+      "premises": [6, 11]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "!Q006 -> !P006",
+      "premises": [10, 12]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(!Q006 -> !P006) -> ((!P006 -> !Q006) -> (Q006 -> P006))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(!P006 -> !Q006) -> (Q006 -> P006)",
+      "premises": [13, 14]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "Q006 -> P006",
+      "premises": [1, 15]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "P006",
+      "premises": [2, 16]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "certificate_version": "1.0.0",
+  "proof_id": "MFG04-FG",
+  "goal": "M -> P",
+  "context": {
+    "domain": "hilbert-benchmark-v1",
+    "rule_pack": "classical-hilbert-v1",
+    "syntax": "hilbert-prop-ascii-v1",
+    "generator": "llm-benchmark-v1"
+  },
+  "assumptions": [
+    "M -> N",
+    "N -> (O -> P)",
+    "M -> O"
+  ],
+  "steps": [
+    {
+      "kind": "assumption",
+      "formula": "M -> N",
+      "assumption_ref": 1
+    },
+    {
+      "kind": "assumption",
+      "formula": "N -> (O -> P)",
+      "assumption_ref": 2
+    },
+    {
+      "kind": "assumption",
+      "formula": "M -> O",
+      "assumption_ref": 3
+    },
+    {
+      "kind": "axiom",
+      "formula": "(N -> (O -> P)) -> ((N -> O) -> (N -> P))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(N -> O) -> (N -> P)",
+      "premises": [2, 3]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(M -> (N -> O)) -> ((M -> N) -> (M -> O))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "axiom",
+      "formula": "(M -> O) -> (N -> (M -> O))",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "N -> (M -> O)",
+      "premises": [3, 7]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(N -> (M -> O)) -> ((N -> M) -> (N -> O))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(N -> M) -> (N -> O)",
+      "premises": [8, 9]
+    },
+    {
+      "kind": "axiom",
+      "formula": "M -> (N -> M)",
+      "axiom": "A1"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "N -> O",
+      "premises": [11, 10]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "N -> P",
+      "premises": [12, 4]
+    },
+    {
+      "kind": "axiom",
+      "formula": "(M -> N) -> ((N -> P) -> (M -> P))",
+      "axiom": "A2"
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "(N -> P) -> (M -> P)",
+      "premises": [1, 14]
+    },
+    {
+      "kind": "modus_ponens",
+      "formula": "M -> P",
+      "premises": [13, 15]
+    }
+  ]
+}
