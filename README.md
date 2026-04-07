@@ -2,6 +2,11 @@
 
 Короткий README для запуска `researchctl` из этого репозитория.
 
+Исходные артефакты исследования можно скачать тут: https://drive.google.com/file/d/1jA5GSNd9fRWD7Yhk4qKxCGrow4E-rVnX/view?usp=drive_link
+Весит он 1.5 Gb
+
+
+
 ## Что запускать
 
 Канонический entrypoint из корня репозитория:
