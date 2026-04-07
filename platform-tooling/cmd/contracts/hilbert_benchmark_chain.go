@@ -25,10 +25,14 @@ func benchmarkCaseUsesCompositionalChainProtocol(tc benchmarkCase) bool {
 }
 
 func benchmarkChainSummaryPath(resultsPath, runID string) string {
-	if strings.TrimSpace(resultsPath) == "" || strings.TrimSpace(runID) == "" {
+	return benchmarkChainSummaryPathForArtifact(resultsPath, runID, "")
+}
+
+func benchmarkChainSummaryPathForArtifact(resultsPath, runID, artifactKey string) string {
+	if strings.TrimSpace(resultsPath) == "" || strings.TrimSpace(benchmarkArtifactRunKey(runID, artifactKey)) == "" {
 		return ""
 	}
-	return filepath.Join(filepath.Dir(resultsPath), fmt.Sprintf("chain_result_%s.csv", strings.TrimSpace(runID)))
+	return filepath.Join(filepath.Dir(resultsPath), fmt.Sprintf("chain_result_%s.csv", benchmarkArtifactRunKey(runID, artifactKey)))
 }
 
 type benchmarkChainSummaryRow struct {

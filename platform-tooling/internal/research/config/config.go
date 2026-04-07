@@ -40,10 +40,11 @@ type StateConfig struct {
 }
 
 type Transport struct {
-	Provider  string `yaml:"provider" json:"provider"`
-	BaseURL   string `yaml:"base_url" json:"base_url"`
-	APIKeyEnv string `yaml:"api_key_env,omitempty" json:"api_key_env,omitempty"`
-	Timeout   string `yaml:"timeout,omitempty" json:"timeout,omitempty"`
+	Provider     string            `yaml:"provider" json:"provider"`
+	BaseURL      string            `yaml:"base_url" json:"base_url"`
+	APIKeyEnv    string            `yaml:"api_key_env,omitempty" json:"api_key_env,omitempty"`
+	Timeout      string            `yaml:"timeout,omitempty" json:"timeout,omitempty"`
+	ModelAliases map[string]string `yaml:"model_aliases,omitempty" json:"model_aliases,omitempty"`
 }
 
 type SamplingConfig struct {
@@ -133,12 +134,13 @@ type Loaded struct {
 }
 
 type ResolvedTransport struct {
-	Name      string
-	Provider  string
-	BaseURL   string
-	APIKeyEnv string
-	APIKey    string
-	Timeout   time.Duration
+	Name         string
+	Provider     string
+	BaseURL      string
+	APIKeyEnv    string
+	APIKey       string
+	Timeout      time.Duration
+	ModelAliases map[string]string
 }
 
 func Load(workspaceRoot, configPath, localConfigPath string) (Loaded, error) {
@@ -246,12 +248,13 @@ func (l Loaded) ResolveTransport(name string, requireSecret bool) (ResolvedTrans
 		return ResolvedTransport{}, fmt.Errorf("required API key env %q is empty for research transport %q", apiKeyEnv, name)
 	}
 	return ResolvedTransport{
-		Name:      name,
-		Provider:  provider,
-		BaseURL:   baseURL,
-		APIKeyEnv: apiKeyEnv,
-		APIKey:    apiKey,
-		Timeout:   timeout,
+		Name:         name,
+		Provider:     provider,
+		BaseURL:      baseURL,
+		APIKeyEnv:    apiKeyEnv,
+		APIKey:       apiKey,
+		Timeout:      timeout,
+		ModelAliases: normalizeModelAliases(transport.ModelAliases),
 	}, nil
 }
 
@@ -581,6 +584,16 @@ func validateConfig(cfg Config) error {
 				return fmt.Errorf("research transport %q has invalid timeout %q: %w", name, transport.Timeout, err)
 			}
 		}
+		for canonical, runtime := range transport.ModelAliases {
+			canonical = strings.TrimSpace(canonical)
+			runtime = strings.TrimSpace(runtime)
+			if canonical == "" {
+				return fmt.Errorf("research transport %q model_aliases contains blank canonical model id", name)
+			}
+			if runtime == "" {
+				return fmt.Errorf("research transport %q model_aliases[%q] must not be empty", name, canonical)
+			}
+		}
 	}
 	for name, family := range cfg.Families {
 		if strings.TrimSpace(name) == "" {
@@ -717,6 +730,25 @@ func validateSamplingConfig(sampling *SamplingConfig, scope string) error {
 		}
 	}
 	return nil
+}
+
+func normalizeModelAliases(raw map[string]string) map[string]string {
+	if len(raw) == 0 {
+		return nil
+	}
+	normalized := make(map[string]string, len(raw))
+	for canonical, runtime := range raw {
+		canonical = strings.TrimSpace(canonical)
+		runtime = strings.TrimSpace(runtime)
+		if canonical == "" || runtime == "" {
+			continue
+		}
+		normalized[canonical] = runtime
+	}
+	if len(normalized) == 0 {
+		return nil
+	}
+	return normalized
 }
 
 func loadYAMLMap(path string) (map[string]any, error) {

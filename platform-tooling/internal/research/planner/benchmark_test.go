@@ -29,11 +29,13 @@ transports:
     provider: compatible
     base_url: http://localhost:11434
     timeout: 60s
+    model_aliases:
+      gpt-oss:20b-cloud: gpt-oss:20b
 families:
   local-compatible:
     transport: local-compatible
     experiment_name: formal-mode
-    models: [gpt-oss:20b, gpt-oss:120b-cloud]
+    models: [gpt-oss:20b-cloud, gpt-oss:120b-cloud]
     sampling:
       temperature: 0
       seed: 42
@@ -105,6 +107,15 @@ db:
 		if filepath.Base(job.ResultsPath) == "result_.csv" {
 			t.Fatalf("job %q results_path = %q, want concrete run-id suffix", job.Key, job.ResultsPath)
 		}
+		if job.ArtifactKey == "" {
+			t.Fatalf("job %q ArtifactKey is empty", job.Key)
+		}
+		if !strings.Contains(filepath.Base(job.ResultsPath), job.ArtifactKey) {
+			t.Fatalf("job %q results_path = %q, want artifact key %q in basename", job.Key, job.ResultsPath, job.ArtifactKey)
+		}
+		if filepath.Base(job.RawDir) != job.ArtifactKey {
+			t.Fatalf("job %q raw_dir = %q, want basename %q", job.Key, job.RawDir, job.ArtifactKey)
+		}
 		if job.ExperimentName != "formal-mode" {
 			t.Fatalf("job %q ExperimentName = %q, want formal-mode", job.Key, job.ExperimentName)
 		}
@@ -116,6 +127,18 @@ db:
 		}
 		if job.EffectiveSamplingProfile != "temp0_seed42_topp1" {
 			t.Fatalf("job %q EffectiveSamplingProfile = %q, want temp0_seed42_topp1", job.Key, job.EffectiveSamplingProfile)
+		}
+		switch job.Model {
+		case "gpt-oss:20b-cloud":
+			if job.RuntimeModel != "gpt-oss:20b" {
+				t.Fatalf("job %q RuntimeModel = %q, want gpt-oss:20b", job.Key, job.RuntimeModel)
+			}
+		case "gpt-oss:120b-cloud":
+			if job.RuntimeModel != "gpt-oss:120b-cloud" {
+				t.Fatalf("job %q RuntimeModel = %q, want canonical runtime model", job.Key, job.RuntimeModel)
+			}
+		default:
+			t.Fatalf("unexpected job model %q", job.Model)
 		}
 	}
 	if filepath.Base(plan.ManifestPath) != "phase1_20260401T120000Z.json" {
@@ -142,10 +165,12 @@ transports:
     provider: compatible
     base_url: http://localhost:11434
     timeout: 60s
+    model_aliases:
+      gpt-oss:20b-cloud: gpt-oss:20b
 families:
   local-compatible:
     transport: local-compatible
-    models: [gpt-oss:20b]
+    models: [gpt-oss:20b-cloud]
     experiment_name: formal-mode
     sampling:
       temperature: 0
@@ -217,6 +242,12 @@ db:
 	}
 	if !strings.Contains(text, "\"experiment_id\"") {
 		t.Fatalf("manifest json missing experiment_id: %s", text)
+	}
+	if !strings.Contains(text, "\"runtime_model\": \"gpt-oss:20b\"") {
+		t.Fatalf("manifest json missing runtime_model: %s", text)
+	}
+	if !strings.Contains(text, "\"artifact_key\": \"bj_") {
+		t.Fatalf("manifest json missing artifact_key: %s", text)
 	}
 }
 

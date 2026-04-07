@@ -3,6 +3,7 @@ package config
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -22,6 +23,8 @@ transports:
   local-compatible:
     provider: compatible
     base_url: http://localhost:11434
+    model_aliases:
+      gpt-oss:20b-cloud: gpt-oss:20b
   openai-public:
     provider: openai
     base_url: https://api.openai.com/v1
@@ -232,6 +235,9 @@ families:
 	if got := loaded.Config.Transports["local-compatible"].BaseURL; got != "http://127.0.0.1:11435" {
 		t.Fatalf("local-compatible base_url = %q, want override", got)
 	}
+	if got := loaded.Config.Transports["local-compatible"].ModelAliases["gpt-oss:20b-cloud"]; got != "gpt-oss:20b" {
+		t.Fatalf("local-compatible model_aliases[gpt-oss:20b-cloud] = %q, want gpt-oss:20b", got)
+	}
 	models := loaded.Config.Families["local-compatible"].Models
 	if len(models) != 1 || models[0] != "gpt-oss:120b-cloud" {
 		t.Fatalf("local-compatible models = %#v, want local override", models)
@@ -406,6 +412,13 @@ families:
 	if transport.APIKey != "test-secret" {
 		t.Fatalf("ResolveTransport() APIKey = %q, want env file value", transport.APIKey)
 	}
+	localTransport, err := loaded.ResolveTransport("local-compatible", false)
+	if err != nil {
+		t.Fatalf("ResolveTransport(local-compatible) error = %v", err)
+	}
+	if got := localTransport.ModelAliases["gpt-oss:20b-cloud"]; got != "gpt-oss:20b" {
+		t.Fatalf("ResolveTransport(local-compatible) model alias = %q, want gpt-oss:20b", got)
+	}
 }
 
 func TestLoadSupportsRelativeExtendsCompatibilityWrappers(t *testing.T) {
@@ -562,4 +575,65 @@ db:
 	if got := loaded.Config.Benchmarks.ND.ParallelJobs; got != 1 {
 		t.Fatalf("nd jobs = %d, want default 1", got)
 	}
+}
+
+func TestLoadRejectsBlankTransportModelAlias(t *testing.T) {
+	root := t.TempDir()
+	configDir := filepath.Join(root, "research", "config")
+	if err := os.MkdirAll(configDir, 0o755); err != nil {
+		t.Fatalf("MkdirAll(configDir) error = %v", err)
+	}
+
+	cfg := `schema_version: researchctl.config/v1
+paths:
+  artifact_root: research/artifacts
+state:
+  db_path: research/artifacts/result_research/research_db/research_db.sqlite
+transports:
+  local-compatible:
+    provider: compatible
+    base_url: http://localhost:11434
+    model_aliases:
+      gpt-oss:20b-cloud: ""
+families:
+  local-compatible:
+    transport: local-compatible
+    models: [gpt-oss:20b]
+benchmarks:
+  phase1:
+    project_folder: hilbert-ai-verification-benchmark-v2-held-out
+    input_kind: cases
+    input_file: cases.csv
+    prompt_version: hilbert-ai-verification-benchmark-v1.3
+    families: [local-compatible]
+    repeats: 1
+    summary_dir: research/artifacts/result_research/waves
+    report_dir: research/result_research_report_v1/direct
+reports:
+  benchmark_dir: research/result_research_report_v1/direct
+  nd_dir: research/result_research_report_v1/nd
+  research_dir: research/result_research_report_v1/pair
+db:
+  project_folder: hilbert-ai-verification-benchmark-nd-v1
+`
+	if err := os.WriteFile(filepath.Join(configDir, "default.yaml"), []byte(cfg), 0o644); err != nil {
+		t.Fatalf("WriteFile(default.yaml) error = %v", err)
+	}
+
+	_, err := Load(root, filepath.Join("research", "config", "default.yaml"), "")
+	if err == nil {
+		t.Fatalf("Load() error = nil, want invalid model_aliases error")
+	}
+	if got := err.Error(); got == "" || !containsAll(got, "model_aliases", "gpt-oss:20b-cloud") {
+		t.Fatalf("Load() error = %q, want model_aliases validation error", got)
+	}
+}
+
+func containsAll(text string, needles ...string) bool {
+	for _, needle := range needles {
+		if !strings.Contains(text, needle) {
+			return false
+		}
+	}
+	return true
 }

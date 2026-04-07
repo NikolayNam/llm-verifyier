@@ -11,6 +11,7 @@ import (
 	"time"
 
 	lean4worker "github.com/NikolayNam/collabsphere/platform-tooling/internal/prooftheory/lean4worker"
+	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/artifactkey"
 	researchconfig "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/config"
 	leanlayer "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/generate/lean4"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/state"
@@ -387,7 +388,11 @@ func runLeanExportCommand(args []string, stdout, stderr io.Writer) error {
 	resolvedOutputArg := strings.TrimSpace(*outputFile)
 	if resolvedOutputArg != "" {
 		resolvedOutputArg = resolveLeanExportOutputPath(loaded, resolvedOutputArg)
+	} else {
+		resolvedOutputArg = filepath.ToSlash(filepath.Join(loaded.ResolvePath(filepath.ToSlash(filepath.Join(loaded.Config.Paths.ArtifactRoot, loaded.Config.Generate.Lean4.BenchmarkProjectFolder))), filepath.FromSlash(loaded.Config.Generate.Lean4.ExportOutputFile)))
 	}
+	exportArtifactKey := artifactkey.Export(*runID, *runID)
+	resolvedOutputArg = compactArtifactOutputPath(loaded, resolvedOutputArg, "export", exportArtifactKey)
 	exported, err := leanlayer.ExportToBenchmark(loaded, resolvedSourceArg, resolvedOutputArg, lean4worker.BenchmarkCaseExportConfig{
 		ModeFilter:      strings.TrimSpace(*mode),
 		InterestingOnly: *interestingOnly,
@@ -411,6 +416,7 @@ func runLeanExportCommand(args []string, stdout, stderr io.Writer) error {
 	} else {
 		resolvedOutput = filepath.ToSlash(resolveLeanExportOutputPath(loaded, resolvedOutput))
 	}
+	resolvedOutput = compactArtifactOutputPath(loaded, resolvedOutput, "export", exportArtifactKey)
 	sourcePackID, packErr := loadFirstTheoremPackID(resolvedSource)
 	if packErr != nil {
 		_, _ = finishRun(context.Background(), store, *runID, "export lean-to-benchmark", "lean-export", "", packErr, nil)
@@ -425,6 +431,7 @@ func runLeanExportCommand(args []string, stdout, stderr io.Writer) error {
 		SourcePath:             resolvedSource,
 		OutputPath:             resolvedOutput,
 		MetadataJSON: state.MetadataJSON(map[string]any{
+			"artifact_key":     exportArtifactKey,
 			"mode_filter":      strings.TrimSpace(*mode),
 			"interesting_only": *interestingOnly,
 			"minimal_only":     *minimalOnly,

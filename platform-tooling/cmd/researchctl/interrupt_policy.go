@@ -134,7 +134,7 @@ func benchmarkCleanupTargets(plan *planner.BenchmarkPlan) []string {
 		plan.ModelCatalogPath,
 	}
 	for _, job := range plan.Jobs {
-		targets = append(targets, job.ResultsPath, filepath.Join(job.RawDir, job.RunID))
+		targets = append(targets, job.ResultsPath, job.RawDir)
 	}
 	return targets
 }

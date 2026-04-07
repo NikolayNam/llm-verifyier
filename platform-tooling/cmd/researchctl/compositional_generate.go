@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/artifactkey"
 	researchconfig "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/config"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/generate/compositional"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/state"
@@ -23,6 +24,7 @@ type compositionalGenerationManifest struct {
 	ProjectFolder string   `json:"project_folder"`
 	BenchmarkKey  string   `json:"benchmark_key"`
 	OutputPath    string   `json:"output_path"`
+	ArtifactKey   string   `json:"artifact_key,omitempty"`
 	InputFile     string   `json:"input_file"`
 	LocalConfig   string   `json:"local_config,omitempty"`
 	PromptVersion string   `json:"prompt_version"`
@@ -121,6 +123,10 @@ func runGenerateCompositionalCommand(surfaceOverride, commandName string, args [
 	// The CSV can live anywhere, but emitted local YAML must still point back to
 	// a benchmark input_file selector that the existing planner understands.
 	selector := strings.TrimSpace(*inputFileSelector)
+	logicalPackKey := strings.TrimSuffix(filepath.Base(outputPath), filepath.Ext(outputPath))
+	generatedArtifactKey := artifactkey.GeneratedPack(*runID, logicalPackKey)
+	outputPath = compactArtifactOutputPath(loaded, outputPath, "pack", generatedArtifactKey)
+	derivedSelector = deriveCompositionalSelector(loaded.ResolvePath(filepath.ToSlash(filepath.Join(loaded.Config.Paths.ArtifactRoot, profile.ProjectFolder))), filepath.FromSlash(outputPath))
 	if selector == "" {
 		selector = derivedSelector
 	}
@@ -170,6 +176,7 @@ func runGenerateCompositionalCommand(surfaceOverride, commandName string, args [
 		ProjectFolder: result.Profile.ProjectFolder,
 		BenchmarkKey:  result.Profile.BenchmarkKey,
 		OutputPath:    result.OutputPath,
+		ArtifactKey:   generatedArtifactKey,
 		InputFile:     result.BenchmarkInputFile,
 		LocalConfig:   result.LocalConfigPath,
 		PromptVersion: result.PromptVersion,
@@ -197,12 +204,13 @@ func runGenerateCompositionalCommand(surfaceOverride, commandName string, args [
 
 	if err := store.RecordGeneratedPack(context.Background(), state.GeneratedPack{
 		RunID:         *runID,
-		PackKey:       strings.TrimSuffix(filepath.Base(result.OutputPath), filepath.Ext(result.OutputPath)),
+		PackKey:       logicalPackKey,
 		ProjectFolder: result.Profile.ProjectFolder,
 		SourceKind:    fmt.Sprintf("compositional/%s/%s", result.Profile.Surface, result.Profile.Mode),
 		OutputPath:    result.OutputPath,
 		ManifestPath:  manifestPath,
 		MetadataJSON: state.MetadataJSON(map[string]any{
+			"artifact_key":    generatedArtifactKey,
 			"input_file":      result.BenchmarkInputFile,
 			"local_config":    result.LocalConfigPath,
 			"prompt_version":  result.PromptVersion,

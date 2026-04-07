@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/artifactkey"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/benchmarkcases"
 	researchconfig "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/config"
 	researchsampling "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/sampling"
@@ -45,8 +46,10 @@ type BenchmarkJob struct {
 	Command                      string                   `json:"command"`
 	Phase                        string                   `json:"phase"`
 	RunID                        string                   `json:"run_id"`
+	ArtifactKey                  string                   `json:"artifact_key"`
 	Family                       string                   `json:"family"`
 	Model                        string                   `json:"model"`
+	RuntimeModel                 string                   `json:"runtime_model"`
 	Repeat                       int                      `json:"repeat"`
 	Selector                     string                   `json:"selector"`
 	Provider                     string                   `json:"provider"`
@@ -180,7 +183,8 @@ func BuildBenchmarkPlan(loaded researchconfig.Loaded, phase string, benchmark re
 	}
 
 	summaryPath := filepath.ToSlash(filepath.Join(loaded.ResolvePath(benchmark.SummaryDir), fmt.Sprintf("%s_%s.csv", phase, runID)))
-	reportPath := filepath.ToSlash(filepath.Join(loaded.ResolvePath(benchmark.ReportDir), fmt.Sprintf("%s_%s.md", phase, runID)))
+	reportDir := loaded.ResolvePath(benchmark.ReportDir)
+	reportPath := filepath.ToSlash(filepath.Join(reportDir, BenchmarkReportFilename(loaded, phase, reportDir, runID)))
 	manifestPath := filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Paths.ManifestRoot), fmt.Sprintf("%s_%s.json", phase, runID)))
 	modelCatalogPath := strings.TrimSpace(benchmark.ModelCatalog)
 	if modelCatalogPath == "" {
@@ -205,19 +209,23 @@ func BuildBenchmarkPlan(loaded researchconfig.Loaded, phase string, benchmark re
 			if model == "" {
 				continue
 			}
+			runtimeModel := resolveBenchmarkRuntimeModel(model, transport.ModelAliases)
 			for repeat := 1; repeat <= benchmark.Repeats; repeat++ {
 				jobKey := sanitizeToken(fmt.Sprintf("%s_%s_r%02d", familyName, model, repeat))
 				jobRunID := fmt.Sprintf("%s_%s", runID, jobKey)
+				artifactID := artifactkey.BenchmarkJob(phase, runID, jobKey)
 				experimentID := researchsampling.BuildExperimentID(experimentName, repeat, experimentDate, resolvedSampling.RequestedProfile)
-				resultsPath := filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Paths.ArtifactRoot), benchmark.ProjectFolder, "result", fmt.Sprintf("result_%s.csv", jobRunID)))
-				rawDir := filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Paths.ArtifactRoot), benchmark.ProjectFolder, "raw"))
+				resultsPath := filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Paths.ArtifactRoot), benchmark.ProjectFolder, "result", fmt.Sprintf("result_%s.csv", artifactID)))
+				rawDir := filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Paths.ArtifactRoot), benchmark.ProjectFolder, "raw", artifactID))
 				job := BenchmarkJob{
 					Key:                          jobKey,
 					Command:                      opts.Command,
 					Phase:                        phase,
 					RunID:                        jobRunID,
+					ArtifactKey:                  artifactID,
 					Family:                       familyName,
 					Model:                        model,
+					RuntimeModel:                 runtimeModel,
 					Repeat:                       repeat,
 					Selector:                     benchmark.InputFile,
 					Provider:                     transport.Provider,
@@ -276,6 +284,17 @@ func BuildBenchmarkPlan(loaded researchconfig.Loaded, phase string, benchmark re
 		InterruptPolicy:              interruptPolicy,
 		Jobs:                         jobs,
 	}, nil
+}
+
+func resolveBenchmarkRuntimeModel(canonicalModel string, aliases map[string]string) string {
+	canonicalModel = strings.TrimSpace(canonicalModel)
+	if canonicalModel == "" {
+		return ""
+	}
+	if runtime := strings.TrimSpace(aliases[canonicalModel]); runtime != "" {
+		return runtime
+	}
+	return canonicalModel
 }
 
 func benchmarkPhaseUsesChainDependencyValidation(phase string) bool {

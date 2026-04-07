@@ -268,6 +268,207 @@ ON CONFLICT(export_key) DO UPDATE SET
 	return nil
 }
 
+func (s *Store) DeleteArtifact(ctx context.Context, runID, role, absolutePath string) error {
+	_, err := s.db.ExecContext(ctx, `DELETE FROM research_run_artifacts WHERE run_id = ? AND role = ? AND absolute_path = ?`, runID, role, filepath.ToSlash(strings.TrimSpace(absolutePath)))
+	if err != nil {
+		return fmt.Errorf("delete research artifact %q/%q/%q: %w", runID, role, absolutePath, err)
+	}
+	return nil
+}
+
+func (s *Store) ListRuns(ctx context.Context) ([]Run, error) {
+	rows, err := s.db.QueryContext(ctx, `
+SELECT run_id, command, phase, status, manifest_path, config_fingerprint, started_at_utc, finished_at_utc, error, metadata_json
+FROM research_runs
+ORDER BY run_id`)
+	if err != nil {
+		return nil, fmt.Errorf("list research runs: %w", err)
+	}
+	defer rows.Close()
+	var runs []Run
+	for rows.Next() {
+		var run Run
+		if err := rows.Scan(
+			&run.RunID, &run.Command, &run.Phase, &run.Status, &run.ManifestPath, &run.ConfigFingerprint,
+			&run.StartedAtUTC, &run.FinishedAtUTC, &run.Error, &run.MetadataJSON,
+		); err != nil {
+			return nil, fmt.Errorf("scan research run: %w", err)
+		}
+		runs = append(runs, run)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("iterate research runs: %w", err)
+	}
+	return runs, nil
+}
+
+func (s *Store) ListJobs(ctx context.Context) ([]Job, error) {
+	rows, err := s.db.QueryContext(ctx, `
+SELECT run_id, job_key, spec_hash, command, phase, family, model, selector, status, result_path, summary_path, raw_dir, started_at_utc, finished_at_utc, error, metadata_json
+FROM research_jobs
+ORDER BY run_id, job_key`)
+	if err != nil {
+		return nil, fmt.Errorf("list research jobs: %w", err)
+	}
+	defer rows.Close()
+	var jobs []Job
+	for rows.Next() {
+		var job Job
+		if err := rows.Scan(
+			&job.RunID, &job.JobKey, &job.SpecHash, &job.Command, &job.Phase, &job.Family, &job.Model, &job.Selector,
+			&job.Status, &job.ResultPath, &job.SummaryPath, &job.RawDir, &job.StartedAtUTC, &job.FinishedAtUTC,
+			&job.Error, &job.MetadataJSON,
+		); err != nil {
+			return nil, fmt.Errorf("scan research job: %w", err)
+		}
+		jobs = append(jobs, job)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("iterate research jobs: %w", err)
+	}
+	return jobs, nil
+}
+
+func (s *Store) ListArtifacts(ctx context.Context) ([]Artifact, error) {
+	rows, err := s.db.QueryContext(ctx, `
+SELECT run_id, job_key, role, relative_path, absolute_path, checksum_sha256, metadata_json, created_at_utc
+FROM research_run_artifacts
+ORDER BY run_id, role, absolute_path`)
+	if err != nil {
+		return nil, fmt.Errorf("list research artifacts: %w", err)
+	}
+	defer rows.Close()
+	var artifacts []Artifact
+	for rows.Next() {
+		var artifact Artifact
+		if err := rows.Scan(
+			&artifact.RunID, &artifact.JobKey, &artifact.Role, &artifact.RelativePath, &artifact.AbsolutePath,
+			&artifact.ChecksumSHA, &artifact.MetadataJSON, &artifact.CreatedAtUTC,
+		); err != nil {
+			return nil, fmt.Errorf("scan research artifact: %w", err)
+		}
+		artifacts = append(artifacts, artifact)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("iterate research artifacts: %w", err)
+	}
+	return artifacts, nil
+}
+
+func (s *Store) ListGeneratedPacks(ctx context.Context) ([]GeneratedPack, error) {
+	rows, err := s.db.QueryContext(ctx, `
+SELECT run_id, pack_key, project_folder, source_kind, source_path, output_path, manifest_path, metadata_json, created_at_utc
+FROM research_generated_packs
+ORDER BY pack_key`)
+	if err != nil {
+		return nil, fmt.Errorf("list research generated packs: %w", err)
+	}
+	defer rows.Close()
+	var packs []GeneratedPack
+	for rows.Next() {
+		var pack GeneratedPack
+		if err := rows.Scan(
+			&pack.RunID, &pack.PackKey, &pack.ProjectFolder, &pack.SourceKind, &pack.SourcePath,
+			&pack.OutputPath, &pack.ManifestPath, &pack.MetadataJSON, &pack.CreatedAtUTC,
+		); err != nil {
+			return nil, fmt.Errorf("scan research generated pack: %w", err)
+		}
+		packs = append(packs, pack)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("iterate research generated packs: %w", err)
+	}
+	return packs, nil
+}
+
+func (s *Store) ListExports(ctx context.Context) ([]Export, error) {
+	rows, err := s.db.QueryContext(ctx, `
+SELECT run_id, export_key, project_folder, benchmark_project_folder, source_pack_id, source_path, output_path, metadata_json, created_at_utc
+FROM research_exports
+ORDER BY export_key`)
+	if err != nil {
+		return nil, fmt.Errorf("list research exports: %w", err)
+	}
+	defer rows.Close()
+	var exports []Export
+	for rows.Next() {
+		var export Export
+		if err := rows.Scan(
+			&export.RunID, &export.ExportKey, &export.ProjectFolder, &export.BenchmarkProjectFolder, &export.SourcePackID,
+			&export.SourcePath, &export.OutputPath, &export.MetadataJSON, &export.CreatedAtUTC,
+		); err != nil {
+			return nil, fmt.Errorf("scan research export: %w", err)
+		}
+		exports = append(exports, export)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("iterate research exports: %w", err)
+	}
+	return exports, nil
+}
+
+func (s *Store) RewritePaths(ctx context.Context, mapping map[string]string) error {
+	if len(mapping) == 0 {
+		return nil
+	}
+	tx, err := s.db.BeginTx(ctx, nil)
+	if err != nil {
+		return fmt.Errorf("begin research path rewrite tx: %w", err)
+	}
+	defer tx.Rollback()
+
+	for oldPath, newPath := range normalizePathMapping(mapping) {
+		newRel := s.relativePath(newPath)
+		if _, err := tx.ExecContext(ctx, `UPDATE research_runs SET manifest_path = ? WHERE manifest_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_runs.manifest_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_jobs SET result_path = ? WHERE result_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_jobs.result_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_jobs SET summary_path = ? WHERE summary_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_jobs.summary_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_jobs SET raw_dir = ? WHERE raw_dir = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_jobs.raw_dir %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_run_artifacts SET absolute_path = ?, relative_path = ? WHERE absolute_path = ?`, newPath, newRel, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_run_artifacts.absolute_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_generated_packs SET source_path = ? WHERE source_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_generated_packs.source_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_generated_packs SET output_path = ? WHERE output_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_generated_packs.output_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_generated_packs SET manifest_path = ? WHERE manifest_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_generated_packs.manifest_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_exports SET source_path = ? WHERE source_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_exports.source_path %q: %w", oldPath, err)
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE research_exports SET output_path = ? WHERE output_path = ?`, newPath, oldPath); err != nil {
+			return fmt.Errorf("rewrite research_exports.output_path %q: %w", oldPath, err)
+		}
+	}
+
+	for _, table := range []string{
+		"research_runs",
+		"research_jobs",
+		"research_run_artifacts",
+		"research_generated_packs",
+		"research_exports",
+	} {
+		if err := rewriteMetadataJSONPaths(ctx, tx, table, mapping); err != nil {
+			return err
+		}
+	}
+
+	if err := tx.Commit(); err != nil {
+		return fmt.Errorf("commit research path rewrite tx: %w", err)
+	}
+	return nil
+}
+
 func normalizeJSONText(raw string) string {
 	raw = strings.TrimSpace(raw)
 	if raw == "" {
@@ -305,4 +506,76 @@ func MetadataJSON(value any) string {
 		return "{}"
 	}
 	return string(raw)
+}
+
+func normalizePathMapping(mapping map[string]string) map[string]string {
+	normalized := make(map[string]string, len(mapping))
+	for oldPath, newPath := range mapping {
+		oldPath = filepath.ToSlash(strings.TrimSpace(oldPath))
+		newPath = filepath.ToSlash(strings.TrimSpace(newPath))
+		if oldPath == "" || newPath == "" || oldPath == newPath {
+			continue
+		}
+		normalized[oldPath] = newPath
+	}
+	return normalized
+}
+
+func rewriteMetadataJSONPaths(ctx context.Context, tx *sql.Tx, table string, mapping map[string]string) error {
+	rows, err := tx.QueryContext(ctx, fmt.Sprintf(`SELECT rowid, metadata_json FROM %s`, table))
+	if err != nil {
+		return fmt.Errorf("query %s metadata json: %w", table, err)
+	}
+	defer rows.Close()
+	var updates []struct {
+		rowID int64
+		value string
+	}
+	for rows.Next() {
+		var rowID int64
+		var value string
+		if err := rows.Scan(&rowID, &value); err != nil {
+			return fmt.Errorf("scan %s metadata json: %w", table, err)
+		}
+		rewritten := rewriteMappedText(value, mapping)
+		if rewritten != value {
+			updates = append(updates, struct {
+				rowID int64
+				value string
+			}{rowID: rowID, value: rewritten})
+		}
+	}
+	if err := rows.Err(); err != nil {
+		return fmt.Errorf("iterate %s metadata json: %w", table, err)
+	}
+	for _, update := range updates {
+		if _, err := tx.ExecContext(ctx, fmt.Sprintf(`UPDATE %s SET metadata_json = ? WHERE rowid = ?`, table), update.value, update.rowID); err != nil {
+			return fmt.Errorf("update %s metadata json row %d: %w", table, update.rowID, err)
+		}
+	}
+	return nil
+}
+
+func rewriteMappedText(value string, mapping map[string]string) string {
+	type pair struct {
+		old string
+		new string
+	}
+	pairs := make([]pair, 0, len(mapping))
+	for oldPath, newPath := range normalizePathMapping(mapping) {
+		pairs = append(pairs, pair{old: oldPath, new: newPath})
+	}
+	for i := 0; i < len(pairs); i++ {
+		for j := i + 1; j < len(pairs); j++ {
+			if len(pairs[j].old) > len(pairs[i].old) {
+				pairs[i], pairs[j] = pairs[j], pairs[i]
+			}
+		}
+	}
+	rewritten := value
+	for _, pair := range pairs {
+		rewritten = strings.ReplaceAll(rewritten, pair.old, pair.new)
+		rewritten = strings.ReplaceAll(rewritten, strings.ReplaceAll(pair.old, "/", `\`), strings.ReplaceAll(pair.new, "/", `\`))
+	}
+	return rewritten
 }

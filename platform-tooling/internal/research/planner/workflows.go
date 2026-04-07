@@ -8,6 +8,7 @@ import (
 	"time"
 
 	lean4worker "github.com/NikolayNam/collabsphere/platform-tooling/internal/prooftheory/lean4worker"
+	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/artifactkey"
 	researchconfig "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/config"
 	researchlean4 "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/generate/lean4"
 )
@@ -169,6 +170,8 @@ func BuildPhase3Plan(loaded researchconfig.Loaded, opts Phase3PlanOptions) *Phas
 	jobPayloadFile := firstNonEmpty(strings.TrimSpace(opts.JobPayloadFile), loaded.Config.Generate.Lean4.JobPayloadFile)
 	artifactRoot := loaded.ResolvePath(filepath.ToSlash(filepath.Join(loaded.Config.Paths.ArtifactRoot, loaded.Config.Generate.Lean4.ProjectFolder)))
 	theoremsRoot := filepath.Join(artifactRoot, lean4worker.DefaultTheoremsDir)
+	exportOutputPath := filepath.ToSlash(filepath.Join(loaded.ResolvePath(filepath.ToSlash(filepath.Join(loaded.Config.Paths.ArtifactRoot, loaded.Config.Generate.Lean4.BenchmarkProjectFolder))), filepath.FromSlash(loaded.Config.Generate.Lean4.ExportOutputFile)))
+	exportOutputPath = artifactkey.CompactFile(exportOutputPath, "export", artifactkey.Export(runID, runID))
 	return &Phase3Plan{
 		SchemaVersion:       WorkflowManifestSchemaVersion,
 		Command:             firstNonEmpty(strings.TrimSpace(opts.Command), "phase3 run"),
@@ -184,7 +187,7 @@ func BuildPhase3Plan(loaded researchconfig.Loaded, opts Phase3PlanOptions) *Phas
 		TheoremPackPath:     filepath.ToSlash(filepath.Join(theoremsRoot, "theorems.csv")),
 		GenerationConfig:    filepath.ToSlash(filepath.Join(theoremsRoot, "generation-config.json")),
 		DefaultPayloadPath:  filepath.ToSlash(filepath.Join(theoremsRoot, "payloads", "identity-proof.json")),
-		ExportOutputPath:    filepath.ToSlash(filepath.Join(loaded.ResolvePath(filepath.ToSlash(filepath.Join(loaded.Config.Paths.ArtifactRoot, loaded.Config.Generate.Lean4.BenchmarkProjectFolder))), filepath.FromSlash(loaded.Config.Generate.Lean4.ExportOutputFile))),
+		ExportOutputPath:    exportOutputPath,
 		BenchmarkProjectDir: loaded.Config.Generate.Lean4.BenchmarkProjectFolder,
 	}
 }
@@ -201,7 +204,10 @@ func buildPairedPlan(loaded researchconfig.Loaded, phase, runID, command string,
 		ProjectFolder:     directPlan.ProjectFolder,
 		InputFile:         directPlan.InputFile,
 		InputPath:         directPlan.InputPath,
-		PairReportPath:    filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Reports.ResearchDir), fmt.Sprintf("%s_pair_%s.md", phase, runID))),
+		PairReportPath: func() string {
+			reportDir := loaded.ResolvePath(loaded.Config.Reports.ResearchDir)
+			return filepath.ToSlash(filepath.Join(reportDir, PairReportFilename(loaded, phase, reportDir, runID)))
+		}(),
 		PairModelCatalog:  filepath.ToSlash(filepath.Join(loaded.ResolvePath(loaded.Config.Paths.ManifestRoot), fmt.Sprintf("%s_pair_%s_model_catalog.csv", phase, runID))),
 		Direct:            directPlan,
 		ND:                ndPlan,

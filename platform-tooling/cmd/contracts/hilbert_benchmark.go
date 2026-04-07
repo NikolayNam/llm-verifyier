@@ -244,6 +244,7 @@ type benchmarkRunOptions struct {
 	SummaryPath                  string
 	RawBaseDir                   string
 	RunID                        string
+	ArtifactKey                  string
 	Provider                     string
 	ProviderLabel                string
 	LLMModel                     string

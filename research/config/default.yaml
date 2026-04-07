@@ -14,6 +14,8 @@ transports:
     provider: compatible
     base_url: http://localhost:11434
     timeout: 60s
+    model_aliases:
+      gpt-oss:20b-cloud: gpt-oss:20b
 
   openai-public:
     provider: openai

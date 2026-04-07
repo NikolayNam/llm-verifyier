@@ -2,10 +2,12 @@ package runner
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
 	"slices"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"testing"
@@ -207,6 +209,42 @@ func TestRunBenchmarkFailFastCancelsQueuedJobsUnderConcurrency(t *testing.T) {
 	}
 }
 
+func TestRunBenchmarkFailsBeforeExecutionWhenCompatibleModelPreflightFails(t *testing.T) {
+	workspace := t.TempDir()
+	store := openBenchmarkTestStore(t, workspace)
+	plan := newBenchmarkTestPlan(workspace, "preflight-fail", 2)
+	loaded := researchconfig.Loaded{WorkspaceRoot: workspace, ConfigPath: filepath.Join(workspace, "research.yaml"), LocalConfigPath: filepath.Join(workspace, "local.yaml"), Fingerprint: "fingerprint"}
+
+	previousPreflight := ensureCompatibleModelRunPreflight
+	ensureCompatibleModelRunPreflight = func(context.Context, *planner.BenchmarkPlan) error {
+		return errors.New("synthetic preflight failure")
+	}
+	defer func() {
+		ensureCompatibleModelRunPreflight = previousPreflight
+	}()
+
+	var executed atomic.Int32
+	previousRun := runBenchmarkJobFunc
+	runBenchmarkJobFunc = func(context.Context, string, planner.BenchmarkJob) (string, error) {
+		executed.Add(1)
+		return "unexpected", nil
+	}
+	defer func() {
+		runBenchmarkJobFunc = previousRun
+	}()
+
+	_, err := RunBenchmark(context.Background(), loaded, store, plan, BenchmarkRunOptions{Jobs: 1})
+	if err == nil {
+		t.Fatalf("RunBenchmark() error = nil, want preflight failure")
+	}
+	if !strings.Contains(err.Error(), "synthetic preflight failure") {
+		t.Fatalf("RunBenchmark() error = %v, want synthetic preflight failure", err)
+	}
+	if executed.Load() != 0 {
+		t.Fatalf("benchmark jobs executed = %d, want 0", executed.Load())
+	}
+}
+
 func openBenchmarkTestStore(t *testing.T, workspace string) *state.Store {
 	t.Helper()
 	store, err := state.Open(context.Background(), workspace, filepath.Join(workspace, "research.sqlite"))
@@ -240,29 +278,66 @@ func newBenchmarkTestPlan(workspace, runID string, jobs int) *planner.BenchmarkP
 	for idx := 1; idx <= jobs; idx++ {
 		key := fmt.Sprintf("job-%02d", idx)
 		plan.Jobs = append(plan.Jobs, planner.BenchmarkJob{
-			Key:         key,
-			SpecHash:    key,
-			Command:     "phase1 run",
-			Phase:       "phase1",
-			RunID:       fmt.Sprintf("%s_%s", runID, key),
-			Family:      "test-family",
-			Model:       key,
-			Selector:    "cases.csv",
-			Provider:    "compatible",
-			BaseURL:     "http://localhost:11434",
-			Timeout:     "30s",
-			ResultsPath: filepath.Join(workspace, "results", key+".csv"),
-			SummaryPath: plan.SummaryPath,
-			RawDir:      filepath.Join(workspace, "raw", key),
+			Key:          key,
+			SpecHash:     key,
+			Command:      "phase1 run",
+			Phase:        "phase1",
+			RunID:        fmt.Sprintf("%s_%s", runID, key),
+			Family:       "test-family",
+			Model:        key,
+			RuntimeModel: key,
+			Selector:     "cases.csv",
+			Provider:     "compatible",
+			BaseURL:      "http://localhost:11434",
+			Timeout:      "30s",
+			ResultsPath:  filepath.Join(workspace, "results", key+".csv"),
+			SummaryPath:  plan.SummaryPath,
+			RawDir:       filepath.Join(workspace, "raw", key),
 		})
 	}
 	return plan
+}
+
+func TestBenchmarkJobCommandArgsUsesRuntimeAndCanonicalModel(t *testing.T) {
+	job := planner.BenchmarkJob{
+		Phase:                        "phase1",
+		Provider:                     "compatible",
+		BaseURL:                      "http://localhost:11434",
+		Model:                        "gpt-oss:20b-cloud",
+		RuntimeModel:                 "gpt-oss:20b",
+		ArtifactKey:                  "bj_deadbeefcafe",
+		Timeout:                      "30s",
+		ProjectFolder:                "test-project",
+		InputFile:                    "cases.csv",
+		InputPath:                    "C:/workspace/research/artifacts/test-project/cases.csv",
+		ResultsPath:                  "C:/workspace/research/artifacts/test-project/result/result_bj_deadbeefcafe.csv",
+		SummaryPath:                  "C:/workspace/research/artifacts/test-project/result/result_summary.csv",
+		RawDir:                       "C:/workspace/research/artifacts/test-project/raw/bj_deadbeefcafe",
+		RunID:                        "run-001",
+		PromptVersion:                "hilbert-ai-verification-benchmark-v1.3",
+		RequestTimeoutAbortThreshold: 5,
+	}
+
+	args := benchmarkJobCommandArgs("C:/workspace/platform-tooling", benchmarkContractsSubcommand(job.Phase), job)
+	argsText := strings.Join(args, " ")
+	for _, want := range []string{
+		"-model gpt-oss:20b",
+		"-canonical-model gpt-oss:20b-cloud",
+		"-artifact-key bj_deadbeefcafe",
+		"-raw-dir " + filepath.Dir(job.RawDir),
+		"-prompt-version hilbert-ai-verification-benchmark-v1.3",
+	} {
+		if !strings.Contains(argsText, want) {
+			t.Fatalf("benchmarkJobCommandArgs() = %q, want substring %q", argsText, want)
+		}
+	}
 }
 
 func stubBenchmarkExecution(stub func(context.Context, string, planner.BenchmarkJob) (string, error)) func() {
 	previousRun := runBenchmarkJobFunc
 	previousCatalog := ensureBenchmarkModelCatalog
 	previousReport := generateBenchmarkReport
+	previousPreflight := ensureCompatibleModelRunPreflight
 	runBenchmarkJobFunc = stub
 	ensureBenchmarkModelCatalog = func(path string, _ []planner.BenchmarkJob) error {
 		return os.WriteFile(path, []byte("model,provider\n"), 0o644)
@@ -270,10 +345,12 @@ func stubBenchmarkExecution(stub func(context.Context, string, planner.Benchmark
 	generateBenchmarkReport = func(_ context.Context, _ string, _, _, _, _, outPath string) error {
 		return os.WriteFile(outPath, []byte("# report\n"), 0o644)
 	}
+	ensureCompatibleModelRunPreflight = func(context.Context, *planner.BenchmarkPlan) error { return nil }
 	return func() {
 		runBenchmarkJobFunc = previousRun
 		ensureBenchmarkModelCatalog = previousCatalog
 		generateBenchmarkReport = previousReport
+		ensureCompatibleModelRunPreflight = previousPreflight
 	}
 }
 

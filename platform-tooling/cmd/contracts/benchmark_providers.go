@@ -49,7 +49,18 @@ func benchmarkDisplayModelLabel(defaultLabel, providerLabel, llmModel string) st
 	if label := normalizeBenchmarkProviderLabel(providerLabel); label != "" && strings.TrimSpace(llmModel) != "" {
 		return label + ":" + strings.TrimSpace(llmModel)
 	}
+	if provider := deriveBenchmarkProvider(defaultLabel); provider != "" && strings.TrimSpace(llmModel) != "" {
+		return provider + ":" + strings.TrimSpace(llmModel)
+	}
 	return strings.TrimSpace(defaultLabel)
+}
+
+func resolveCanonicalBenchmarkModel(canonicalModel, runtimeModel string) string {
+	canonicalModel = strings.TrimSpace(canonicalModel)
+	if canonicalModel != "" {
+		return canonicalModel
+	}
+	return strings.TrimSpace(runtimeModel)
 }
 
 func deriveBenchmarkProvider(modelRef string) string {

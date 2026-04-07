@@ -85,6 +85,8 @@ func run(args []string, stdout, stderr io.Writer) error {
 		return runReportSurface(args[1:], stdout, stderr)
 	case "analyze":
 		return runAnalyzeSurface(args[1:], stdout, stderr)
+	case "artifacts":
+		return runArtifactsSurface(args[1:], stdout, stderr)
 	case "-h", "--help", "help":
 		printUsage(stdout)
 		return nil
@@ -268,6 +270,7 @@ commands:
   prompt manifest|lint
   export lean-to-benchmark
   db sync|prune|overview|runs
+  artifacts compact [--apply]
   report benchmark
   report research
   report meta

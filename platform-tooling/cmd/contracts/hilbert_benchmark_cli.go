@@ -45,6 +45,7 @@ func runHilbertBenchmarkCommand(args []string, stdout, stderr io.Writer) error {
 	baseURL := fs.String("base-url", firstNonEmptyEnv("HILBERT_BENCHMARK_BASE_URL", "OPENAI_BASE_URL", "LLM_BASE_URL"), "LLM base URL")
 	apiKey := fs.String("api-key", firstNonEmptyEnv("HILBERT_BENCHMARK_API_KEY", "OPENAI_API_KEY", "LLM_API_KEY"), "LLM API key")
 	model := fs.String("model", firstNonEmptyEnv("HILBERT_BENCHMARK_MODEL", "OPENAI_MODEL", "LLM_MODEL"), "LLM model identifier")
+	canonicalModel := fs.String("canonical-model", firstNonEmptyEnv("HILBERT_BENCHMARK_CANONICAL_MODEL"), "Canonical llm_model identifier to preserve in benchmark outputs")
 	timeout := fs.Duration("timeout", 60*time.Second, "LLM request timeout")
 	requestTimeoutAbortThreshold := fs.Int("request-timeout-abort-threshold", parseIntEnv(firstNonEmptyEnv("HILBERT_BENCHMARK_REQUEST_TIMEOUT_ABORT_THRESHOLD")), "After N consecutive request timeouts, stop new LLM requests and mark remaining cases as request_failure (0 disables)")
 	experimentName := fs.String("experiment-name", firstNonEmptyEnv("HILBERT_BENCHMARK_EXPERIMENT_NAME"), "Human-readable experimental setup label used to derive experiment_id")
@@ -58,6 +59,7 @@ func runHilbertBenchmarkCommand(args []string, stdout, stderr io.Writer) error {
 	resultsPath := fs.String("results", firstNonEmptyEnv("HILBERT_BENCHMARK_RESULTS"), "Path to benchmark run result csv")
 	summaryPath := fs.String("summary", firstNonEmptyEnv("HILBERT_BENCHMARK_SUMMARY"), "Path to benchmark run summary csv")
 	rawBaseDir := fs.String("raw-dir", firstNonEmptyEnv("HILBERT_BENCHMARK_RAW_DIR"), "Directory for raw model outputs")
+	artifactKey := fs.String("artifact-key", firstNonEmptyEnv("HILBERT_BENCHMARK_ARTIFACT_KEY"), "Short filesystem artifact key for result/raw/sidecar paths")
 	caseID := fs.String("case-id", "", "Run only one case_id")
 	limit := fs.Int("limit", 0, "Maximum number of cases to run")
 	runIDFlag := fs.String("run-id", runID, "Stable run identifier")
@@ -104,7 +106,7 @@ func runHilbertBenchmarkCommand(args []string, stdout, stderr io.Writer) error {
 	resolvedCaseSelector := deriveBenchmarkCaseSelector(strings.TrimSpace(*caseID), *limit)
 	resolvedBenchmarkRoot := benchmarkProjectRoot(workspaceRoot, resolvedProjectFolder)
 	if strings.TrimSpace(*resultsPath) == "" {
-		*resultsPath = defaultBenchmarkResultsPath(resolvedBenchmarkRoot, *runIDFlag)
+		*resultsPath = defaultBenchmarkResultsPathForArtifact(resolvedBenchmarkRoot, *runIDFlag, strings.TrimSpace(*artifactKey))
 	} else {
 		*resultsPath = resolveBenchmarkArgPath(workspaceRoot, *resultsPath)
 	}
@@ -135,11 +137,12 @@ func runHilbertBenchmarkCommand(args []string, stdout, stderr io.Writer) error {
 		resolvedExperimentID = researchsampling.BuildExperimentID(resolvedExperimentName, researchsampling.SequenceFromRunID(*runIDFlag), time.Now(), samplingResolution.RequestedProfile)
 	}
 
-	modelClient, modelLabel, llmModel, err := newBenchmarkModel(*provider, strings.TrimSpace(*baseURL), strings.TrimSpace(*apiKey), strings.TrimSpace(*model), resolvedGoogleThinkingMode, *googleRequestsPerMinute, *mistralRequestsPerSecond, *timeout, samplingResolution.Effective)
+	modelClient, modelLabel, runtimeLLMModel, err := newBenchmarkModel(*provider, strings.TrimSpace(*baseURL), strings.TrimSpace(*apiKey), strings.TrimSpace(*model), resolvedGoogleThinkingMode, *googleRequestsPerMinute, *mistralRequestsPerSecond, *timeout, samplingResolution.Effective)
 	if err != nil {
 		return err
 	}
-	displayModelLabel := benchmarkDisplayModelLabel(modelLabel, *providerLabel, llmModel)
+	resolvedCanonicalModel := resolveCanonicalBenchmarkModel(*canonicalModel, runtimeLLMModel)
+	displayModelLabel := benchmarkDisplayModelLabel(modelLabel, *providerLabel, resolvedCanonicalModel)
 
 	tempDir, err := os.MkdirTemp("", "hilbert-benchmark-*")
 	if err != nil {
@@ -161,9 +164,10 @@ func runHilbertBenchmarkCommand(args []string, stdout, stderr io.Writer) error {
 		SummaryPath:                  *summaryPath,
 		RawBaseDir:                   *rawBaseDir,
 		RunID:                        *runIDFlag,
+		ArtifactKey:                  strings.TrimSpace(*artifactKey),
 		Provider:                     normalizeBenchmarkProvider(*provider),
 		ProviderLabel:                strings.TrimSpace(*providerLabel),
-		LLMModel:                     llmModel,
+		LLMModel:                     resolvedCanonicalModel,
 		ExperimentName:               resolvedExperimentName,
 		ExperimentID:                 resolvedExperimentID,
 		RequestedTemperature:         requestedTemperature,
@@ -244,7 +248,11 @@ func runHilbertBenchmarkCommand(args []string, stdout, stderr io.Writer) error {
 	if strings.TrimSpace(summary.ImportCatalogPath) != "" {
 		importCatalogLine = fmt.Sprintf("import_catalog_file: %s\n", summary.ImportCatalogPath)
 	}
-	_, _ = fmt.Fprintf(stdout, "hilbert benchmark completed\nrun_id: %s\nprovider: %s\nllm_model: %s\nproject_folder: %s\n%s%s: %s\ncase_selector: %s\nprompt_version: %s\n%shypothesis: %s\ncertificate_version: %s\n%s: %d\navg_latency_ms: %s\nmax_latency_ms: %d\nrun_elapsed_seconds: %d\nresult_file: %s\nresult_summary: %s\n%s%sraw: %s\n", summary.RunID, summary.Provider, summary.LLMModel, summary.ProjectFolder, theoremPackLine, inputFileLabel, summary.CasesFile, summary.CaseSelector, summary.PromptVersion, googleThinkingLine, benchmarkHypothesis, benchmarkCertificateVersion, inputCountLabel, summary.CaseCount, formatBenchmarkFloat(summary.AvgLatencyMS), summary.MaxLatencyMS, summary.RunElapsedS, summary.ResultsPath, summary.SummaryPath, chainSummaryLine, importCatalogLine, summary.RawRunDir)
+	artifactKeyLine := ""
+	if strings.TrimSpace(*artifactKey) != "" {
+		artifactKeyLine = fmt.Sprintf("artifact_key: %s\n", strings.TrimSpace(*artifactKey))
+	}
+	_, _ = fmt.Fprintf(stdout, "hilbert benchmark completed\nrun_id: %s\n%sprovider: %s\nllm_model: %s\nruntime_model: %s\nproject_folder: %s\n%s%s: %s\ncase_selector: %s\nprompt_version: %s\n%shypothesis: %s\ncertificate_version: %s\n%s: %d\navg_latency_ms: %s\nmax_latency_ms: %d\nrun_elapsed_seconds: %d\nresult_file: %s\nresult_summary: %s\n%s%sraw: %s\n", summary.RunID, artifactKeyLine, summary.Provider, summary.LLMModel, runtimeLLMModel, summary.ProjectFolder, theoremPackLine, inputFileLabel, summary.CasesFile, summary.CaseSelector, summary.PromptVersion, googleThinkingLine, benchmarkHypothesis, benchmarkCertificateVersion, inputCountLabel, summary.CaseCount, formatBenchmarkFloat(summary.AvgLatencyMS), summary.MaxLatencyMS, summary.RunElapsedS, summary.ResultsPath, summary.SummaryPath, chainSummaryLine, importCatalogLine, summary.RawRunDir)
 	for _, bucket := range orderedBenchmarkBuckets() {
 		if count := summary.Buckets[bucket]; count > 0 {
 			_, _ = fmt.Fprintf(stdout, "%s: %d\n", bucket, count)

@@ -249,7 +249,8 @@ func runBenchmarkReportCommand(args []string, stdout, stderr io.Writer) error {
 		if strings.TrimSpace(*runID) == "" {
 			return fmt.Errorf("report benchmark requires --report-out or --run-id")
 		}
-		*reportOut = filepath.ToSlash(filepath.Join(loaded.ResolvePath(benchmarkConfig.ReportDir), defaultReportFilename("benchmark", phaseName, strings.TrimSpace(*runID))))
+		reportDir := loaded.ResolvePath(benchmarkConfig.ReportDir)
+		*reportOut = filepath.ToSlash(filepath.Join(reportDir, planner.BenchmarkReportFilename(loaded, phaseName, reportDir, strings.TrimSpace(*runID))))
 	} else {
 		*reportOut = filepath.ToSlash(loaded.ResolvePath(*reportOut))
 	}

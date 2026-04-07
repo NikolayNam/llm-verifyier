@@ -56,7 +56,7 @@ func runHilbertBenchmark(ctx context.Context, opts benchmarkRunOptions, promptPr
 	}
 	cases = orderBenchmarkCasesForExecution(cases)
 
-	rawRunDir := filepath.Join(opts.RawBaseDir, opts.RunID)
+	rawRunDir := filepath.Join(opts.RawBaseDir, benchmarkArtifactRunKey(opts.RunID, opts.ArtifactKey))
 	if err := os.MkdirAll(rawRunDir, 0o755); err != nil {
 		return nil, fmt.Errorf("create raw output dir: %w", err)
 	}
@@ -184,7 +184,7 @@ func runHilbertBenchmark(ctx context.Context, opts benchmarkRunOptions, promptPr
 					}
 				}
 				if strings.TrimSpace(row.ScoreBucket) == "pass" && benchmarkCaseUsesCompositionalChainProtocol(tc) {
-					certificateObjectPath := benchmarkImportedCertificateObjectPath(opts.ResultsPath, opts.RunID, tc.CaseID)
+					certificateObjectPath := benchmarkImportedCertificateObjectPathForArtifact(opts.ResultsPath, opts.RunID, opts.ArtifactKey, tc.CaseID)
 					object, err := writeBenchmarkTrustedCertificateObject(certificateObjectPath, opts, promptCase, row, rawOutput)
 					if err != nil {
 						return nil, err
@@ -240,14 +240,14 @@ func runHilbertBenchmark(ctx context.Context, opts benchmarkRunOptions, promptPr
 	}
 	importCatalogPath := ""
 	if len(trustedArtifactCatalog) > 0 {
-		importCatalogPath = benchmarkImportedCertificateCatalogPath(opts.ResultsPath, opts.RunID)
+		importCatalogPath = benchmarkImportedCertificateCatalogPathForArtifact(opts.ResultsPath, opts.RunID, opts.ArtifactKey)
 		if err := appendBenchmarkTrustedCertificateCatalog(importCatalogPath, trustedArtifactCatalog); err != nil {
 			return nil, err
 		}
 	}
 	chainSummaryPath := ""
 	if benchmarkCasesHaveChainMetadata(cases) {
-		chainSummaryPath = benchmarkChainSummaryPath(opts.ResultsPath, opts.RunID)
+		chainSummaryPath = benchmarkChainSummaryPathForArtifact(opts.ResultsPath, opts.RunID, opts.ArtifactKey)
 		if err := appendBenchmarkChainSummary(chainSummaryPath, opts.RunID, cases, rows); err != nil {
 			return nil, err
 		}
@@ -409,17 +409,25 @@ func benchmarkJSONString(value any) string {
 }
 
 func benchmarkImportedCertificateObjectPath(resultsPath, runID, caseID string) string {
-	if strings.TrimSpace(resultsPath) == "" || strings.TrimSpace(runID) == "" || strings.TrimSpace(caseID) == "" {
+	return benchmarkImportedCertificateObjectPathForArtifact(resultsPath, runID, "", caseID)
+}
+
+func benchmarkImportedCertificateObjectPathForArtifact(resultsPath, runID, artifactKey, caseID string) string {
+	if strings.TrimSpace(resultsPath) == "" || strings.TrimSpace(benchmarkArtifactRunKey(runID, artifactKey)) == "" || strings.TrimSpace(caseID) == "" {
 		return ""
 	}
-	return filepath.Join(filepath.Dir(resultsPath), "imported_certificates", strings.TrimSpace(runID), strings.TrimSpace(caseID)+".json")
+	return filepath.Join(filepath.Dir(resultsPath), "imported_certificates", benchmarkArtifactRunKey(runID, artifactKey), strings.TrimSpace(caseID)+".json")
 }
 
 func benchmarkImportedCertificateCatalogPath(resultsPath, runID string) string {
-	if strings.TrimSpace(resultsPath) == "" || strings.TrimSpace(runID) == "" {
+	return benchmarkImportedCertificateCatalogPathForArtifact(resultsPath, runID, "")
+}
+
+func benchmarkImportedCertificateCatalogPathForArtifact(resultsPath, runID, artifactKey string) string {
+	if strings.TrimSpace(resultsPath) == "" || strings.TrimSpace(benchmarkArtifactRunKey(runID, artifactKey)) == "" {
 		return ""
 	}
-	return filepath.Join(filepath.Dir(resultsPath), fmt.Sprintf("imported_certificate_catalog_%s.csv", strings.TrimSpace(runID)))
+	return filepath.Join(filepath.Dir(resultsPath), fmt.Sprintf("imported_certificate_catalog_%s.csv", benchmarkArtifactRunKey(runID, artifactKey)))
 }
 
 func writeBenchmarkTrustedCertificateObject(path string, opts benchmarkRunOptions, tc benchmarkCase, row benchmarkResultRow, rawOutput string) (benchmarkTrustedCertificateObject, error) {

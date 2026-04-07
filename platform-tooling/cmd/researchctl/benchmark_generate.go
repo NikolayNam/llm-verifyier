@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/artifactkey"
 	researchconfig "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/config"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/generate/benchmarkpack"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/state"
@@ -22,6 +23,7 @@ type benchmarkGenerationManifest struct {
 	ProjectFolder string   `json:"project_folder"`
 	BenchmarkKey  string   `json:"benchmark_key"`
 	OutputPath    string   `json:"output_path"`
+	ArtifactKey   string   `json:"artifact_key,omitempty"`
 	InputFile     string   `json:"input_file"`
 	LocalConfig   string   `json:"local_config,omitempty"`
 	PromptVersion string   `json:"prompt_version"`
@@ -105,6 +107,10 @@ func runGenerateBenchmarkCasesCommand(args []string, stdout, stderr io.Writer) e
 		return err
 	}
 	selector := strings.TrimSpace(*inputFileSelector)
+	logicalPackKey := strings.TrimSuffix(filepath.Base(outputPath), filepath.Ext(outputPath))
+	generatedArtifactKey := artifactkey.GeneratedPack(*runID, logicalPackKey)
+	outputPath = compactArtifactOutputPath(loaded, outputPath, "pack", generatedArtifactKey)
+	derivedSelector = deriveCompositionalSelector(loaded.ResolvePath(filepath.ToSlash(filepath.Join(loaded.Config.Paths.ArtifactRoot, profile.ProjectFolder))), filepath.FromSlash(outputPath))
 	if selector == "" {
 		selector = derivedSelector
 	}
@@ -152,6 +158,7 @@ func runGenerateBenchmarkCasesCommand(args []string, stdout, stderr io.Writer) e
 		ProjectFolder: result.Profile.ProjectFolder,
 		BenchmarkKey:  result.Profile.BenchmarkKey,
 		OutputPath:    result.OutputPath,
+		ArtifactKey:   generatedArtifactKey,
 		InputFile:     result.BenchmarkInputFile,
 		LocalConfig:   result.LocalConfigPath,
 		PromptVersion: result.PromptVersion,
@@ -178,12 +185,13 @@ func runGenerateBenchmarkCasesCommand(args []string, stdout, stderr io.Writer) e
 
 	if err := store.RecordGeneratedPack(context.Background(), state.GeneratedPack{
 		RunID:         *runID,
-		PackKey:       strings.TrimSuffix(filepath.Base(result.OutputPath), filepath.Ext(result.OutputPath)),
+		PackKey:       logicalPackKey,
 		ProjectFolder: result.Profile.ProjectFolder,
 		SourceKind:    fmt.Sprintf("benchmark/%s", result.Profile.Surface),
 		OutputPath:    result.OutputPath,
 		ManifestPath:  manifestPath,
 		MetadataJSON: state.MetadataJSON(map[string]any{
+			"artifact_key":    generatedArtifactKey,
 			"input_file":      result.BenchmarkInputFile,
 			"local_config":    result.LocalConfigPath,
 			"prompt_version":  result.PromptVersion,

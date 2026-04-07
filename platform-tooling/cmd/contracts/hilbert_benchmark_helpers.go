@@ -256,7 +256,11 @@ func readCSV(path string) ([][]string, map[string]int, error) {
 }
 
 func defaultBenchmarkResultsPath(benchmarkRoot, runID string) string {
-	return filepath.Join(benchmarkRoot, "result", "result_"+runID+".csv")
+	return defaultBenchmarkResultsPathForArtifact(benchmarkRoot, runID, "")
+}
+
+func defaultBenchmarkResultsPathForArtifact(benchmarkRoot, runID, artifactKey string) string {
+	return filepath.Join(benchmarkRoot, "result", "result_"+benchmarkArtifactRunKey(runID, artifactKey)+".csv")
 }
 
 func benchmarkArtifactsRoot(workspaceRoot string) string {
@@ -389,6 +393,13 @@ func parseBenchmarkSummaryArgPaths(workspaceRoot, raw string) []string {
 
 func defaultBenchmarkRawDir(benchmarkRoot string) string {
 	return filepath.Join(benchmarkRoot, "raw")
+}
+
+func benchmarkArtifactRunKey(runID, artifactKey string) string {
+	if key := strings.TrimSpace(artifactKey); key != "" {
+		return key
+	}
+	return strings.TrimSpace(runID)
 }
 
 func benchmarkRunSummaryHeaderForPath(path, projectFolder string) ([]string, bool, error) {

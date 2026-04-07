@@ -39,6 +39,15 @@ func TestBenchmarkDisplayProviderAndModelLabel(t *testing.T) {
 	if got := benchmarkDisplayModelLabel("compatible:gpt-oss:20b", "", "gpt-oss:20b"); got != "compatible:gpt-oss:20b" {
 		t.Fatalf("benchmarkDisplayModelLabel() fallback = %q, want compatible:gpt-oss:20b", got)
 	}
+	if got := benchmarkDisplayModelLabel("compatible:gpt-oss:20b", "", "gpt-oss:20b-cloud"); got != "compatible:gpt-oss:20b-cloud" {
+		t.Fatalf("benchmarkDisplayModelLabel() canonical fallback = %q, want compatible:gpt-oss:20b-cloud", got)
+	}
+	if got := resolveCanonicalBenchmarkModel("gpt-oss:20b-cloud", "gpt-oss:20b"); got != "gpt-oss:20b-cloud" {
+		t.Fatalf("resolveCanonicalBenchmarkModel() explicit = %q, want gpt-oss:20b-cloud", got)
+	}
+	if got := resolveCanonicalBenchmarkModel("", "gpt-oss:20b"); got != "gpt-oss:20b" {
+		t.Fatalf("resolveCanonicalBenchmarkModel() runtime fallback = %q, want gpt-oss:20b", got)
+	}
 }
 
 func TestGoogleBenchmarkModelGenerate(t *testing.T) {

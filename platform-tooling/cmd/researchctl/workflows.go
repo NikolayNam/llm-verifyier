@@ -11,6 +11,7 @@ import (
 	"time"
 
 	lean4worker "github.com/NikolayNam/collabsphere/platform-tooling/internal/prooftheory/lean4worker"
+	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/artifactkey"
 	researchconfig "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/config"
 	leanlayer "github.com/NikolayNam/collabsphere/platform-tooling/internal/research/generate/lean4"
 	"github.com/NikolayNam/collabsphere/platform-tooling/internal/research/planner"
@@ -582,7 +583,11 @@ func runPhase3RunCommand(args []string, stdout, stderr io.Writer) error {
 	resolvedOutputArg := strings.TrimSpace(*outputFile)
 	if resolvedOutputArg != "" {
 		resolvedOutputArg = resolveLeanExportOutputPath(loaded, resolvedOutputArg)
+	} else {
+		resolvedOutputArg = plan.ExportOutputPath
 	}
+	exportArtifactKey := artifactkey.Export(plan.RunID, plan.RunID)
+	resolvedOutputArg = compactArtifactOutputPath(loaded, resolvedOutputArg, "export", exportArtifactKey)
 	exported, err := leanlayer.ExportToBenchmark(loaded, exportSource, resolvedOutputArg, lean4worker.BenchmarkCaseExportConfig{
 		ModeFilter:      strings.TrimSpace(*exportMode),
 		InterestingOnly: *interestingOnly,
@@ -610,6 +615,7 @@ func runPhase3RunCommand(args []string, stdout, stderr io.Writer) error {
 		SourcePath:             resolvedSource,
 		OutputPath:             resolvedOutput,
 		MetadataJSON: state.MetadataJSON(map[string]any{
+			"artifact_key":     exportArtifactKey,
 			"mode_filter":      strings.TrimSpace(*exportMode),
 			"interesting_only": *interestingOnly,
 			"minimal_only":     *minimalOnly,

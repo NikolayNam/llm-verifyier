@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -42,9 +43,12 @@ type BenchmarkRunResult struct {
 }
 
 var (
-	runBenchmarkJobFunc         = runBenchmarkJob
-	ensureBenchmarkModelCatalog = report.EnsureModelCatalog
-	generateBenchmarkReport     = report.GenerateBenchmarkReport
+	runBenchmarkJobFunc               = runBenchmarkJob
+	ensureBenchmarkModelCatalog       = report.EnsureModelCatalog
+	generateBenchmarkReport           = report.GenerateBenchmarkReport
+	ensureCompatibleModelRunPreflight = verifyCompatibleModelPreflight
+	compatibleModelCatalogFetcher     = fetchCompatibleModelCatalog
+	compatibleModelCatalogHTTPClient  = &http.Client{Timeout: 10 * time.Second}
 )
 
 func RunBenchmark(ctx context.Context, loaded researchconfig.Loaded, store *state.Store, plan *planner.BenchmarkPlan, opts BenchmarkRunOptions) (BenchmarkRunResult, error) {
@@ -53,6 +57,9 @@ func RunBenchmark(ctx context.Context, loaded researchconfig.Loaded, store *stat
 	}
 	if store == nil {
 		return BenchmarkRunResult{}, fmt.Errorf("research state store is required")
+	}
+	if err := ensureCompatibleModelRunPreflight(ctx, plan); err != nil {
+		return BenchmarkRunResult{}, err
 	}
 	if err := ensureBenchmarkPlanPaths(plan); err != nil {
 		return BenchmarkRunResult{}, err
@@ -301,6 +308,8 @@ func executeBenchmarkJob(ctx context.Context, loaded researchconfig.Loaded, stor
 				"worker_run_id": job.RunID,
 				"skip_reason":   "existing_result",
 				"experiment_id": job.ExperimentID,
+				"runtime_model": benchmarkJobRuntimeModel(job),
+				"artifact_key":  strings.TrimSpace(job.ArtifactKey),
 			}),
 		}); err != nil {
 			return benchmarkJobExecutionResult{FatalErr: err}
@@ -317,7 +326,7 @@ func executeBenchmarkJob(ctx context.Context, loaded researchconfig.Loaded, stor
 
 	startedAt := time.Now().UTC().Format(time.RFC3339)
 	jobStartedAt := time.Now().UTC()
-	progress.logf("job started phase=%s run_id=%s job=%s index=%d/%d model=%s selector=%s provider=%s results=%s summary=%s raw_dir=%s", job.Phase, plan.RunID, job.Key, jobOrdinal, totalJobs, job.Model, job.Selector, job.Provider, filepath.ToSlash(job.ResultsPath), filepath.ToSlash(job.SummaryPath), filepath.ToSlash(job.RawDir))
+	progress.logf("job started phase=%s run_id=%s job=%s index=%d/%d model=%s runtime_model=%s selector=%s provider=%s results=%s summary=%s raw_dir=%s", job.Phase, plan.RunID, job.Key, jobOrdinal, totalJobs, job.Model, benchmarkJobRuntimeModel(job), job.Selector, job.Provider, filepath.ToSlash(job.ResultsPath), filepath.ToSlash(job.SummaryPath), filepath.ToSlash(job.RawDir))
 	if err := store.UpsertJob(storeCtx, state.Job{
 		RunID:        plan.RunID,
 		JobKey:       job.Key,
@@ -334,7 +343,9 @@ func executeBenchmarkJob(ctx context.Context, loaded researchconfig.Loaded, stor
 		StartedAtUTC: startedAt,
 		MetadataJSON: state.MetadataJSON(map[string]any{
 			"worker_run_id":              job.RunID,
+			"artifact_key":               strings.TrimSpace(job.ArtifactKey),
 			"provider":                   job.Provider,
+			"runtime_model":              benchmarkJobRuntimeModel(job),
 			"base_url":                   job.BaseURL,
 			"timeout":                    job.Timeout,
 			"input_path":                 job.InputPath,
@@ -381,7 +392,9 @@ func executeBenchmarkJob(ctx context.Context, loaded researchconfig.Loaded, stor
 			Error:         trimLog(firstNonEmpty(err.Error(), output)),
 			MetadataJSON: state.MetadataJSON(map[string]any{
 				"worker_run_id":              job.RunID,
+				"artifact_key":               strings.TrimSpace(job.ArtifactKey),
 				"provider":                   job.Provider,
+				"runtime_model":              benchmarkJobRuntimeModel(job),
 				"base_url":                   job.BaseURL,
 				"timeout":                    job.Timeout,
 				"output":                     trimLog(output),
@@ -423,7 +436,9 @@ func executeBenchmarkJob(ctx context.Context, loaded researchconfig.Loaded, stor
 		FinishedAtUTC: finishedAt,
 		MetadataJSON: state.MetadataJSON(map[string]any{
 			"worker_run_id":              job.RunID,
+			"artifact_key":               strings.TrimSpace(job.ArtifactKey),
 			"provider":                   job.Provider,
+			"runtime_model":              benchmarkJobRuntimeModel(job),
 			"base_url":                   job.BaseURL,
 			"timeout":                    job.Timeout,
 			"output":                     trimLog(output),
@@ -519,19 +534,42 @@ func runBenchmarkJob(ctx context.Context, workspaceRoot string, job planner.Benc
 		return "", err
 	}
 	toolingRoot := filepath.Join(workspaceRoot, "platform-tooling")
+	args := benchmarkJobCommandArgs(toolingRoot, subcommand, job)
+	if strings.TrimSpace(job.APIKeyEnv) != "" {
+		apiKey := strings.TrimSpace(os.Getenv(job.APIKeyEnv))
+		if apiKey == "" && job.Provider != "compatible" {
+			return "", fmt.Errorf("required API key env %q is empty", job.APIKeyEnv)
+		}
+		if apiKey != "" {
+			args = append(args, "-api-key", apiKey)
+		}
+	}
+	cmd := exec.CommandContext(ctx, goBinary, args...)
+	cmd.Dir = workspaceRoot
+	cmd.Env = append(os.Environ(), fmt.Sprintf("%s=%s", toolingpath.WorkspaceRootEnvKey, workspaceRoot))
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return string(output), fmt.Errorf("run contracts %s for job %s: %w", subcommand, job.Key, err)
+	}
+	return string(output), nil
+}
+
+func benchmarkJobCommandArgs(toolingRoot, subcommand string, job planner.BenchmarkJob) []string {
 	args := []string{
 		"-C", toolingRoot,
 		"run", "./cmd/contracts", subcommand,
 		"-provider", job.Provider,
 		"-base-url", job.BaseURL,
-		"-model", job.Model,
+		"-model", benchmarkJobRuntimeModel(job),
+		"-canonical-model", strings.TrimSpace(job.Model),
+		"-artifact-key", strings.TrimSpace(job.ArtifactKey),
 		"-timeout", job.Timeout,
 		"-project-folder", job.ProjectFolder,
 		"-cases-file", job.InputFile,
 		"-cases", job.InputPath,
 		"-results", job.ResultsPath,
 		"-summary", job.SummaryPath,
-		"-raw-dir", job.RawDir,
+		"-raw-dir", filepath.Dir(job.RawDir),
 		"-run-id", job.RunID,
 		"-prompt-version", job.PromptVersion,
 		"-request-timeout-abort-threshold", strconv.Itoa(job.RequestTimeoutAbortThreshold),
@@ -551,23 +589,14 @@ func runBenchmarkJob(ctx context.Context, workspaceRoot string, job planner.Benc
 	if job.RequestedTopP != nil {
 		args = append(args, "-top-p", strconv.FormatFloat(*job.RequestedTopP, 'f', -1, 64))
 	}
-	if strings.TrimSpace(job.APIKeyEnv) != "" {
-		apiKey := strings.TrimSpace(os.Getenv(job.APIKeyEnv))
-		if apiKey == "" && job.Provider != "compatible" {
-			return "", fmt.Errorf("required API key env %q is empty", job.APIKeyEnv)
-		}
-		if apiKey != "" {
-			args = append(args, "-api-key", apiKey)
-		}
+	return args
+}
+
+func benchmarkJobRuntimeModel(job planner.BenchmarkJob) string {
+	if runtimeModel := strings.TrimSpace(job.RuntimeModel); runtimeModel != "" {
+		return runtimeModel
 	}
-	cmd := exec.CommandContext(ctx, goBinary, args...)
-	cmd.Dir = workspaceRoot
-	cmd.Env = append(os.Environ(), fmt.Sprintf("%s=%s", toolingpath.WorkspaceRootEnvKey, workspaceRoot))
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		return string(output), fmt.Errorf("run contracts %s for job %s: %w", subcommand, job.Key, err)
-	}
-	return string(output), nil
+	return strings.TrimSpace(job.Model)
 }
 
 func benchmarkContractsSubcommand(phase string) string {
